@@ -1,5 +1,5 @@
 .full_bg{
-	background-image: url(../images/ci.jpg);
+	background-image: url(../images/page1_background.jpg);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -18,7 +18,7 @@
     /* Text styles */
     text-align: center;
         /* Background styles */
-    background-image: url(../images/ci.jpg);
+    background-image: url(../images/page1_background.jpg);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -70,7 +70,7 @@
     /* Text styles */
     text-align: center;
         /* Background styles */
-    background-image: url(../images/ci.jpg);
+    background-image: url(../images/page1_background.jpg);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
