@@ -7,7 +7,7 @@ courses = pd.read_csv('./static/datasets/courses.csv')
 studentAssessment = pd.read_csv('./static/datasets/studentAssessment.csv')
 studentInfo = pd.read_csv('./static/datasets/studentInfo.csv')
 studentRegistration = pd.read_csv('./static/datasets/studentRegistration.csv')
-vle = pd.read_csv('/static/datasets/vle.csv')
+vle = pd.read_csv('./static/datasets/vle.csv')
 
 # column identification
 set1 = list(assessments.columns.values)
