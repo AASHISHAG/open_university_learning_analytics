@@ -1,5 +1,5 @@
 .full_bg{
-	background-image: url(../images/page1_background.jpg);
+	background-image: url(../images/img2.jpg);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -18,7 +18,7 @@
     /* Text styles */
     text-align: center;
         /* Background styles */
-    background-image: url(../images/page1_background.jpg);
+    background-image: url(../images/img2.jpg);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -39,18 +39,18 @@
     /* Positioning and sizing */
     display: block;
     width: 200px;
-    
+
     /* Padding and margins */
     padding: 1em;
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
-    
+
     /* Text styles */
     color: white;
     text-decoration: none;
     font-size: 1.5em;
-    
+
     /* Border styles */
     border: 3px solid white;
     border-radius: 20px;
@@ -70,12 +70,11 @@
     /* Text styles */
     text-align: center;
         /* Background styles */
-    background-image: url(../images/page1_background.jpg);
+    background-image: url(../images/img2.jpg);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-
     color: white;
 }
 
