@@ -72,6 +72,18 @@
                     </div>
                 </div>
             </div>
+
+            <!-- +++++plot 3+++++-->
+            <div class="column" style="margin-right:60px">
+                <div class="row justify-content-md-center">
+                    <h6>test chart</h6>
+                </div>
+                <div class="row">
+                    <div style="width: 350px; height: 350px">
+                        <canvas id="testChart" width="400" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
         </div>
         <!--+++++++++++End of plotting++++++++++-->
     </div>
@@ -81,6 +93,7 @@
     <script>
         genderPlot({{mean_female_grade|tojson}},{{mean_male_grade|tojson}})
         agePlot({{mean_twenty_year|tojson}},{{mean_nineteen_year|tojson}},{{mean_eighteen_year|tojson}},{{mean_seventeen_year|tojson}},{{mean_sixteen_year|tojson}},{{mean_fifteen_year|tojson}})
+        testPlot({{mean_twenty_year|tojson}},{{mean_nineteen_year|tojson}},{{mean_eighteen_year|tojson}},{{mean_seventeen_year|tojson}},{{mean_sixteen_year|tojson}},{{mean_fifteen_year|tojson}})
     </script>
 
     <!--############ ############-->
