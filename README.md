@@ -1,5 +1,6 @@
 ## Table of content 
-- [I-Grade (inteligent grade prediction system)](#headers)
+- [OULA (inteligent grade prediction system)](#headers)
+- [baised on Open University dataset](#headers2)
 - [Requirments and prepration](#headers2)
 - [App Structure](#headers3)
 - [code explanation](#headers4)
@@ -11,7 +12,7 @@ https://youtu.be/HueXoAcfAuM
 
 ![Logo](open_university_learning_analytics/static/images/OU_Logo_Dark_Blue.png)
 
-## I-Grade (inteligent grade prediction system)
+## OULA (inteligent grade prediction system)
 Grade prediction system based on trend of the recorded data in database. User select its habit then get the grade closest to the final result.
 
 <a name="headers2"/>
@@ -37,7 +38,7 @@ This project is based on the following technology:
 # App Structure
 we can seprate this project (Flask framework) to several main part with different functionality.
 
-App (I-grade):
+App (OULA):
   + static (folder)
     + css (folder)
       + bootstrap
@@ -167,9 +168,9 @@ def prediction():
 
 # Step 4
 ### Visualization part- charts and plots(server.py and plot.py and viz.js)
-in visualisation part we just tried to provid two chart to make the data more understandable maybe will help user to get better view from predicted result. we used "chartjs" javascript library inorder to visualize the data.
+in visualisation part we just tried to provide two chart to make the data more understandable maybe will help user to get better view from predicted result. we used "chartjs" javascript library inorder to visualize the data.
 
-we difined two function for two chart models then later we plot them just by calling this function:
+we defined two function for two chart models then later we plot them just by calling this function:
 1. agePlot: plot grade avrage distribution regarding age
 2. genderPlot: plot grade avrage distribution regarding gender
 
@@ -199,7 +200,7 @@ var chart = new Chart(ctx, {
 ```
 
 # Run the code
-after we install below requirments on our system:
+after we install below requirements on our system:
   * sci-kit learn
   * Flask
   * Numpy
