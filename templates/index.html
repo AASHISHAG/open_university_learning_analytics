@@ -21,12 +21,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('dataForm') }}">prediction form</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('about_us') }}">ABOUT US</a>
+                    </li>
                 </ul>
             </div>
         </nav>
             <section class="content">
                 <div class="hero-inner">
-                    <img class="logo" src="{{ url_for('static', filename='./images/logo.png') }}" alt="logo">
+                    <img class="logo" src="{{ url_for('static', filename='./images/OU_Logo_Dark_Blue.png') }}" alt="logo">
                     <h1>Welcome to Open University Learning Analytics</h1>
                     <h2>predict your grade before doing anything</h2>
                     <a href="{{ url_for('dataForm') }}" class="btn">Go ahead...</a>

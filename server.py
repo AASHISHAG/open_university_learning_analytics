@@ -98,5 +98,9 @@ def prediction():
 
     return render_template('prediction.html',mean_twenty_year=mean_twenty_year,mean_nineteen_year=mean_nineteen_year,mean_eighteen_year=mean_eighteen_year,mean_seventeen_year=mean_seventeen_year,mean_sixteen_year=mean_sixteen_year,mean_fifteen_year=mean_fifteen_year,mean_female_grade=mean_female_grade, mean_male_grade = mean_male_grade ,student=student,pred_result=pred_result)
 
+@app.route('/about_us')
+def about_us():
+    return render_template('about_us.html')
+
 if __name__ == "__main__":
     app.run()
