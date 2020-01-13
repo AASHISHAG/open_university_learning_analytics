@@ -209,7 +209,7 @@ after we install below requirements on our system:
   * pyplot
 
   
-you can simply run the server.py file and then server will run on you localhost. then just open Browser and type your local host IP and enjoy the application
+you can smply run the server.py file and then server will run on you localhost. then just open Browser and type your local host IP and enjoy the application
 
 # Contributor
 Sameh Frihat
