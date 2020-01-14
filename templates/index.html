@@ -1,42 +1,68 @@
 <!DOCTYPE html>
-<html lang="en" class="full_bg">
-    <head>
-        <meta charset="UTF-8">
-        <title>Question form</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{{ url_for('static', filename='./css/bootstrap.min.css') }}"/>
-        <link rel="stylesheet" href="{{ url_for('static', filename='./css/style.css') }}"/>
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="{{ url_for('main') }}">OULA</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ url_for('main') }}">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('dataForm') }}">prediction form</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('about_us') }}">ABOUT US</a>
-                    </li>
-                </ul>
-            </div>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="{{url_for('static', filename='./layout/styles/layout.css')}}" rel="stylesheet" type="text/css" media="all">
+
+    {% if title %}
+      <title>{{ title }} - Open University Learning Analytics</title>
+    {% else %}
+      <title>Open University Learning Analytics</title>
+    {% endif %}
+  </head>
+
+  <body>
+    <div class="wrapper row1">
+      <header id="header" class="hoc clear">
+        <div id="logo" class="fl_left">
+          <h1><a href="/">OULA</a></h1>
+        </div>
+        <nav id="mainav" class="fl_right">
+          <ul class="clear">
+            <li class="active"><a href="/home">Home</a></li>
+            <li class="active"><a href="/questionForm">Prediction your grade</a></li>
+            <li class="active"><a href="/about_us">About us</a></li>
+          </ul>
         </nav>
-            <section class="content">
-                <div class="hero-inner">
-                    <img class="logo" src="{{ url_for('static', filename='./images/OU_Logo_Dark_Blue.png') }}" alt="logo">
-                    <h1>Welcome to Open University Learning Analytics</h1>
-                    <h2>predict your grade before doing anything</h2>
-                    <a href="{{ url_for('dataForm') }}" class="btn">Go ahead...</a>
-                </div>
-            </section>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    </body>
+      </header>
+    </div>
+
+    <div class="bgded overlay" style="background-image:url({{url_for('static', filename='./images/img2.jpg')}});">
+      <div id="pageintro" class="hoc clear">
+        <div class="flexslider basicslider">
+          <ul class="slides">
+            <li>
+              <article>
+                <h1 class='heading'>Welcome to Open University Learning Analytics </h1>
+                <h1>Predict your grade before doing anything</h1>
+                <footer><a class="btn" href="{{ url_for('prediction')}}">Start your prediction!</a></footer>
+              </article>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper row3">
+      <main class="hoc container clear">
+        <div class="sectiontitle1">
+          <h3 class="heading">Thank you for visiting our website!</h3>
+          <p></br>Welcome to this student project for the course Learning Analytics in University of Duisburg-Essen. We are the team Data Titans. The goals of our project are:  </br>- Explore the students performance dataset by perform some initial data visualization. </br>- Apply the machine learning algorithms on the dataset to determine most important features and attempt to predict the students performance based on these features.</p>
+        </div>
+        <div class="clear"></div>
+      </main>
+    </div>
+    <div class="wrapper row5">
+      <div id="copyright" class="hoc clear">
+        <p class="fl_left">Learning Analytics - Universität Duisburg-Essen</p>
+        <p class="fl_right">Group 1: Data Titans</a></p>
+      </div>
+    </div>
+    
+    <!-- JAVASCRIPTS -->
+    <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.backtotop.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.mobilemenu.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.flexslider-min.js') }}"></script>
+  </body>
 </html>

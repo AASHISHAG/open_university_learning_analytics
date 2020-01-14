@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" class="full_bg">
+<head>
+    <meta charset="UTF-8">
+    <title>question form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='./css/style.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='./css/bootstrap.min.css') }}"/>
+	<style>
+	#table1 {
+	border-collapse: separate;
+	border-spacing: 30px 10px;
+}
+</style>
+</head>
+<body>
+
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{{ url_for('main') }}">OULA</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('main') }}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url_for('dataForm') }}">Prediction Form</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+   <div>
+      {% if error %}
+      <div class="alert alert-danger" role="alert">
+         <p class="error"><strong>error:</strong> {{ error }}</p>
+      </div>
+      {% endif %}
+    </div>
+<!--form part-->
+      <form action="" method="POST" class="full_bg form-group" >
+	  <table id="table1">
+	  <tr><td style="color:yellow">Sex:</td>
+         <td style="color:black">
+            <select  name="sex" method="post" action="">
+               <option value="{{sex[0]}}" selected>{{sex[0]}}</option>
+               {% for sex in sex[1:] %}
+               <option value="{{sex}}">{{sex}}</option>
+               {% endfor %}
+            </select>
+         </td>
+
+		 <td style="color:yellow">Age:</td>
+         <td >
+            <select  name="age" method="post" action="">
+               <option value="{{age[0]}}" selected>{{age[0]}}</option>
+               {% for age in age[1:] %}
+               <option  value="{{age}}">{{age}}</option>
+               {% endfor %}
+            </select>
+         </td>
+		 </tr>
+
+
+		 <tr><td colspan = 2><br></tr>
+		 <tr><td style="color:yellow">Travel Time:</td>
+         <td style="color:black">
+            <select  name="travelTime" method="post" action="">
+               >
+               <option value="{{travelTime[0]}}" selected>{{travelTime[0]}}</option>
+               {% for travelTime in travelTime[1:] %}
+               <option  value="{{travelTime}}">{{travelTime}}</option>
+                {% endfor %}
+            </select>
+         </td>
+		 <td style="color:yellow">Study Time:</td>
+         <td style="color:black">
+            <select   name="studyTime" method="post" action="">
+               <option value="{{studyTime[0]}}" selected>{{studyTime[0]}}</option>
+               {% for studyTime in studyTime[1:] %}
+               <option  value="{{studyTime}}">{{studyTime}}</option>
+               {% endfor %}
+            </select>
+         </td>
+		 </tr>
+
+		 <tr><td colspan = 2><br></tr>
+		 <tr><td style="color:yellow">Failures:</td>
+         <td style="color:black">
+            <select  name="failures" method="post" action="">
+               <option value="{{failures[0]}}" selected>{{failures[0]}}</option>
+               {% for failures in failures[1:] %}
+               <option  value="{{failures}}">{{failures}}</option>
+               {% endfor %}
+            </select>
+         </td>
+
+		 <td style="color:yellow">SchoolsUp:</td>
+         <td style="color:black">
+            <select  name="schoolsup" method="post" action="">
+               <option value="{{schoolsup[0]}}" selected>{{schoolsup[0]}}</option>
+               {% for schoolsup in schoolsup[1:] %}
+               <option  value="{{schoolsup}}">{{schoolsup}}</option>
+               {% endfor %}
+            </select>
+         </td>
+		 </tr>
+
+
+		 <tr><td colspan = 2><br></tr>
+		 <tr><td style="color:yellow">FamsUp:</td>
+         <td style="color:black">
+            <select  name="famsup" method="post" action="">
+               <option value="{{famsup[0]}}" selected>{{famsup[0]}}</option>
+               {% for famsup in famsup[1:] %}
+               <option  value="{{famsup}}">{{famsup}}</option>
+               {% endfor %}
+            </select>
+         </td>
+		 <td style="color:yellow">Paid:</td>
+         <td style="color:black">
+            <select  name="paid" method="post" action="">
+               <option value="{{paid[0]}}" selected>{{paid[0]}}</option>
+               {% for paid in paid[1:] %}
+               <option  value="{{paid}}">{{paid}}</option>
+               {% endfor %}
+            </select>
+         </td>
+		 </tr>
+
+
+		 <tr><td colspan = 2><br></tr>
+         <!--activities dropdown menu-->
+		 <tr><td style="color:yellow">Activities:</td>
+         <td style="color:black">
+            <select  name="activities" method="post" action="">
+               <option value="{{activities[0]}}" selected>{{activities[0]}}</option>
+               {% for activities in activities[1:] %}
+               <option  value="{{activities}}">{{activities}}</option>
+               {% endfor %}
+            </select>
+         </td>
+		 <td style="color:yellow">Higher:</td>
+         <td style="color:black">
+            <select  name="higher" method="post" action="">
+               <option value="{{higher[0]}}" selected>{{higher[0]}}</option>
+               {% for higher in higher[1:] %}
+               <option  value="{{higher}}">{{higher}}</option>
+               {% endfor %}
+            </select>
+         </td>
+		 </tr>
+
+		 <tr><td colspan = 2><br></tr>
+         <!--internet dropdown menu-->
+		 <tr><td style="color:yellow">Internet:</td>
+         <td style="color:black">
+            <select  name="internet" method="post" action="">
+               <option value="{{internet[0]}}" selected>{{internet[0]}}</option>
+               {% for internet in internet[1:] %}
+               <option  value="{{internet}}">{{internet}}</option>
+               {% endfor %}
+            </select>
+         </td>
+		 <td style="color:yellow">Famrel:</td>
+         <td style="color:black">
+            <select  name="famrel" method="post" action="">
+               <option value="{{famrel[0]}}" selected>{{famrel[0]}}</option>
+               {% for famrel in famrel[1:] %}
+               <option  value="{{famrel}}">{{famrel}}</option>
+               {% endfor %}
+            </select>
+         </td>
+		 </tr>
+		 <tr><td colspan = 2><br></tr>
+         <!--freetime dropdown menu-->
+		 <tr><td style="color:yellow">FreeTime:</td>
+         <td style="color:black">
+            <select  name="freetime" method="post" action="">
+               <option value="{{freetime[0]}}" selected>{{freetime[0]}}</option>
+               {% for freetime in freetime[1:] %}
+               <option  value="{{freetime}}">{{freetime}}</option>
+               {% endfor %}
+            </select>
+         </td>
+		 <td style="color:yellow">GoOut:</td>
+         <td style="color:black">
+            <select  name="goout" method="post" action="">
+               <option value="{{goout[0]}}" selected>{{goout[0]}}</option>
+               {% for goout in goout[1:] %}
+               <option  value="{{goout}}">{{goout}}</option>
+               {% endfor %}
+            </select>
+         </td>
+		 </tr>
+		 <tr><td colspan = 2><br></tr>
+         <!--health dropdown menu-->
+		 <tr><td style="color:yellow">Health:</td>
+         <td style="color:black">
+            <select  name="health" method="post" action="">
+               <option value="{{health[0]}}" selected>{{health[0]}}</option>
+               {% for health in health[1:] %}
+               <option  value="{{health}}">{{health}}</option>
+               {% endfor %}
+            </select>
+         </td>
+
+		<td style="color:yellow" >Absences:</td>
+         <td style="border-radius: 8px">
+            <select  name="absences" method="post" action="">
+               <option value="{{absences[0]}}" selected>{{absences[0]}}</option>
+               {% for absences in absences[1:] %}
+               <option  value="{{absences}}">{{absences}}</option>
+               {% endfor %}
+            </select>
+         </td>
+		 </tr>
+		 <tr><td colspan = 2><br></tr>
+	  </table>
+	  <input class="btn btn-default" type="submit" value="Predict" style="float: center;">
+      </form>
+
+<!--end of the form part-->
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+</html>

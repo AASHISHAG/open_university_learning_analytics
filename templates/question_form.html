@@ -1,231 +1,273 @@
 <!DOCTYPE html>
-<html lang="en" class="full_bg">
-<head>
-    <meta charset="UTF-8">
-    <title>question form</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='./css/style.css') }}"/>
-    <link rel="stylesheet" href="{{ url_for('static', filename='./css/bootstrap.min.css') }}"/>
-	<style>
-	#table1 {
-	border-collapse: separate;
-	border-spacing: 30px 10px;
-}
-</style>
-</head>
-<body>
+<html lang="">
+  <head>
+    <title>Home | Open University Learning Analytics</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="{{url_for('static', filename='./layout/styles/layout.css')}}" rel="stylesheet" type="text/css" media="all">
 
- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="{{ url_for('main') }}">OULA</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url_for('main') }}">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="{{ url_for('dataForm') }}">Prediction Form</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+    <style type="text/css">
+      #btn-default {
+        /* Positioning and sizing */
+        position: absolute;
+        display: block;
+        width: 200px;
+        left:50%;
+        /* Padding and margins */
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 19px;
+        padding: 14px 40px;
+        border-radius: 8px;
+        background: none;
+        color: black;
+        border: 2px solid black;
+      }
+      #form{
+        max-width: 650px;
+        margin: 20px auto;
+        padding: 20px;
+      }
+      #table1 {
+        border-collapse: separate;
+        border-spacing: 30px 10px;
+      }
+    </style>
+  </head>
 
-   <div>
-      {% if error %}
-      <div class="alert alert-danger" role="alert">
-         <p class="error"><strong>error:</strong> {{ error }}</p>
-      </div>
-      {% endif %}
+    <div class="wrapper row1">
+      <header id="header" class="hoc clear">
+        <div id="logo" class="fl_left">
+          <h1><a href="/">OULA</a></h1>
+        </div>
+        <nav id="mainav" class="fl_right">
+          <ul class="clear">
+            <li class="active"><a href="/home">Home</a></li>
+            <li class="active"><a href="/questionForm">Prediction your grade</a></li>
+            <li class="active"><a href="/about_us">About us</a></li>
+          </ul>
+        </nav>
+      </header>
     </div>
-<!--form part-->
-      <form action="" method="POST" class="full_bg form-group" >
-	  <table id="table1">
-	  <tr><td style="color:yellow">Sex:</td>
-         <td style="color:black">
-            <select  name="sex" method="post" action="">
-               <option value="{{sex[0]}}" selected>{{sex[0]}}</option>
-               {% for sex in sex[1:] %}
-               <option value="{{sex}}">{{sex}}</option>
-               {% endfor %}
-            </select>
-         </td>
 
-		 <td style="color:yellow">Age:</td>
-         <td >
-            <select  name="age" method="post" action="">
-               <option value="{{age[0]}}" selected>{{age[0]}}</option>
-               {% for age in age[1:] %}
-               <option  value="{{age}}">{{age}}</option>
-               {% endfor %}
-            </select>
-         </td>
-		 </tr>
+  <div class="bgded overlay" style="background-image:url({{url_for('static', filename='./images/img2.jpg')}});">
+      <div id="pageintro" class="hoc clear">
+        <div class="flexslider basicslider">
+          <ul class="slides">
+            <li>
+              <article>
+                <h1 class='heading'>Welcome to Open University Learning Analytics </h1>
+              </article>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  <div class="wrapper row3">
+    <main class="hoc container clear">
+      <div class="sectiontitle">
+
+        <p><br>Lets start your grade prediction!</p>
+        <p></br>Please fill up the form and press predict</p>
+      </div>
+        <!--form-->
+        <form action="" method="POST" class="full_bg form-group" >
+          <table id="table1">
+            <!--table-->
+            <tr><td style="color:black">Sex:</td>
+              <td style="color:black">
+                <select  name="sex" method="post" action="">
+                  <option value="{{sex[0]}}" selected>{{sex[0]}}</option>
+                  {% for sex in sex[1:] %}
+                  <option value="{{sex}}">{{sex}}</option>
+                  {% endfor %}
+                </select>
+              </td>
+              <td style="color:black">Age:</td>
+              <td >
+                <select  name="age" method="post" action="">
+                  <option value="{{age[0]}}" selected>{{age[0]}}</option>
+                  {% for age in age[1:] %}
+                  <option  value="{{age}}">{{age}}</option>
+                  {% endfor %}
+                </select>
+              </td>
+            </tr>
+            <tr><td colspan = 2><br></tr>
+              <tr><td style="color:black">Travel Time:</td>
+                <td style="color:black">
+                  <select  name="travelTime" method="post" action="">
+                    >
+                    <option value="{{travelTime[0]}}" selected>{{travelTime[0]}}</option>
+                    {% for travelTime in travelTime[1:] %}
+                    <option  value="{{travelTime}}">{{travelTime}}</option>
+                    {% endfor %}
+                  </select>
+                </td>
+                <td style="color:black">Study Time:</td>
+                <td style="color:black">
+                  <select   name="studyTime" method="post" action="">
+                    <option value="{{studyTime[0]}}" selected>{{studyTime[0]}}</option>
+                    {% for studyTime in studyTime[1:] %}
+                    <option  value="{{studyTime}}">{{studyTime}}</option>
+                    {% endfor %}
+                  </select>
+                </td>
+              </tr>
+              <tr><td colspan = 2><br></tr>
+                <tr><td style="color:black">Failures:</td>
+                  <td style="color:black">
+                    <select  name="failures" method="post" action="">
+                      <option value="{{failures[0]}}" selected>{{failures[0]}}</option>
+                      {% for failures in failures[1:] %}
+                      <option  value="{{failures}}">{{failures}}</option>
+                      {% endfor %}
+                    </select>
+                  </td>
+                  <td style="color:black">SchoolsUp:</td>
+                  <td style="color:black">
+                    <select  name="schoolsup" method="post" action="">
+                      <option value="{{schoolsup[0]}}" selected>{{schoolsup[0]}}</option>
+                      {% for schoolsup in schoolsup[1:] %}
+                      <option  value="{{schoolsup}}">{{schoolsup}}</option>
+                      {% endfor %}
+                    </select>
+                  </td>
+                </tr>
+                <tr><td colspan = 2><br></tr>
+                  <tr><td style="color:black">FamsUp:</td>
+                    <td style="color:black">
+                      <select  name="famsup" method="post" action="">
+                        <option value="{{famsup[0]}}" selected>{{famsup[0]}}</option>
+                        {% for famsup in famsup[1:] %}
+                        <option  value="{{famsup}}">{{famsup}}</option>
+                        {% endfor %}
+                      </select>
+                    </td>
+                    <td style="color:black">Paid:</td>
+                    <td style="color:black">
+                      <select  name="paid" method="post" action="">
+                        <option value="{{paid[0]}}" selected>{{paid[0]}}</option>
+                        {% for paid in paid[1:] %}
+                        <option  value="{{paid}}">{{paid}}</option>
+                        {% endfor %}
+                      </select>
+                    </td>
+                  </tr>
+
+                  <tr><td colspan = 2><br></tr>
+                    <!--activities dropdown menu-->
+                    <tr><td style="color:black">Activities:</td>
+                      <td style="color:black">
+                        <select  name="activities" method="post" action="">
+                          <option value="{{activities[0]}}" selected>{{activities[0]}}</option>
+                          {% for activities in activities[1:] %}
+                          <option  value="{{activities}}">{{activities}}</option>
+                          {% endfor %}
+                        </select>
+                      </td>
+                      <td style="color:black">Higher:</td>
+                      <td style= "color:black">
+                        <select  name="higher" method="post" action="">
+                          <option value="{{higher[0]}}" selected>{{higher[0]}}</option>
+                          {% for higher in higher[1:] %}
+                          <option  value="{{higher}}">{{higher}}</option>
+                          {% endfor %}
+                        </select>
+                      </td>
+                    </tr>
+                    <tr><td colspan = 2><br></tr>
+                    <!--internet dropdown menu-->
+                    <tr><td style="color:black">Internet:</td>
+                      <td style="color:black">
+                        <select name="internet" method="post" action="">
+                          <option value="{{internet[0]}}" selected>{{internet[0]}}</option>
+                          {% for internet in internet[1:] %}
+                          <option  value="{{internet}}">{{internet}}</option>
+                          {% endfor %}
+                        </select>
+                      </td>
+                      <td style= "color:black">Famrel:</td>
+                      <td style="color:black">
+                        <select  name="famrel" method="post" action="">
+                          <option value="{{famrel[0]}}" selected>{{famrel[0]}}</option>
+                          {% for famrel in famrel[1:] %}
+                          <option  value="{{famrel}}">{{famrel}}</option>
+                          {% endfor %}
+                        </select>
+                      </td>
+                    </tr>
+                    <tr><td colspan = 2><br></tr>
+                      <!--freetime dropdown menu-->
+                      <tr><td style="color:black">FreeTime:</td>
+                        <td style="color:black">
+                          <select  name="freetime" method="post" action="">
+                            <option value="{{freetime[0]}}" selected>{{freetime[0]}}</option>
+                            {% for freetime in freetime[1:] %}
+                            <option  value="{{freetime}}">{{freetime}}</option>
+                            {% endfor %}
+                          </select>
+                        </td>
+                        <td style="color:black">GoOut:</td>
+                        <td style="color:black">
+                          <select  name="goout" method="post" action="">
+                            <option value="{{goout[0]}}" selected>{{goout[0]}}</option>
+                            {% for goout in goout[1:] %}
+                            <option  value="{{goout}}">{{goout}}</option>
+                            {% endfor %}
+                          </select>
+                        </td>
+                      </tr>
+                      <tr><td colspan = 2><br></tr>
+                        <!--health dropdown menu-->
+                        <tr>
+                          <td style="color:black">Health:</td>
+                          <td style="color:black">
+                            <select  name="health" method="post" action="">
+                              <option value="{{health[0]}}" selected>{{health[0]}}</option>
+                              {% for health in health[1:] %}
+                              <option  value="{{health}}">{{health}}</option>
+                              {% endfor %}
+                            </select>
+                          </td>
+                          <td style="color:black" >Absences:</td>
+                          <td style="border-radius: 8px">
+                            <select  name="absences" method="post" action="">
+                              <option value="{{absences[0]}}" selected>{{absences[0]}}</option>
+                              {% for absences in absences[1:] %}
+                              <option  value="{{absences}}">{{absences}}</option>
+                              {% endfor %}
+                            </select>
+                          </td>
+                        </tr>
+                        <tr><td colspan = 2><br></tr>
+
+                          <!--tablend-->
+                        </table>
+                        <div class="center">
+                          <input type="submit" value="Predict" class="btn brand z-depth-0" style="float: center;">
+                        </div>
+                      </form>
+       <!--formend-->
+       <div class="clear"></div>
+    </main>
+  </div>
 
 
-		 <tr><td colspan = 2><br></tr>
-		 <tr><td style="color:yellow">Travel Time:</td>
-         <td style="color:black">
-            <select  name="travelTime" method="post" action="">
-               >
-               <option value="{{travelTime[0]}}" selected>{{travelTime[0]}}</option>
-               {% for travelTime in travelTime[1:] %}
-               <option  value="{{travelTime}}">{{travelTime}}</option>
-                {% endfor %}
-            </select>
-         </td>
-		 <td style="color:yellow">Study Time:</td>
-         <td style="color:black">
-            <select   name="studyTime" method="post" action="">
-               <option value="{{studyTime[0]}}" selected>{{studyTime[0]}}</option>
-               {% for studyTime in studyTime[1:] %}
-               <option  value="{{studyTime}}">{{studyTime}}</option>
-               {% endfor %}
-            </select>
-         </td>
-		 </tr>
+  <div class="wrapper row5">
+    <div id="copyright" class="hoc clear">
+      <p class="fl_left">Learning Analytics - Universität Duisburg-Essen</p>
+      <p class="fl_right">Group 1: Data Titans</a></p>
+    </div>
+  </div>
 
-		 <tr><td colspan = 2><br></tr>
-		 <tr><td style="color:yellow">Failures:</td>
-         <td style="color:black">
-            <select  name="failures" method="post" action="">
-               <option value="{{failures[0]}}" selected>{{failures[0]}}</option>
-               {% for failures in failures[1:] %}
-               <option  value="{{failures}}">{{failures}}</option>
-               {% endfor %}
-            </select>
-         </td>
+  <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+  <!-- JAVASCRIPTS -->
+  <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.backtotop.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.mobilemenu.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.flexslider-min.js') }}"></script>
 
-		 <td style="color:yellow">SchoolsUp:</td>
-         <td style="color:black">
-            <select  name="schoolsup" method="post" action="">
-               <option value="{{schoolsup[0]}}" selected>{{schoolsup[0]}}</option>
-               {% for schoolsup in schoolsup[1:] %}
-               <option  value="{{schoolsup}}">{{schoolsup}}</option>
-               {% endfor %}
-            </select>
-         </td>
-		 </tr>
-
-
-		 <tr><td colspan = 2><br></tr>
-		 <tr><td style="color:yellow">FamsUp:</td>
-         <td style="color:black">
-            <select  name="famsup" method="post" action="">
-               <option value="{{famsup[0]}}" selected>{{famsup[0]}}</option>
-               {% for famsup in famsup[1:] %}
-               <option  value="{{famsup}}">{{famsup}}</option>
-               {% endfor %}
-            </select>
-         </td>
-		 <td style="color:yellow">Paid:</td>
-         <td style="color:black">
-            <select  name="paid" method="post" action="">
-               <option value="{{paid[0]}}" selected>{{paid[0]}}</option>
-               {% for paid in paid[1:] %}
-               <option  value="{{paid}}">{{paid}}</option>
-               {% endfor %}
-            </select>
-         </td>
-		 </tr>
-
-
-		 <tr><td colspan = 2><br></tr>
-         <!--activities dropdown menu-->
-		 <tr><td style="color:yellow">Activities:</td>
-         <td style="color:black">
-            <select  name="activities" method="post" action="">
-               <option value="{{activities[0]}}" selected>{{activities[0]}}</option>
-               {% for activities in activities[1:] %}
-               <option  value="{{activities}}">{{activities}}</option>
-               {% endfor %}
-            </select>
-         </td>
-		 <td style="color:yellow">Higher:</td>
-         <td style="color:black">
-            <select  name="higher" method="post" action="">
-               <option value="{{higher[0]}}" selected>{{higher[0]}}</option>
-               {% for higher in higher[1:] %}
-               <option  value="{{higher}}">{{higher}}</option>
-               {% endfor %}
-            </select>
-         </td>
-		 </tr>
-
-		 <tr><td colspan = 2><br></tr>
-         <!--internet dropdown menu-->
-		 <tr><td style="color:yellow">Internet:</td>
-         <td style="color:black">
-            <select  name="internet" method="post" action="">
-               <option value="{{internet[0]}}" selected>{{internet[0]}}</option>
-               {% for internet in internet[1:] %}
-               <option  value="{{internet}}">{{internet}}</option>
-               {% endfor %}
-            </select>
-         </td>
-		 <td style="color:yellow">Famrel:</td>
-         <td style="color:black">
-            <select  name="famrel" method="post" action="">
-               <option value="{{famrel[0]}}" selected>{{famrel[0]}}</option>
-               {% for famrel in famrel[1:] %}
-               <option  value="{{famrel}}">{{famrel}}</option>
-               {% endfor %}
-            </select>
-         </td>
-		 </tr>
-		 <tr><td colspan = 2><br></tr>
-         <!--freetime dropdown menu-->
-		 <tr><td style="color:yellow">FreeTime:</td>
-         <td style="color:black">
-            <select  name="freetime" method="post" action="">
-               <option value="{{freetime[0]}}" selected>{{freetime[0]}}</option>
-               {% for freetime in freetime[1:] %}
-               <option  value="{{freetime}}">{{freetime}}</option>
-               {% endfor %}
-            </select>
-         </td>
-		 <td style="color:yellow">GoOut:</td>
-         <td style="color:black">
-            <select  name="goout" method="post" action="">
-               <option value="{{goout[0]}}" selected>{{goout[0]}}</option>
-               {% for goout in goout[1:] %}
-               <option  value="{{goout}}">{{goout}}</option>
-               {% endfor %}
-            </select>
-         </td>
-		 </tr>
-		 <tr><td colspan = 2><br></tr>
-         <!--health dropdown menu-->
-		 <tr><td style="color:yellow">Health:</td>
-         <td style="color:black">
-            <select  name="health" method="post" action="">
-               <option value="{{health[0]}}" selected>{{health[0]}}</option>
-               {% for health in health[1:] %}
-               <option  value="{{health}}">{{health}}</option>
-               {% endfor %}
-            </select>
-         </td>
-
-		<td style="color:yellow" >Absences:</td>
-         <td style="border-radius: 8px">
-            <select  name="absences" method="post" action="">
-               <option value="{{absences[0]}}" selected>{{absences[0]}}</option>
-               {% for absences in absences[1:] %}
-               <option  value="{{absences}}">{{absences}}</option>
-               {% endfor %}
-            </select>
-         </td>
-		 </tr>
-		 <tr><td colspan = 2><br></tr>
-	  </table>
-	  <input class="btn btn-default" type="submit" value="Predict" style="float: center;">
-      </form>
-
-<!--end of the form part-->
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-</body>
+  </body>
 </html>
