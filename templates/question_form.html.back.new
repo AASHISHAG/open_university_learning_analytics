@@ -25,12 +25,13 @@
         border: 2px solid black;
       }
       #form{
-        max-width: 450px;
-        margin: 10px auto;
-        padding: 10px;
+        max-width: 650px;
+        margin: 20px auto;
+        padding: 20px;
       }
       #table1 {
-        text-align: right;
+        border-collapse: separate;
+        border-spacing: 30px 10px;
       }
     </style>
   </head>
