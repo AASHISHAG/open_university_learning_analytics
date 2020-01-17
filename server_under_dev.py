@@ -1,4 +1,5 @@
 import plot as plt
+from prediction import predict
 import numpy as np
 from labelEncoder import encode
 from werkzeug.utils import redirect
@@ -134,6 +135,7 @@ def dataForm():
                 or request.form['code_presentation_y'] == 'Select Semester (Second Module)':
                 error = 'Select all fields'
         else:
+            print(request.form['gender'])
             student_information[0] = encode(request.form['gender'])
             student_information[1] = encode(request.form['region'])
             student_information[2] = encode(request.form['highest_education'])
@@ -145,6 +147,7 @@ def dataForm():
             student_information[8] = encode(request.form['code_presentation_x'])
             student_information[9] = encode(request.form['code_module_y'])
             student_information[10] = encode(request.form['code_presentation_y'])
+            print(student_information)
             return redirect(url_for('prediction'))
     return render_template('question_form.html', error = error, gender = gender, region = region, highest_education = highest_education,
                            imd_band = imd_band, age_band = age_band, num_of_prev_attempts = num_of_prev_attempts,
@@ -152,9 +155,11 @@ def dataForm():
                            code_module_y = code_module_y, code_presentation_y = code_presentation_y, title='Questionaire')
 @app.route('/prediction')
 def prediction():
+    print(student_information)
     student = np.array(student_information)
-    studentTwoDArray = np.reshape(student, (-1, 16))
-    pred_result = predictFunction(studentTwoDArray)
+    #studentTwoDArray = np.reshape(student, (-1, 16))
+    pred_result = predict(student_information)
+    print(pred_result)
     # plot data
     #mean_female_grade = plt.mean_female_grade
     #mean_male_grade = plt.mean_male_grade
@@ -165,13 +170,13 @@ def prediction():
     #mean_nineteen_year = plt.mean_nineteen_year
     #mean_twenty_year = plt.mean_twenty_year
 
-    #return render_template('prediction.html',mean_twenty_year=mean_twenty_year,
-    #                       mean_nineteen_year=mean_nineteen_year,mean_eighteen_year=mean_eighteen_year
-    #                       ,mean_seventeen_year=mean_seventeen_year,mean_sixteen_year=mean_sixteen_year,
-    #                       mean_fifteen_year=mean_fifteen_year,mean_female_grade=mean_female_grade,
-    #                       mean_male_grade = mean_male_grade ,student=student,pred_result=pred_result, title='Prediction')
+    return render_template('prediction.html',mean_twenty_year=10,
+                           mean_nineteen_year=10,mean_eighteen_year=10
+                           ,mean_seventeen_year=10,mean_sixteen_year=10,
+                           mean_fifteen_year=10,mean_female_grade=10,
+                           mean_male_grade = 10 ,student=student, pred_result=10, title='Prediction')
 
-    return render_template('prediction.html', title='Prediction')
+    #return render_template('prediction.html', title='Prediction')
 
 @app.route('/about_us')
 def about_us():

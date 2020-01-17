@@ -19,7 +19,7 @@ def getModel(model_name):
 
     return pickle.load(open(model, 'rb'))
 
-def getPrediction(model_name):
+def predict(model_name):
     model = getModel(model_name)
     grade = model.predict(X_test)
     print("The predicted grade is: {}".format(grade[0]))
