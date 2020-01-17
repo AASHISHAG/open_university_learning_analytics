@@ -1,70 +1,38 @@
-<!DOCTYPE html>
-<html lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link href="{{url_for('static', filename='./layout/styles/layout.css')}}" rel="stylesheet" type="text/css" media="all">
-
-    {% if title %}
-      <title>{{ title }} - Open University Learning Analytics</title>
-    {% else %}
-      <title>Open University Learning Analytics</title>
-    {% endif %}
-  </head>
-
-  <body>
-    <div class="wrapper row1">
-      <header id="header" class="hoc clear">
-        <div id="logo" class="fl_left">
-          <h1>
-            <img class="logo1" src="{{ url_for('static', filename='./images/OU_Logo_Dark_Blue.png') }}" alt="logo"> <a href="/"> OULA</a>
-          </h1>
+{% extends "header.html"%}
+{% block content %}
+        <div class="bgded overlay" style="background-image:url({{url_for('static', filename='./images/img2.jpg')}});">
+            <div id="pageintro" class="hoc clear">
+                <div class="flexslider basicslider">
+                    <ul class="slides">
+                        <li> <article><h1 class='heading'>Welcome to Open University Learning Analytics </h1></article></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <nav id="mainav" class="fl_right">
-          <ul class="clear">
-            <li class="active"><a href="/home">Home</a></li>
-            <li class="active"><a href="/questionForm">Prediction your grade</a></li>
-            <li class="active"><a href="/about_us">About us</a></li>
-          </ul>
-        </nav>
-      </header>
-    </div>
 
-    <div class="bgded overlay" style="background-image:url({{url_for('static', filename='./images/img2.jpg')}});">
-      <div id="pageintro" class="hoc clear">
-        <div class="flexslider basicslider">
-          <ul class="slides">
-            <li>
-              <article>
-                <h1 class='heading'>Welcome to Open University Learning Analytics </h1>
-              </article>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="wrapper row3">
-      <main class="hoc container clear">
-        <div class="sectiontitle1">
-          <h3 class="heading">About Us</h3>
-            <p><br>We are the Data Titans team. We are four master students from the University of Duisburg-Essen and this is our project of the course Learning Analytics 2019/20.<br>
+        <div class="wrapper row3">
+            <main class="hoc container clear">
+                <div class="sectiontitle1">
+                    <h3 class="heading">About Us</h3>
+                    <p><br>We are the Data Titans team. We are four master students from the University of Duisburg-Essen and this is our project of the course Learning Analytics 2019/20.<br>
               <br>------- Team members -------
               <br>Seyedemarzie Mirhashemi<br>Aashish Aagarwal<br>Sameh Frihat<br>Shoeb Joarder</p>
+                </div>
+                <div class="clear"></div>
+            </main>
         </div>
-        <div class="clear"></div>
-      </main>
-    </div>
-    <div class="wrapper row5">
-      <div id="copyright" class="hoc clear">
-        <p class="fl_left">Learning Analytics - Universität Duisburg-Essen</p>
-        <p class="fl_right">Group 1: Data Titans</a></p>
-      </div>
-    </div>
-
-    <!-- JAVASCRIPTS -->
-    <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.backtotop.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.mobilemenu.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.flexslider-min.js') }}"></script>
-  </body>
+        <div class="wrapper row5">
+            <div id="copyright" class="hoc clear">
+                <p class="fl_left">Learning Analytics - Universität Duisburg-Essen</p>
+                <p class="fl_right">Group 1: Data Titans</a></p>
+            </div>
+        </div>
+        <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+        <!-- JAVASCRIPTS -->
+        <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.backtotop.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.mobilemenu.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.flexslider-min.js') }}"></script>
+    </body>
 </html>
+{% endblock content %}

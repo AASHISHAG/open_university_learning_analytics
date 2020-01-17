@@ -1,17 +1,13 @@
-# import libraries
-import csv
-import json
-import pandas as pd
-import sys, getopt, pprint
 from pymongo import *
+
 
 class Database:
     def __init__(self, collection='oula'):
-        client = MongoClient()
+        client = MongoClient("mongodb+srv://database_student:qwert67890>@cluster0-y3wgg.mongodb.net/test?retryWrites=true&w=majority")
         self.db = client.mydb[collection]
 
     def insert_result(self, url, result):
-        self.db.insert_one({"url": url, "result":result})
+        self.db.insert_one({"url": url, "result": result})
 
     def upsert_result(self, url, label, ldict):
         self.db.update_one({"url": url}, {"$set": {
@@ -22,7 +18,9 @@ class Database:
         return self.db.find_one({"url": url})
 
     def count_result(self, column_name, name_of_instance):
-        return self.db.aggregate( [ { '$match': { column_name: { '$eq': name_of_instance } } }, { '$count': name_of_instance } ] )
+        return self.db.aggregate([{'$match': {column_name: {'$eq': name_of_instance}}}, {'$count': name_of_instance}])
 
     def find_unique_count_result(self, column_name):
-        return self.db.aggregate([ { '$match': { column_name: { '$not': {'$size': 0} } } }, { '$unwind': '$'+column_name }, { '$group': { '_id': {'$toLower': '$'+column_name}, 'y': { '$sum': 1 } } }, { '$match': { 'y': { '$gte': 1 } } }, { '$sort' : { 'y': -1} }, { '$limit' : 6 } ])
+        return self.db.aggregate([{'$match': {column_name: {'$not': {'$size': 0}}}}, {'$unwind': '$' + column_name},
+                                  {'$group': {'_id': {'$toLower': '$' + column_name}, 'y': {'$sum': 1}}},
+                                  {'$match': {'y': {'$gte': 1}}}, {'$sort': {'y': -1}}, {'$limit': 6}])

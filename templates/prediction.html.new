@@ -1,0 +1,90 @@
+{% extends "header.html"%}
+{% block content %}
+        <div class="bgded overlay" style="background-image:url({{url_for('static', filename='./images/img2.jpg')}});">
+            <div id="breadcrumb" class="hoc clear">
+
+            </div>
+        </div>
+
+
+
+
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">We predict you will get <span style="color:blue">{{ pred_result }}</span> grade</h1>
+            <p class="lead">don't forget This is just prediction.do not stop working hard.</p>
+            <p class="lead"><strong>your data:</strong> {{ student }}</p>
+            <a class="btn btn-primary btn-lg" href="{{ url_for('main') }}" role="button">go home</a>
+            <a class="btn btn-primary btn-lg" href="{{ url_for('dataForm') }}" role="button">try it again</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <h2>You can find some chart here</h2>
+            </div>
+        </div>
+        <div class="row justify-content-md-center" style="margin-bottom:40px">
+            <div class="col-md-auto">
+                <h5>take look for better perspective</h5>
+            </div>
+        </div>
+
+        <!--+++++++++++start plotting++++++++++-->
+        <div class="row justify-content-md-center">
+            <!-- +++++plot 1+++++-->
+            <div class="column" style="margin-left:60px">
+                <div class="row justify-content-md-center">
+                    <h6>Grade distribution regarding age</h6>
+                </div>
+                <div class="row justify-content-md-center">
+                    <div style="width: 350px; height: 350px">
+                        <canvas id="ageChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <!-- +++++plot 2+++++-->
+            <div class="column" style="margin-right:60px">
+                <div class="row justify-content-md-center">
+                    <h6>Grade distribution regarding Gender</h6>
+                </div>
+                <div class="row">
+                    <div style="width: 350px; height: 350px">
+                        <canvas id="genderChart" width="400" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- +++++plot 3+++++-->
+            <div class="column" style="margin-right:60px">
+                <div class="row justify-content-md-center">
+                    <h6>test chart</h6>
+                </div>
+                <div class="row">
+                    <div style="width: 350px; height: 350px">
+                        <canvas id="testChart" width="400" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--+++++++++++End of plotting++++++++++-->
+    </div>
+    <!--############ ############-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="{{ url_for('static', filename='./javascript/viz.js') }}"></script>
+    <script>
+        genderPlot({{mean_female_grade|tojson}},{{mean_male_grade|tojson}})
+        agePlot({{mean_twenty_year|tojson}},{{mean_nineteen_year|tojson}},{{mean_eighteen_year|tojson}},{{mean_seventeen_year|tojson}},{{mean_sixteen_year|tojson}},{{mean_fifteen_year|tojson}})
+        testPlot({{mean_twenty_year|tojson}},{{mean_nineteen_year|tojson}},{{mean_eighteen_year|tojson}},{{mean_seventeen_year|tojson}},{{mean_sixteen_year|tojson}},{{mean_fifteen_year|tojson}})
+    </script>
+
+        <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+        <!-- JAVASCRIPTS -->
+        <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.backtotop.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.mobilemenu.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.flexslider-min.js') }}"></script>
+    </body>
+</html>
+{% endblock %}

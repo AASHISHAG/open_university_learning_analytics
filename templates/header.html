@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link href="{{url_for('static', filename='./layout/styles/layout.css')}}" rel="stylesheet" type="text/css" media="all">
+
+        {% if title %}
+            <title>{{ title }} - Open University Learning Analytics</title>
+        {% else %}
+            <title>Open University Learning Analytics</title>
+        {% endif %}
+    </head>
+
+    <body>
+        <div class="wrapper row1">
+            <header id="header" class="hoc clear">
+                <div id="logo" class="fl_left">
+                    <h1>
+                        <img class="logo1" src="{{ url_for('static', filename='./images/OU_Logo_Dark_Blue.png') }}" alt="logo"> <a href="/"> OULA</a>
+                    </h1>
+                </div>
+            <nav id="mainav" class="fl_right">
+                <ul class="clear">
+                    <li class="active"><a href="/home">Home</a></li>
+                    <li class="active"><a href="/questionForm">Prediction your grade</a></li>
+                    <li class="active"><a href="/about_us">About us</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+    {% block content %}{% endblock %}

@@ -18,7 +18,7 @@ studentInfo = ["sex","age","travelTime","studyTime","failures","schoolsup","fams
 @app.route('/')
 @app.route('/home')
 def main():
-    return render_template('index.html')
+    return render_template('index.html', title = 'Home')
 
 @app.route('/questionForm', methods=['GET', 'POST'])
 def dataForm():
@@ -106,7 +106,7 @@ def prediction():
 
 @app.route('/about_us')
 def about_us():
-    return render_template('about_us.html')
+    return render_template('about_us.html', title='About Us')
 
 if __name__ == "__main__":
     app.run()

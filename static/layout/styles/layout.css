@@ -121,8 +121,16 @@
 
 /* Copyright
 --------------------------------------------------------------------------------------------------------------- */
-#copyright{padding:20px 0;}
-#copyright *{margin:0; padding:0;}
+#btn-default {
+/* Positioning and sizing */
+position: absolute; display: block; width: 200px; left:50%;
+/* Padding and margins */
+margin-top: 50px; margin-left: auto; margin-right: auto; font-size: 19px;
+padding: 14px 40px; border-radius: 8px; background: none; color: black;
+border: 2px solid black;
+}
+#form{ max-width: 650px; margin: 20px auto; padding: 20px; }
+#table1 { border-collapse: separate; border-spacing: 30px 10px; }
 
 
 /* Transition Fade
