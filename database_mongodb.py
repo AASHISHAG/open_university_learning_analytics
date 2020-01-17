@@ -4,7 +4,8 @@ from pymongo import *
 class Database:
     def __init__(self, collection='oula'):
         client = MongoClient("mongodb+srv://database_student:qwert67890>@cluster0-y3wgg.mongodb.net/test?retryWrites=true&w=majority")
-        self.db = client.mydb[collection]
+        db = client.get_database('mydb')
+        self.collection = db.collection
 
     def insert_result(self, url, result):
         self.db.insert_one({"url": url, "result": result})

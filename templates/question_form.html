@@ -1,16 +1,21 @@
 {% extends "header.html"%}
 {% block content %}
-        <div class="bgded overlay" style="background-image:url({{url_for('static', filename='./images/img2.jpg')}});">
-            <div id="pageintro" class="hoc clear">
-                <div class="flexslider basicslider">
+        <div class="bgded overlay" style="background-image:url({{url_for('static', filename='./images/img3.png')}});">
+            <div id="breadcrumb" class="hoc clear">
+
                     <ul class="slides">
                         <li>
-                            <article>
-                                <h1 class='heading'>Welcome to Open University Learning Analytics </h1>
-                            </article>
+                            <article1>
+                                <h1 class='heading1'>Predict Your Grades </h1>
+                            </article1>
                         </li>
                     </ul>
-                </div>
+
+
+                <ul>
+                  <li><a href="/home">Home</a></li>
+                  <li><a href="/questionForm">Predict Your Grade</a></li>
+                </ul>
             </div>
         </div>
         <div class="wrapper row3">

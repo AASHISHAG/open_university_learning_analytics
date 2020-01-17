@@ -38,7 +38,7 @@
 #pageintro li article{display:block; max-width:120%; margin:0 auto; text-align:center;}
 #pageintro li article *{margin:0;}
 #pageintro li p:first-of-type{margin-bottom:10px; font-style:italic;}
-#pageintro li .heading{margin-bottom:30px; font-size:5rem; word-wrap:break-word;}
+#pageintro li .heading{margin-bottom:30px; font-size:7rem; word-wrap:break-word;}
 #pageintro li p:nth-of-type(2){line-height:1.5rem;}
 #pageintro li footer{margin-top:40px;}
 
@@ -187,6 +187,9 @@ nav ul, nav ol{margin:0; padding:0; list-style:none;}
 #breadcrumb li a::after{top:3px; right:0; content:"\f101";}
 #breadcrumb li:last-child a{margin:0; padding:0;}
 #breadcrumb li:last-child a::after{display:none;}
+#breadcrumb li article1{display:block; max-width:120%; margin:0 auto; text-align:center;}
+#breadcrumb li .heading1{margin-bottom:30px; font-size:5rem; word-wrap:break-word;}
+
 
 /* Sidebar Navigation */
 .sidebar nav{display:block; width:100%;}
