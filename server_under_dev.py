@@ -56,8 +56,8 @@ def dataForm():
 
     highest_education = ['Select Highest Education',
                          'No Formal Qualification',
-                         'A Level or Equivalent',
                          'Lower Than A Level',
+                         'A Level or Equivalent',
                          'Higher Education Qualification',
                          'Post Graduation Qualification']
 
