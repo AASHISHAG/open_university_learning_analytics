@@ -218,7 +218,7 @@ table, th, td{border:1px solid; border-collapse:collapse; vertical-align:top;}
 table, th{table-layout:auto;}
 table{width:100%; margin-bottom:25px;}
 th, td{padding:20px 8px;font-size: 16px; text-align: right; vertical-align: middle}
-td{border-width:0 1px;}
+td{border-width:0 0px;}
 
 
 /* Gallery
