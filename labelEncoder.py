@@ -53,4 +53,8 @@ def encode(value):
         '2013J': 1,
         '2014B': 2,
         '2014J': 3,
+        0: 'Distinction',
+        1: 'Fail',
+        2: 'Pass',
+        3: 'Withdrawn',
     }.get(value)

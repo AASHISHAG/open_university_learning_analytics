@@ -151,13 +151,13 @@ def dataForm():
     return render_template('question_form.html', error = error, gender = gender, region = region, highest_education = highest_education,
                            imd_band = imd_band, age_band = age_band, num_of_prev_attempts = num_of_prev_attempts,
                            is_banked = is_banked, code_module_x = code_module_x, code_presentation_x = code_presentation_x,
-                           code_module_y = code_module_y, code_presentation_y = code_presentation_y, title='Questionaire')
+                           code_module_y = code_module_y, code_presentation_y = code_presentation_y, title = 'Questionaire')
 @app.route('/prediction')
 def prediction():
-    print(student_information)
+    print("Student details: {}".format(student_information))
     student = np.array(student_information)
     #studentTwoDArray = np.reshape(student, (-1, 16))
-    pred_result = predict(student_information)
+    pred_result = predict('decision-tree', student_information)
     print(pred_result)
     # plot data
     #mean_female_grade = plt.mean_female_grade
@@ -173,7 +173,7 @@ def prediction():
                            mean_nineteen_year=10,mean_eighteen_year=10
                            ,mean_seventeen_year=10,mean_sixteen_year=10,
                            mean_fifteen_year=10,mean_female_grade=10,
-                           mean_male_grade = 10 ,student=student, pred_result=10, title='Prediction')
+                           mean_male_grade = 10 ,student=student, pred_result = pred_result, title='Prediction')
 
     #return render_template('prediction.html', title='Prediction')
 
