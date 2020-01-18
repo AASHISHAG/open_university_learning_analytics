@@ -1,108 +1,182 @@
-import numpy as np
-from flask import Flask, render_template, flash, request, url_for
-from werkzeug.utils import redirect
-from Model_classification import predictFunction, validation_data
-from Convertor import *
 import plot as plt
+from prediction import predict
+import numpy as np
+from labelEncoder import encode
+from werkzeug.utils import redirect
+from flask import Flask, render_template, flash, request, url_for
+#from Model_classification import predictFunction, validation_data
 
-# App config.
+# app configuration
 DEBUG = True
 app = Flask(__name__)
 app.config.from_object(__name__)
-app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
+#app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
 
-studentInfo = ["sex","age","travelTime","studyTime","failures","schoolsup","famsup","paid","activities",
-               "higher","internet","famrel","freetime","goout","health","absences"]
+# input fields
+student_information = [
+               "gender",
+               "region",
+               "highest_education",
+               "imd_band",
+               "age_band",
+               "num_of_prev_attempts",
+               "is_banked",
+               "code_module_x",
+               "code_presentation_x",
+               "code_module_y",
+               "code_presentation_y"]
 
-# Route for handling the login page logic
+# route for handling the login page logic
 @app.route('/')
 @app.route('/home')
 def main():
-    return render_template('index.html', title = 'Home')
+    return render_template('index.html')
 
+# route for handling the prediction page logic
 @app.route('/questionForm', methods=['GET', 'POST'])
 def dataForm():
     error = None
-    sex = ['sex', 'M', 'F']
-    age = ['select your age',15, 16, 17, 18, 19, 20, 21]
-    travelTime = ['level your travel time', 1, 2, 3, 4, 5]
-    studyTime = ['level your study time', 1, 2, 3, 4, 5]
-    failures = ['No of Failures',1, 2, 3, 4, 5]
-    schoolsup = ['Is SchoolsUp','yes','no']
-    famsup = ['Is FamsUp','yes','no']
-    paid = ['Is Paid','yes','no']
-    activities = ['Is Active','yes','no']
-    higher = ['Is Higher','yes','no']
-    internet = ['Internet','yes','no']
-    famrel = ['Level of famrel',1, 2, 3, 4, 5]
-    freetime = ['Quantity of freetime',1, 2, 3, 4, 5]
-    goout = ['Go out',1, 2, 3, 4, 5]
-    health = ['Health Level',1, 2, 3, 4, 5]
-    absences = ['Absences',0,1,2,3,4]
 
-    # failures = ['how many failures', 0, 1, 2]
-    # pre_result = predictFunction(validation_data)
+    gender = ['Select',
+              'Female',
+              'Male']
+
+    region = ['Select',
+              'East Anglian Region',
+              'East Midlands Region',
+              'London Region',
+              'North Region',
+              'North Western Region',
+              'Scotland',
+              'South Region',
+              'South East Region',
+              'West Midlands Region',
+              'Wales',
+              'Yorkshire Region']
+
+    highest_education = ['Select',
+                         'No Formal Qualification',
+                         'A Level or Equivalent',
+                         'Lower Than A Level',
+                         'Higher Education Qualification',
+                         'Post Graduation Qualification']
+
+    imd_band = ['Select',
+                '0-10%',
+                '10-20%',
+                '20-30%',
+                '30-40%',
+                '40-50%',
+                '50-60%',
+                '60-70%',
+                '70-80%',
+                '80-90%',
+                '90-100%'
+                ]
+
+    age_band = ['Select',
+                '0-35',
+                '35-55',
+                '55<=']
+
+    num_of_prev_attempts = ['Select',
+                            0,
+                            1,
+                            2,
+                            3,
+                            4,
+                            5,
+                            6]
+
+    is_banked = ['Select',
+                 0,
+                 1]
+
+    code_module_x = ['Select',
+                     'AAA',
+                     'BBB',
+                     'CCC',
+                     'DDD',
+                     'EEE',
+                     'FFF',
+                     'GGG']
+
+    code_presentation_x = ['Select',
+                           '2013B',
+                           '2013J',
+                           '2014B',
+                           '2014J']
+
+    code_module_y = ['Select',
+                     'AAA',
+                     'BBB',
+                     'CCC',
+                     'DDD',
+                     'EEE',
+                     'FFF',
+                     'GGG']
+
+    code_presentation_y = ['Select',
+                           '2013B',
+                           '2013J',
+                           '2014B',
+                           '2014J']
 
     if request.method == 'POST':
-        if request.form['sex'] == 'sex' or request.form['age'] == 'select your age'\
-                or request.form['travelTime'] == 'level your travel time'\
-                or request.form['studyTime'] == 'level your study time' \
-                or request.form['failures'] == 'No of Failures'\
-                or request.form['schoolsup'] == 'Is SchoolsUp'\
-                or request.form['famsup'] == 'Is FamsUp'\
-                or request.form['paid'] == 'Is Paid'\
-                or request.form['activities'] == 'Is Active'\
-                or request.form['higher'] == 'Is Higher'\
-                or request.form['internet'] == 'Internet'\
-                or request.form['famrel'] == 'Level of famrel'\
-                or request.form['freetime'] == 'Quantity of freetime'\
-                or request.form['goout'] == 'Go out'\
-                or request.form['health'] == 'Health Level'\
-                or request.form['absences'] == 'Absences':
-                error = 'select all field.'
+        if request.form['gender'] == 'Select' or request.form['region'] == 'Select'\
+                or request.form['highest_education'] == 'Select'\
+                or request.form['imd_band'] == 'Select' \
+                or request.form['age_band'] == 'Select'\
+                or request.form['num_of_prev_attempts'] == 'Select'\
+                or request.form['is_banked'] == 'Select'\
+                or request.form['code_module_x'] == 'Select '\
+                or request.form['code_presentation_x'] == 'Select'\
+                or request.form['code_module_y'] == 'Select'\
+                or request.form['code_presentation_y'] == 'Select':
+                error = 'Select all fields'
         else:
-            studentInfo[0] = convertor(request.form['sex'])
-            studentInfo[1] = convertor(request.form['age'])
-            studentInfo[2] = convertor(request.form['travelTime'])
-            studentInfo[3] = convertor(request.form['studyTime'])
-            studentInfo[4] = convertor(request.form['failures'])
-            studentInfo[5] = convertor(request.form['schoolsup'])
-            studentInfo[6] = convertor(request.form['famsup'])
-            studentInfo[7] = convertor(request.form['paid'])
-            studentInfo[8] = convertor(request.form['activities'])
-            studentInfo[9] = convertor(request.form['higher'])
-            studentInfo[10] = convertor(request.form['internet'])
-            studentInfo[11] = convertor(request.form['famrel'])
-            studentInfo[12] = convertor(request.form['freetime'])
-            studentInfo[13] = convertor(request.form['goout'])
-            studentInfo[14] = convertor(request.form['health'])
-            studentInfo[15] = convertor(request.form['absences'])
+            print(request.form['gender'])
+            student_information[0] = encode(request.form['gender'])
+            student_information[1] = encode(request.form['region'])
+            student_information[2] = encode(request.form['highest_education'])
+            student_information[3] = encode(request.form['imd_band'])
+            student_information[4] = encode(request.form['age_band'])
+            student_information[5] = encode(request.form['num_of_prev_attempts'])
+            student_information[6] = encode(request.form['is_banked'])
+            student_information[7] = encode(request.form['code_module_x'])
+            student_information[8] = encode(request.form['code_presentation_x'])
+            student_information[9] = encode(request.form['code_module_y'])
+            student_information[10] = encode(request.form['code_presentation_y'])
+            print(student_information)
             return redirect(url_for('prediction'))
-    return render_template('question_form.html', error=error,sex=sex, age=age,travelTime=travelTime, studyTime=studyTime,
-    failures=failures,schoolsup=schoolsup,famsup=famsup,paid=paid,activities=activities,higher=higher,
-    internet=internet,famrel=famrel,freetime=freetime,goout=goout,health=health,absences=absences, title='Questionaire')
-
+    return render_template('question_form.html', error = error, gender = gender, region = region, highest_education = highest_education,
+                           imd_band = imd_band, age_band = age_band, num_of_prev_attempts = num_of_prev_attempts,
+                           is_banked = is_banked, code_module_x = code_module_x, code_presentation_x = code_presentation_x,
+                           code_module_y = code_module_y, code_presentation_y = code_presentation_y, title='Questionaire')
 @app.route('/prediction')
 def prediction():
-    student = np.array(studentInfo)
-    studentTwoDArray = np.reshape(student, (-1, 16))
-    pred_result = predictFunction(studentTwoDArray)
+    print(student_information)
+    student = np.array(student_information)
+    #studentTwoDArray = np.reshape(student, (-1, 16))
+    pred_result = predict(student_information)
+    print(pred_result)
     # plot data
-    mean_female_grade = plt.mean_female_grade
-    mean_male_grade = plt.mean_male_grade
-    mean_fifteen_year = plt.mean_fifteen_year
-    mean_sixteen_year = plt.mean_sixteen_year
-    mean_seventeen_year = plt.mean_eighteen_year
-    mean_eighteen_year = plt.mean_eighteen_year
-    mean_nineteen_year = plt.mean_nineteen_year
-    mean_twenty_year = plt.mean_twenty_year
+    #mean_female_grade = plt.mean_female_grade
+    #mean_male_grade = plt.mean_male_grade
+    #mean_fifteen_year = plt.mean_fifteen_year
+    #mean_sixteen_year = plt.mean_sixteen_year
+    #mean_seventeen_year = plt.mean_eighteen_year
+    #mean_eighteen_year = plt.mean_eighteen_year
+    #mean_nineteen_year = plt.mean_nineteen_year
+    #mean_twenty_year = plt.mean_twenty_year
 
-    return render_template('prediction.html',mean_twenty_year=mean_twenty_year,
-                           mean_nineteen_year=mean_nineteen_year,mean_eighteen_year=mean_eighteen_year,
-                           mean_seventeen_year=mean_seventeen_year,mean_sixteen_year=mean_sixteen_year,
-                           mean_fifteen_year=mean_fifteen_year,mean_female_grade=mean_female_grade,
-                           mean_male_grade = mean_male_grade ,student=student,pred_result=pred_result,
-                           title='Prediction')
+    return render_template('prediction.html',mean_twenty_year=10,
+                           mean_nineteen_year=10,mean_eighteen_year=10
+                           ,mean_seventeen_year=10,mean_sixteen_year=10,
+                           mean_fifteen_year=10,mean_female_grade=10,
+                           mean_male_grade = 10 ,student=student, pred_result=10, title='Prediction')
+
+    #return render_template('prediction.html', title='Prediction')
 
 @app.route('/about_us')
 def about_us():

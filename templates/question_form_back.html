@@ -1,0 +1,260 @@
+{% extends "header.html"%}
+{% block content %}
+        <div class="bgded overlay" style="background-image:url({{url_for('static', filename='./images/img3.jpg')}});">
+            <div id="breadcrumb" class="hoc clear">
+                <ul class="slides">
+                    <li>
+                        <article1>
+                            <h1 class='heading1'>Predict Your Grades </h1>
+                        </article1>
+                    </li>
+                </ul>
+                <ul>
+                  <li><a href="/home">Home</a></li>
+                  <li><a href="/questionForm">Predict Your Grade</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="wrapper row3">
+            <main class="hoc container clear">
+                <form action="", method="POST">
+                    <table width="250px">
+                        </tr>
+                        <tr>
+                            <td align="right">Gender</td>
+                            <td>
+                                <select  name="gender" method="post" action="">
+                                    <option value="{{gender[0]}}" selected>{{gender[0]}}</option>
+                                    {% for gender in gender[1:] %}
+                                    <option value="{{gender}}">{{gender}}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+
+                </form>
+            </main>
+        </div>
+
+        <div class="wrapper row3">
+            <main class="hoc container clear">
+                <div class="sectiontitle">
+                    <p><br>Lets start your grade prediction!</p>
+                    <p></br>Please fill up the form and press predict</p>
+                </div>
+                <!-- development -->
+                <form action="" method="POST">
+                    <div class="content">
+                          <div class="group btmspace-50 demo">
+                              <div class="one_third first">Gender</div>
+                              <div class="one_third">
+                                  <select  name="gender" method="post" action="">
+                                      <option value="{{gender[0]}}" selected>{{gender[0]}}</option>
+                                          {% for gender in gender[1:] %}
+                                      <option value="{{gender}}">{{gender}}</option>
+                                          {% endfor %}
+                                  </select>
+                              </div>
+                              <div class="one_third first">Region</div>
+                              <div class="one_third">Select Region</div>
+                          </div>
+                          <div class="group btmspace-50 demo">
+                              <div class="one_third first">Highest Education</div>
+                              <div class="one_third">Select Highest Education</div>
+                          </div>
+                          <div class="group btmspace-50 demo">
+                              <div class="one_third first">IMD Band</div>
+                              <div class="one_third">Select IMD Band</div>
+                          </div>
+                           <div class="group btmspace-50 demo">
+                              <div class="one_third first">Age Group</div>
+                              <div class="one_third">Select Age Group</div>
+                           </div>
+                          <div class="group btmspace-50 demo">
+                              <div class="one_third first">Number of previous attempts</div>
+                              <div class="one_third">Select Number of previous attempts</div>
+                          </div>
+                          <div class="group btmspace-50 demo">
+                              <div class="one_third first">Semester</div>
+                              <div class="one_third">Select Semester</div>
+                          </div>
+                          <div class="group btmspace-50 demo">
+                              <div class="one_third first">First module</div>
+                              <div class="one_third">Select First module</div>
+                          </div>
+                          <div class="group btmspace-50 demo">
+                              <div class="one_third first">Semester (First module)</div>
+                              <div class="one_third">Select Semester (First module)</div>
+                          </div>
+                          <div class="group btmspace-50 demo">
+                              <div class="one_third first">Second module</div>
+                              <div class="one_third">Select Second module</div>
+                          </div>
+                          <div class="group btmspace-50 demo">
+                              <div class="one_third first">Semester</div>
+                              <div class="one_third">Select Semester</div>
+                          </div>
+                    </div>
+                </form>
+                <!-- enddevelopment -->
+
+                <!--form-->
+                <form action="" method="POST" class="full_bg form-group" >
+                    <table id="table1">
+                    <!--table-->
+
+                    <tr>
+                    <td style="color:black">Gender:</td>
+                    <td style="color:black">
+                        <select  name="gender" method="post" action="">
+                            <option value="{{gender[0]}}" selected>{{gender[0]}}</option>
+                              {% for gender in gender[1:] %}
+                              <option value="{{gender}}">{{gender}}</option>
+                              {% endfor %}
+                        </select>
+                    </td>
+
+                    <td style="color:black">Region:</td>
+                    <td>
+                        <select  name="region" method="post" region="">
+                            <option value="{{region[0]}}" selected>{{region[0]}}</option>
+                            {% for region in region[1:] %}
+                            <option  value="{{region}}">{{region}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    </tr>
+
+                     <tr>
+                     <td colspan = 2><br></tr>
+                     <tr><td style="color:black">Highest Education:</td>
+                     <td style="color:black">
+                        <select  name="highest_education" method="post" action="">
+                            <option value="{{highest_education[0]}}" selected>{{highest_education[0]}}</option>
+                            {% for highest_education in highest_education[1:] %}
+                            <option  value="{{highest_education}}">{{highest_education}}</option>
+                            {% endfor %}
+                        </select>
+                     </td>
+
+                     <td style="color:black">IMD Band:</td>
+                     <td style="color:black">
+                         <select   name="imd_band" method="post" action="">
+                         <option value="{{imd_band[0]}}" selected>{{imd_band[0]}}</option>
+                         {% for imd_band in imd_band[1:] %}
+                         <option  value="{{imd_band}}">{{imd_band}}</option>
+                         {% endfor %}
+                         </select>
+                     </td>
+                     </tr>
+
+                     <tr>
+                     <td colspan = 2><br></tr>
+                     <tr><td style="color:black">Age Group:</td>
+                     <td style="color:black">
+                        <select  name="age_band" method="post" action="">
+                        <option value="{{age_band[0]}}" selected>{{age_band[0]}}</option>
+                        {% for age_band in age_band[1:] %}
+                        <option  value="{{age_band}}">{{age_band}}</option>
+                        {% endfor %}
+                        </select>
+                    </td>
+                    <td style="color:black">Number Of Previous Attempts:</td>
+                    <td style="color:black">
+                        <select  name="num_of_prev_attempts" method="post" action="">
+                        <option value="{{num_of_prev_attempts[0]}}" selected>{{num_of_prev_attempts[0]}}</option>
+                        {% for num_of_prev_attempts in num_of_prev_attempts[1:] %}
+                        <option  value="{{num_of_prev_attempts}}">{{num_of_prev_attempts}}</option>
+                        {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                <td colspan = 2><br></tr>
+                <tr><td style="color:black">Semester:</td>
+                    <td style="color:black">
+                        <select  name="is_banked" method="post" action="">
+                        <option value="{{is_banked[0]}}" selected>{{is_banked[0]}}</option>
+                        {% for is_banked in is_banked[1:] %}
+                        <option  value="{{is_banked}}">{{is_banked}}</option>
+                        {% endfor %}
+                        </select>
+                    </td>
+
+                <td style="color:black">First Module:</td>
+                    <td style= "color:black">
+                    <select  name="code_module_x" method="post" action="">
+                    <option value="{{code_module_x[0]}}" selected>{{code_module_x[0]}}</option>
+                    {% for code_module_x in code_module_y[1:] %}
+                    <option  value="{{code_module_x}}">{{code_module_x}}</option>
+                    {% endfor %}
+                    </select>
+                    </td>
+                </tr>
+
+                <tr>
+                <td colspan = 2><br></tr>
+                <tr><td style="color:black">Semester (First Module):</td>
+                      <td style="color:black">
+                      <select  name="code_presentation_x" method="post" action="">
+                      <option value="{{code_presentation_x[0]}}" selected>{{code_presentation_x[0]}}</option>
+                      {% for code_presentation_x in code_presentation_x[1:] %}
+                      <option  value="{{code_presentation_x}}">{{code_presentation_x}}</option>
+                      {% endfor %}
+                      </select>
+                      </td>
+
+                 <td style="color:black">Second Module:</td>
+                      <td style= "color:black">
+                      <select  name="code_module_y" method="post" action="">
+                      <option value="{{code_module_y[0]}}" selected>{{code_module_y[0]}}</option>
+                      {% for code_module_y in code_module_y[1:] %}
+                      <option  value="{{code_module_y}}">{{code_module_y}}</option>
+                      {% endfor %}
+                      </select>
+                      </td>
+                 </tr>
+
+                 <tr><td colspan = 2><br></tr>
+                 <tr><td style="color:black">Semester (Second Module):</td>
+                 <td style="color:black">
+                        <select name="code_presentation_y" method="post" action="">
+                        <option value="{{code_presentation_y[0]}}" selected>{{code_presentation_y[0]}}</option>
+                        {% for code_presentation_y in code_presentation_y[1:] %}
+                        <option  value="{{code_presentation_y}}">{{code_presentation_y}}</option>
+                        {% endfor %}
+                        </select>
+                        </td>
+                 </tr>
+
+                 <tr><td colspan = 2><br></tr>
+                    <!--tablend-->
+                    </table>
+                    <div class="center">
+                        <input type="submit" value="Predict" class="btn brand z-depth-0" style="float: center;">
+                    </div>
+                </form>
+                <!--formend-->
+                <div class="clear"></div>
+            </main>
+        </div>
+
+        <div class="wrapper row5">
+            <div id="copyright" class="hoc clear">
+                <p class="fl_left">Learning Analytics - Universität Duisburg-Essen</p>
+                <p class="  fl_right">Group 1: Data Titans</a></p>
+            </div>
+        </div>
+
+        <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+        <!-- JAVASCRIPTS -->
+        <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.backtotop.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.mobilemenu.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.flexslider-min.js') }}"></script>
+    </body>
+</html>
+{% endblock content %}

@@ -50,7 +50,7 @@
 /* Content */
 .container .content{}
 
-.sectiontitle{display:block; max-width:65%; margin:0 auto 60px; font-size:2rem; text-align:center;}
+.sectiontitle{display:block; max-width:65%; margin:0 auto 60px; font-size:2rem; text-align:center; font-weight: bold;}
 .sectiontitle *{margin:0;}
 
 .sectiontitle1{display:block; max-width:65%; margin:0 auto 60px; text-align:center;}
@@ -183,13 +183,12 @@ nav ul, nav ol{margin:0; padding:0; list-style:none;}
 #breadcrumb{padding:120px 0 15px;}
 #breadcrumb ul{margin:0; padding:0; list-style:none; text-transform:uppercase;}
 #breadcrumb li{display:inline-block; margin:0 6px 0 0; padding:0;}
-#breadcrumb li a{display:block; position:relative; margin:0; padding:0 12px 0 0; font-size:12px;}
-#breadcrumb li a::after{top:3px; right:0; content:"\f101";}
+#breadcrumb li a{display:block; position:relative; margin:0; padding:0 12px 0 0; font-size:14px;}
+#breadcrumb li a::after{top:4px; right: 0; content:"\f101";}
 #breadcrumb li:last-child a{margin:0; padding:0;}
 #breadcrumb li:last-child a::after{display:none;}
 #breadcrumb li article1{display:block; max-width:120%; margin:0 auto; text-align:center;}
-#breadcrumb li .heading1{margin-bottom:30px; font-size:5rem; word-wrap:break-word;}
-
+#breadcrumb li .heading1{margin-top:-30px; margin-bottom:50px; font-size:5rem; word-wrap:break-word;}
 
 /* Sidebar Navigation */
 .sidebar nav{display:block; width:100%;}
@@ -213,13 +212,12 @@ nav ul, nav ol{margin:0; padding:0; list-style:none;}
 #backtotop.visible{visibility:visible; opacity:.5;}
 #backtotop:hover{opacity:1;}
 
-
 /* Tables
 --------------------------------------------------------------------------------------------------------------- */
 table, th, td{border:1px solid; border-collapse:collapse; vertical-align:top;}
 table, th{table-layout:auto;}
-table{width:100%; margin-bottom:15px;}
-th, td{padding:5px 8px;}
+table{width:100%; margin-bottom:25px;}
+th, td{padding:20px 8px;font-size: 16px; text-align: right; vertical-align: middle}
 td{border-width:0 1px;}
 
 
@@ -269,7 +267,7 @@ input:focus, textarea:focus, *:required:focus{border-color:#00ADEF;}
 .overlay.light{color:#474747;}
 .overlay.light::after{background-color:rgba(255,255,255,.9);}
 
-.btn, .btn.inverse:hover{color:#FFFFFF; background-color:#00ADEF; border-color:#00ADEF;}
+.btn, .btn.inverse:hover{color:#FFFFFF; font-weight: bold; font-size: 17px; padding: 20px 60px; border-radius: 12px; background-color:#00ADEF; border-color:#00ADEF;}
 .btn:hover, .btn.inverse{color:inherit; background-color:transparent; border-color:inherit;}
 
 blockquote::before{color:rgba(255,255,255,.2);}
