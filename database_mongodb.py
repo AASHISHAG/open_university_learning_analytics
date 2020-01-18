@@ -1,27 +1,18 @@
-from pymongo import *
+from pymongo import MongoClient
 
 
-class Database:
-    def __init__(self, collection='oula'):
-        client = MongoClient("mongodb+srv://database_student:qwert67890>@cluster0-y3wgg.mongodb.net/test?retryWrites=true&w=majority")
+class Database():
+    def __init__(self):
+        client = MongoClient(
+            "mongodb+srv://database_student:qwert67890@cluster0-y3wgg.mongodb.net/test?retryWrites=true&w=majority")
         db = client.get_database('mydb')
-        self.collection = db.collection
+        self.coll = db.test  # rename test with oula after testing
 
-    def insert_result(self, url, result):
-        self.db.insert_one({"url": url, "result": result})
+    def insertStudent(self, newStudentData):
+        self.coll.insert_one(newStudentData)
 
-    def upsert_result(self, url, label, ldict):
-        self.db.update_one({"url": url}, {"$set": {
-            label: ldict
-        }}, True)
+    def findAll(self):
+        return self.coll.find()
 
-    def find_result(self, url):
-        return self.db.find_one({"url": url})
-
-    def count_result(self, column_name, name_of_instance):
-        return self.db.aggregate([{'$match': {column_name: {'$eq': name_of_instance}}}, {'$count': name_of_instance}])
-
-    def find_unique_count_result(self, column_name):
-        return self.db.aggregate([{'$match': {column_name: {'$not': {'$size': 0}}}}, {'$unwind': '$' + column_name},
-                                  {'$group': {'_id': {'$toLower': '$' + column_name}, 'y': {'$sum': 1}}},
-                                  {'$match': {'y': {'$gte': 1}}}, {'$sort': {'y': -1}}, {'$limit': 6}])
+    def findOne(self, variable, value):
+        return self.coll.find_one({variable: value})
