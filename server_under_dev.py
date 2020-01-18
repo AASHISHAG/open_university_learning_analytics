@@ -1,9 +1,11 @@
-import plot as plt
-from prediction import predict
+# imports
+#import plot as plt
 import numpy as np
+from prediction import predict
 from labelEncoder import encode
 from werkzeug.utils import redirect
-from flask import Flask, render_template, flash, request, url_for
+from flask import Flask, render_template, request, url_for
+#from flask import Flask, render_template, flash, request, url_for
 #from Model_classification import predictFunction, validation_data
 
 # app configuration
@@ -152,13 +154,16 @@ def dataForm():
                            imd_band = imd_band, age_band = age_band, num_of_prev_attempts = num_of_prev_attempts,
                            is_banked = is_banked, code_module_x = code_module_x, code_presentation_x = code_presentation_x,
                            code_module_y = code_module_y, code_presentation_y = code_presentation_y, title = 'Questionaire')
+
+# route for prediction page
 @app.route('/prediction')
 def prediction():
     print("Student details: {}".format(student_information))
     student = np.array(student_information)
-    #studentTwoDArray = np.reshape(student, (-1, 16))
     pred_result = predict('decision-tree', student_information)
     print(pred_result)
+
+    # studentTwoDArray = np.reshape(student, (-1, 16))
     # plot data
     #mean_female_grade = plt.mean_female_grade
     #mean_male_grade = plt.mean_male_grade
@@ -175,11 +180,11 @@ def prediction():
                            mean_fifteen_year=10,mean_female_grade=10,
                            mean_male_grade = 10 ,student=student, pred_result = pred_result, title='Prediction')
 
-    #return render_template('prediction.html', title='Prediction')
-
+# route for aboutus page
 @app.route('/about_us')
 def about_us():
     return render_template('about_us.html', title='About Us')
 
+# main function
 if __name__ == "__main__":
     app.run()
