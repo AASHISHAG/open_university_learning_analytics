@@ -1,6 +1,7 @@
 # import libraries
-from database_mongodb import Database
+from database_mongo import Database
 import pprint
+
 
 db = Database()
 
@@ -20,7 +21,6 @@ db = Database()
     "code_presentation_y": "2014C"
 } """
 
-# Uncomment each line individually to test
 # Insert student data
 """ db.insertStudent(student_data) """
 
@@ -30,3 +30,12 @@ db = Database()
 
 # find one entry in database
 """ pprint.pprint(db.findOne('code_module_y', 'CCC')) """
+
+# update one entry in database
+""" student_update = {"is_banked": "1"}
+db.updateOne('code_module_y', 'BBB', student_update)
+pprint.pprint(db.findOne('code_module_y', 'BBB')) """
+
+# delete one entry in database
+""" db.deleteOne('code_module_x', 'AAA')
+pprint.pprint(db.findOne('code_module_x', 'AAA')) """
