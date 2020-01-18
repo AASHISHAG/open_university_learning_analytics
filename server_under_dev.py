@@ -135,7 +135,6 @@ def dataForm():
                 or request.form['code_presentation_y'] == 'Select Semester (Second Module)':
                 error = 'Select all fields'
         else:
-            print(request.form['gender'])
             student_information[0] = encode(request.form['gender'])
             student_information[1] = encode(request.form['region'])
             student_information[2] = encode(request.form['highest_education'])
