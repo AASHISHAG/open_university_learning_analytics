@@ -1,6 +1,7 @@
 # imports
 #import plot as plt
 import numpy as np
+import json
 from prediction import predict
 from labelEncoder import encode
 from werkzeug.utils import redirect
@@ -188,6 +189,18 @@ def prediction():
 @app.route('/about_us')
 def about_us():
     return render_template('about_us.html', title='About Us')
+
+
+@app.route('/tree')
+def tree():
+    with open('rules.json') as json_file:
+        data = json.load(json_file)
+    return render_template('tree.html', data=data)
+
+@app.route('/rules')
+def rules():
+    return render_template('rules.json')
+
 
 # main function
 if __name__ == "__main__":
