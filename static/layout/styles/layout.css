@@ -42,6 +42,12 @@
 #pageintro li p:nth-of-type(2){line-height:1.5rem;}
 #pageintro li footer{margin-top:40px;}
 
+#pageintro1 li article{display:block; max-width:120%; margin:5 auto; text-align:left;}
+#pageintro1 li article *{margin:0;}
+#pageintro1 li p:first-of-type{margin-bottom:10px; font-style:italic;}
+#pageintro1 li .heading{margin-bottom:30px; font-size:3rem; word-wrap:break-word;}
+#pageintro1 li p:nth-of-type(2){line-height:1.5rem;}
+#pageintro1 li footer{margin-top:40px;}
 
 /* Content Area
 --------------------------------------------------------------------------------------------------------------- */
@@ -55,6 +61,7 @@
 
 .sectiontitle1{display:block; max-width:65%; margin:0 auto 60px; text-align:center;}
 .sectiontitle1 *{margin:0;}
+
 
 .services li:nth-child(-n+3){margin-bottom:50px;}/* Adds bottom margin to the first three elements only */
 .services > li:last-child{margin-bottom:0;}/* Used when elements stack in small viewports */

@@ -1,24 +1,78 @@
 {% extends "header.html"%}
 {% block content %}
-        <div class="bgded overlay" style="background-image:url({{url_for('static', filename='./images/img2.jpg')}});">
-            <div id="breadcrumb" class="hoc clear">
-
-            </div>
-        </div>
-
-
-
-
-
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 class="display-4">We predict you will get <span style="color:blue">{{ pred_result }}</span> grade</h1>
-            <p class="lead">don't forget This is just prediction.do not stop working hard.</p>
-            <p class="lead"><strong>your data:</strong> {{ student }}</p>
-            <a class="btn btn-primary btn-lg" href="{{ url_for('main') }}" role="button">go home</a>
-            <a class="btn btn-primary btn-lg" href="{{ url_for('dataForm') }}" role="button">try it again</a>
+    <div class="bgded overlay" style="background-image:url({{url_for('static', filename='./images/img3.jpg')}});">
+        <div id="breadcrumb" class="hoc clear">
+            <ul class="slides">
+                <li>
+                    <article1>
+                        <h1 class='heading1'>Results </h1>
+                    </article1>
+                </li>
+            </ul>
+            <ul>
+              <li><a href="/home">Home</a></li>
+              <li><a href="/prediction">Results</a></li>
+            </ul>
         </div>
     </div>
+    <!-- under dev -->
+    <div>
+        <p><br></p>
+    </div>
+    <div id="pageintro1" class="hoc clear">
+        <div class="flexslider basicslider">
+            <ul class="slides">
+                <li>
+                    <article>
+                        <h1 class='heading' style="color:#353535">We predict you will <span style="color:blue">{{ pred_result }}</span>.</h1>
+                        <h1 style="color:#353535">don't forget This is just prediction. Don't stop working hard. </h1>
+                        <h1><br></h1>
+                        <h1 style="color:#353535"><strong>your data:</strong> {{ student }}</h1>
+                        <footer><a class="btn" href="/questionForm">Retry</a></footer>
+                    </article>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="wrapper row3">
+        <main class="hoc container clear">
+            <div class="content">
+                <h2>You can find some charts here</h2>
+                <h2>Take a look for better perspective</h2>
+                <div class="group btmspace-50 demo">
+                    <!-- Plot 1 -->
+                    <div class="one_half">
+                        <div class="column" style="margin-left:60px">
+                            <div class="row justify-content-md-center">
+                            <h6>Grade distribution regarding age</h6>
+                            </div>
+                            <div class="row justify-content-md-center">
+                                <div style="width: 300px; height: 300px">
+                                <canvas id="ageChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Plot 2 -->
+                    <div class="one_half">
+                        <div class="column" style="margin-right:60px">
+                            <div class="row justify-content-md-center">
+                                <h6>Grade distribution regarding Gender</h6>
+                            </div>
+                            <div class="row">
+                                <div style="width: 350px; height: 350px">
+                                    <canvas id="genderChart" width="300" height="300"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+    <!-- end under dev -->
+
     <div class="container">
         <div class="row justify-content-md-center">
             <div class="col-md-auto">
@@ -71,13 +125,13 @@
         <!--+++++++++++End of plotting++++++++++-->
     </div>
     <!--############ ############-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-    <script src="{{ url_for('static', filename='./javascript/viz.js') }}"></script>
-    <script>
-        genderPlot({{mean_female_grade|tojson}},{{mean_male_grade|tojson}})
-        agePlot({{mean_twenty_year|tojson}},{{mean_nineteen_year|tojson}},{{mean_eighteen_year|tojson}},{{mean_seventeen_year|tojson}},{{mean_sixteen_year|tojson}},{{mean_fifteen_year|tojson}})
-        testPlot({{mean_twenty_year|tojson}},{{mean_nineteen_year|tojson}},{{mean_eighteen_year|tojson}},{{mean_seventeen_year|tojson}},{{mean_sixteen_year|tojson}},{{mean_fifteen_year|tojson}})
-    </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+        <script src="{{ url_for('static', filename='./javascript/viz.js') }}"></script>
+        <script>
+            genderPlot({{mean_female_grade|tojson}},{{mean_male_grade|tojson}})
+            agePlot({{mean_twenty_year|tojson}},{{mean_nineteen_year|tojson}},{{mean_eighteen_year|tojson}},{{mean_seventeen_year|tojson}},{{mean_sixteen_year|tojson}},{{mean_fifteen_year|tojson}})
+            testPlot({{mean_twenty_year|tojson}},{{mean_nineteen_year|tojson}},{{mean_eighteen_year|tojson}},{{mean_seventeen_year|tojson}},{{mean_sixteen_year|tojson}},{{mean_fifteen_year|tojson}})
+        </script>
 
         <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
         <!-- JAVASCRIPTS -->
