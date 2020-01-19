@@ -34,6 +34,10 @@ student_information = [
 def main():
     return render_template('index.html')
 
+@app.route('/dataset')
+def dataset():
+    return render_template('dataset.html')
+
 # route for handling the prediction page logic
 @app.route('/questionForm', methods=['GET', 'POST'])
 def dataForm():
