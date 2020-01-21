@@ -16,14 +16,12 @@
             </div>
         </div>
         <!-- under dev -->
-        <div>
-            <p><br></p>
-        </div>
         <div id="pageintro1" class="hoc clear">
             <div class="flexslider basicslider">
                 <ul class="slides">
                     <li>
                         <article>
+                            <h1><br><br></h1>
                             <h1 class='heading' style="color:#353535">We predict you will <span style="color:blue">{{ pred_result }}</span>.</h1>
                             <h1 style="color:#353535">don't forget This is just prediction. Don't stop working hard. </h1>
                             <h1><br></h1>
@@ -89,7 +87,6 @@
         </div>
         <!-- end under dev -->
 
-
         <!--############ ############-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
         <script src="{{ url_for('static', filename='./javascript/viz.js') }}"></script>
@@ -98,20 +95,6 @@
             agePlot({{mean_twenty_year|tojson}},{{mean_nineteen_year|tojson}},{{mean_eighteen_year|tojson}},{{mean_seventeen_year|tojson}},{{mean_sixteen_year|tojson}},{{mean_fifteen_year|tojson}})
             testPlot({{mean_twenty_year|tojson}},{{mean_nineteen_year|tojson}},{{mean_eighteen_year|tojson}},{{mean_seventeen_year|tojson}},{{mean_sixteen_year|tojson}},{{mean_fifteen_year|tojson}})
         </script>
-
-        <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
-        <!-- JAVASCRIPTS -->
-        <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.min.js') }}"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.backtotop.js') }}"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.mobilemenu.js') }}"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.flexslider-min.js') }}"></script>
-    </body>
-
-
-
-
-
-
 
 
 <meta charset="utf-8">
@@ -287,14 +270,5 @@ function click(d) {
 </body>
 
 
+{% endblock content %}
 
- <div class="wrapper row5">
-            <div id="copyright" class="hoc clear">
-                <p class="fl_left">Learning Analytics - Universität Duisburg-Essen</p>
-                <p class="fl_right">Group 1: Data Titans</a></p>
-            </div>
-        </div>
-
-
-</html>
-{% endblock %}

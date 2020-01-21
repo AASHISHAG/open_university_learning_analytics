@@ -1,43 +1,27 @@
 {% extends "header.html"%}
 {% block content %}
-        <div class="bgded overlay" style="background-image:url({{url_for('static', filename='./images/img2.jpg')}});">
-            <div id="pageintro" class="hoc clear">
-                <div class="flexslider basicslider">
-                    <ul class="slides">
-                        <li>
-                            <article>
-                                <h1 class='heading'>Welcome to Open University Learning Analytics </h1>
-                                <h1>Predict your grade before doing anything</h1>
-                                <footer><a class="btn" href="/questionForm">Start your prediction!</a></footer>
-                            </article>
-                        </li>
-                    </ul>
-                </div>
+    <div class="bgded overlay" style="background-image:url({{url_for('static', filename='./images/img2.jpg')}});">
+        <div id="pageintro" class="hoc clear">
+            <div class="flexslider basicslider">
+                <ul class="slides">
+                    <li>
+                        <article>
+                            <h1 class='heading'>Welcome to Open University Learning Analytics </h1>
+                            <h1>Predict your grade before doing anything</h1>
+                            <footer><a class="btn" href="/questionForm">Start your prediction!</a></footer>
+                        </article>
+                    </li>
+                </ul>
             </div>
         </div>
-
-        <div class="wrapper row3">
-            <main class="hoc container clear">
-                <div class="sectiontitle1">
-                    <h3 class="heading">Thank you for visiting our website!</h3>
-                    <p></br>Welcome to this student project for the course Learning Analytics in University of Duisburg-Essen. We are the team Data Titans. The goals of our project are:  </br>- Explore the students performance dataset by perform some initial data visualization. </br>- Apply the machine learning algorithms on the dataset to determine most important features and attempt to predict the students performance based on these features.</p>
-                </div>
-                <div class="clear"></div>
-            </main>
-        </div>
-
-        <div class="wrapper row5">
-            <div id="copyright" class="hoc clear">
-                <p class="fl_left">Learning Analytics - Universität Duisburg-Essen</p>
-                <p class="fl_right">Group 1: Data Titans</a></p>
+    </div>
+    <div class="wrapper row3">
+        <main class="hoc container clear">
+            <div class="sectiontitle1">
+                <h3 class="heading">Thank you for visiting our website!</h3>
+                <p></br>Welcome to this student project for the course Learning Analytics in University of Duisburg-Essen. We are the team Data Titans. The goals of our project are:  </br>- Explore the students performance dataset by perform some initial data visualization. </br>- Apply the machine learning algorithms on the dataset to determine most important features and attempt to predict the students performance based on these features.</p>
             </div>
-        </div>
-        <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
-        <!-- JAVASCRIPTS -->
-        <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.min.js') }}"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.backtotop.js') }}"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.mobilemenu.js') }}"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.flexslider-min.js') }}"></script>
-    </body>
-</html>
+            <div class="clear"></div>
+        </main>
+    </div>
 {% endblock content %}

@@ -1,33 +1,35 @@
 # imports
-#import plot as plt
+# import plot as plt
 import numpy as np
 import json
 from prediction import predict
 from labelEncoder import encode
 from werkzeug.utils import redirect
 from flask import Flask, render_template, request, url_for
-#from flask import Flask, render_template, flash, request, url_for
-#from Model_classification import predictFunction, validation_data
+
+# from flask import Flask, render_template, flash, request, url_for
+# from Model_classification import predictFunction, validation_data
 
 # app configuration
 DEBUG = True
 app = Flask(__name__)
 app.config.from_object(__name__)
-#app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
+# app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
 
 # input fields
 student_information = [
-               "gender",
-               "region",
-               "highest_education",
-               "imd_band",
-               "age_band",
-               "num_of_prev_attempts",
-               "is_banked",
-               "code_module_x",
-               "code_presentation_x",
-               "code_module_y",
-               "code_presentation_y"]
+    "gender",
+    "region",
+    "highest_education",
+    "imd_band",
+    "age_band",
+    "num_of_prev_attempts",
+    "is_banked",
+    "code_module_x",
+    "code_presentation_x",
+    "code_module_y",
+    "code_presentation_y"]
+
 
 # route for handling the login page logic
 @app.route('/')
@@ -35,9 +37,15 @@ student_information = [
 def main():
     return render_template('index.html')
 
+
 @app.route('/dataset')
 def dataset():
-    return render_template('dataset.html')
+    return render_template('dataset.html', mean_twenty_year=10,
+                           mean_nineteen_year=10, mean_eighteen_year=10
+                           , mean_seventeen_year=10, mean_sixteen_year=10,
+                           mean_fifteen_year=10, mean_female_grade=10,
+                           mean_male_grade=10, title='Dataset')
+
 
 # route for handling the prediction page logic
 @app.route('/questionForm', methods=['GET', 'POST'])
@@ -130,17 +138,17 @@ def dataForm():
                            '2014J']
 
     if request.method == 'POST':
-        if request.form['gender'] == 'Select Gender' or request.form['region'] == 'Select Region'\
-                or request.form['highest_education'] == 'Select Highest Education'\
+        if request.form['gender'] == 'Select Gender' or request.form['region'] == 'Select Region' \
+                or request.form['highest_education'] == 'Select Highest Education' \
                 or request.form['imd_band'] == 'Select IMD Band' \
-                or request.form['age_band'] == 'Select Age Group'\
-                or request.form['num_of_prev_attempts'] == 'Select Number Of Previous Attempts'\
-                or request.form['is_banked'] == 'Select'\
-                or request.form['code_module_x'] == 'Select First Module'\
-                or request.form['code_presentation_x'] == 'Select First Semester (First Module)'\
-                or request.form['code_module_y'] == 'Select Second Module'\
+                or request.form['age_band'] == 'Select Age Group' \
+                or request.form['num_of_prev_attempts'] == 'Select Number Of Previous Attempts' \
+                or request.form['is_banked'] == 'Select' \
+                or request.form['code_module_x'] == 'Select First Module' \
+                or request.form['code_presentation_x'] == 'Select First Semester (First Module)' \
+                or request.form['code_module_y'] == 'Select Second Module' \
                 or request.form['code_presentation_y'] == 'Select Semester (Second Module)':
-                error = 'Select all fields'
+            error = 'Select all fields'
         else:
             student_information[0] = encode(request.form['gender'])
             student_information[1] = encode(request.form['region'])
@@ -155,10 +163,12 @@ def dataForm():
             student_information[10] = encode(request.form['code_presentation_y'])
             print(student_information)
             return redirect(url_for('prediction'))
-    return render_template('question_form.html', error = error, gender = gender, region = region, highest_education = highest_education,
-                           imd_band = imd_band, age_band = age_band, num_of_prev_attempts = num_of_prev_attempts,
-                           is_banked = is_banked, code_module_x = code_module_x, code_presentation_x = code_presentation_x,
-                           code_module_y = code_module_y, code_presentation_y = code_presentation_y, title = 'Questionaire')
+    return render_template('question_form.html', error=error, gender=gender, region=region,
+                           highest_education=highest_education,
+                           imd_band=imd_band, age_band=age_band, num_of_prev_attempts=num_of_prev_attempts,
+                           is_banked=is_banked, code_module_x=code_module_x, code_presentation_x=code_presentation_x,
+                           code_module_y=code_module_y, code_presentation_y=code_presentation_y, title='Questionaire')
+
 
 # route for prediction page
 @app.route('/prediction')
@@ -170,20 +180,21 @@ def prediction():
 
     # studentTwoDArray = np.reshape(student, (-1, 16))
     # plot data
-    #mean_female_grade = plt.mean_female_grade
-    #mean_male_grade = plt.mean_male_grade
-    #mean_fifteen_year = plt.mean_fifteen_year
-    #mean_sixteen_year = plt.mean_sixteen_year
-    #mean_seventeen_year = plt.mean_eighteen_year
-    #mean_eighteen_year = plt.mean_eighteen_year
-    #mean_nineteen_year = plt.mean_nineteen_year
-    #mean_twenty_year = plt.mean_twenty_year
+    # mean_female_grade = plt.mean_female_grade
+    # mean_male_grade = plt.mean_male_grade
+    # mean_fifteen_year = plt.mean_fifteen_year
+    # mean_sixteen_year = plt.mean_sixteen_year
+    # mean_seventeen_year = plt.mean_eighteen_year
+    # mean_eighteen_year = plt.mean_eighteen_year
+    # mean_nineteen_year = plt.mean_nineteen_year
+    # mean_twenty_year = plt.mean_twenty_year
 
-    return render_template('prediction.html',mean_twenty_year=10,
-                           mean_nineteen_year=10,mean_eighteen_year=10
-                           ,mean_seventeen_year=10,mean_sixteen_year=10,
-                           mean_fifteen_year=10,mean_female_grade=10,
-                           mean_male_grade = 10 ,student=student, pred_result = pred_result, title='Prediction')
+    return render_template('prediction.html', mean_twenty_year=10,
+                           mean_nineteen_year=10, mean_eighteen_year=10
+                           , mean_seventeen_year=10, mean_sixteen_year=10,
+                           mean_fifteen_year=10, mean_female_grade=10,
+                           mean_male_grade=10, student=student, pred_result=pred_result, title='Prediction')
+
 
 # route for aboutus page
 @app.route('/about_us')
@@ -196,6 +207,7 @@ def tree():
     with open('rules.json') as json_file:
         data = json.load(json_file)
     return render_template('tree.html', data=data)
+
 
 @app.route('/rules')
 def rules():

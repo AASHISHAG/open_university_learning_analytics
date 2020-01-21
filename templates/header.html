@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <link href="{{url_for('static', filename='./layout/styles/layout.css')}}" rel="stylesheet" type="text/css" media="all">
-
         {% if title %}
             <title>{{ title }} - Open University Learning Analytics</title>
         {% else %}
@@ -28,16 +27,86 @@
                         <img class="logo1" src="{{ url_for('static', filename='./images/OU_Logo_Dark_Blue.png') }}" alt="logo"> <a href="/"> OULA</a>
                     </h1>
                 </div>
-            <nav id="mainav" class="fl_right">
-                <ul class="clear">
-                    <li class="active"><a href="/home">Home</a></li>
-                    <li class="active"><a href="/dataset">Dataset</a></li>
-                    <li class="active"><a href="/questionForm">Prediction your grade</a></li>
-                    <li class="active"><a href="/about_us">About us</a></li>
-                    <li class="active"><a href="/tree">tree</a></li>
+                <nav id="mainav" class="fl_right">
+                    <ul class="clear">
+                        <li class="active"><a href="/home">Home</a></li>
+                        <li class="active"><a href="/dataset">Dataset</a></li>
+                        <li class="active"><a href="/questionForm">Prediction your grade</a></li>
+                        <li class="active"><a href="/about_us">About us</a></li>
+                        <li class="active"><a href="/tree">tree</a></li>
 
-                </ul>
-            </nav>
-        </header>
-    </div>
-    {% block content %}{% endblock %}
+                    </ul>
+                </nav>
+            </header>
+        </div>
+        {% block content %}
+
+        {% endblock %}
+        <div class="wrapper row4">
+            <footer id="footer" class="hoc clear">
+                <div class="one_third first">
+                    <h6 class="heading">Universität Duisburg-Essen</h6>
+                    <ul class="nospace btmspace-30 linklist contact">
+                        <li>
+                            <i class="fa fa-map-marker"></i>
+                            <address>Forsthausweg 2, 47057 Duisburg</address>
+                        </li>
+                        <li><i class="fa fa-phone"></i> +00 (123) 456 7890</li>
+                        <li><i class="fa fa-envelope-o"></i> info@oula.com</li>
+                    </ul>
+                    <ul class="faico clear">
+                        <li><a class="faicon-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a class="faicon-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a class="faicon-dribble" href="#"><i class="fa fa-dribbble"></i></a></li>
+                        <li><a class="faicon-linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a class="faicon-google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a class="faicon-vk" href="#"><i class="fa fa-vk"></i></a></li>
+                    </ul>
+                </div>
+                <div class="one_third">
+                    <h6 class="heading">Learning Analytics Project</h6>
+                    <ul class="nospace linklist">
+                        <li>
+                            <article>
+                                <h2 class="nospace font-x1"><a href="#">Final Project: The Data Titans</a></h2>
+                                <time class="font-xs block btmspace-10" datetime="2020-01-31">Friday, 31<sup>th</sup> January 2020</time>
+                                <p class="nospace">Deadline of the project</p>
+                            </article>
+                        </li>
+                        <li>
+                            <article>
+                                <h2 class="nospace font-x1"><a href="#">Project prototypes</a></h2>
+                                <time class="font-xs block btmspace-10" datetime="2020-01-08">Wednesday, 8<sup>th</sup> January 2020</time>
+                                <p class="nospace">A short recap of the project ideas and concepts and the prototypes of our proposed infovis solutions [&hellip;]</p>
+                            </article>
+                        </li>
+                    </ul>
+                </div>
+                <div class="one_third">
+                    <h6 class="heading">Contact us</h6>
+                    <p class="nospace btmspace-30">If you have any questions, don't hesitate to ask us.</p>
+                    <form method="post" action="#">
+                        <fieldset>
+                            <legend>Contact Us:</legend>
+                            <input class="btmspace-15" type="text" value="" placeholder="Email">
+                            <input class="btmspace-15" type="text" value="" placeholder="Message">
+                            <button type="submit" value="submit">Submit</button>
+                        </fieldset>
+                    </form>
+                </div>
+            </footer>
+        </div>
+        <div class="wrapper row5">
+            <div id="copyright" class="hoc clear">
+                <p class="fl_left">Learning Analytics - Universität Duisburg-Essen</p>
+                <p class="fl_right">Group 1: Data Titans</a></p>
+            </div>
+        </div>
+        <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+        <!-- JAVASCRIPTS -->
+        <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.backtotop.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.mobilemenu.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='./layout/scripts/jquery.flexslider-min.js') }}"></script>
+    </body>
+</html>
