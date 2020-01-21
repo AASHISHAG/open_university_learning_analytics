@@ -39,18 +39,7 @@
                     <h1 style="color:#353535" align="center">You can find some chart here. Let's have a look for better perspective</h1>
                     <table>
                         <tbody>
-                            <!-- Row 1 -->
-                            <td>
-                                <!-- Plot 1 -->
-                                <div align="center">
-                                    <h6>Grade distribution regarding age</h6>
-                                </div>
-                                <div align="center">
-                                    <div style="width: 350px; height: 350px">
-                                        <canvas id="ageChart"></canvas>
-                                    </div>
-                                </div>
-                            </td>
+
                             <td>
                                 <!-- Plot 2 -->
                                 <div align="center">
@@ -58,29 +47,13 @@
                                 </div>
                                 <div align="center">
                                     <div style="width: 350px; height: 350px">
-                                        <canvas id="genderChart" width="350" height="350"></canvas>
+                                        <canvas id="featursImportance" width="350" height="350"></canvas>
                                     </div>
                                 </div>
                             </td>
                         </tbody>
                         <!-- Row 2 -->
-                        <body>
-                            <td>
-                                <!-- Plot 2 -->
-                                <div align="center">
-                                    <h6>test chart</h6>
-                                </div>
-                                <div align="center">
-                                    <div style="width: 350px; height: 350px">
-                                        <canvas id="testChart" width="400" height="400"></canvas>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <!-- add more charts here -->
-                            </td>
-                        </body>
-                        <!-- For row 3 add body tag and then td tag -->
+
                     </table>
                 </div>
             </main>
@@ -91,9 +64,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
         <script src="{{ url_for('static', filename='./javascript/viz.js') }}"></script>
         <script>
-            genderPlot({{mean_female_grade|tojson}},{{mean_male_grade|tojson}})
-            agePlot({{mean_twenty_year|tojson}},{{mean_nineteen_year|tojson}},{{mean_eighteen_year|tojson}},{{mean_seventeen_year|tojson}},{{mean_sixteen_year|tojson}},{{mean_fifteen_year|tojson}})
-            testPlot({{mean_twenty_year|tojson}},{{mean_nineteen_year|tojson}},{{mean_eighteen_year|tojson}},{{mean_seventeen_year|tojson}},{{mean_sixteen_year|tojson}},{{mean_fifteen_year|tojson}})
+            treePlot({{mean_female_grade|tojson}},{{mean_male_grade|tojson}})
         </script>
 
 
