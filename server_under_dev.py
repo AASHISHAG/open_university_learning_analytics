@@ -206,7 +206,7 @@ def about_us():
 def tree():
     with open('rules.json') as json_file:
         data = json.load(json_file)
-    return render_template('tree.html', data=data, title="Tree")
+    return render_template('tree2.html', data=data, title="Tree")
 
 
 @app.route('/rules')
