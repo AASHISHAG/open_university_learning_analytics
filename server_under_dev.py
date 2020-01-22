@@ -47,6 +47,11 @@ def dataset():
                            mean_male_grade=10, title='Dataset')
 
 
+@app.route('/machinelearning')
+def machinelearning():
+    return render_template('machinelearning.html', title='Machine Learning')
+
+
 # route for handling the prediction page logic
 @app.route('/questionForm', methods=['GET', 'POST'])
 def dataForm():

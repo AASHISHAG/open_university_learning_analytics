@@ -17,8 +17,6 @@
         </div>
 
 <meta charset="utf-8">
-
-<head>
 <style>
 .node {
   cursor: pointer;
@@ -62,10 +60,6 @@ stroke-width: 0.04em;
 }
 
 </style>
-
-</head>
-
-
 <body>
 <script src="https://d3js.org/d3.v3.js"></script>
 <script>
@@ -91,11 +85,11 @@ var version2 = true // if true json from generator_2 will be used
 var tree_branch = false // if the thickness of the branches depend on the value of targt + color * /
 var tree_branch_parent = true //  true: thickness from the root if not the direct parent
 var tree_branch_color = "black"
-var strokeness = 120 //  the degree of separation between the nodes 
+var strokeness = 120 //  the degree of separation between the nodes
 var default_strokeness = 50
 var hover_percent_parent = false // if the display percentage depends on the direct parent or the root
 var square = false
-var rect_percent = true //display the percentage or the value in the small rectangles of the labels 
+var rect_percent = true //display the percentage or the value in the small rectangles of the labels
 var value_percent_top = true /// if we display the value and the percentage above the rectangle /
 
 var dict_leaf_y = {1:0, 2:-17.5, 3:-35, 4:-52.5,5:-70,6:-87.5,6:-105,7:-122.5,8:-140,9:-157.5,10:-175}
@@ -128,15 +122,15 @@ var i = 0,
     duration = 550,
     root;
 
-var tree 
+var tree
 var diagonal
 var svg
 
-var filetochoose = version2 ? file_namev2 : file_name 
+var filetochoose = version2 ? file_namev2 : file_name
 
 d3.json("{{ url_for('static', filename='./datasets/structureC2.json') }}", function(error, flare) {
   if (error) throw error;
-  
+
   console.log(getDepth(flare))
 
 
@@ -152,8 +146,8 @@ d3.json("{{ url_for('static', filename='./datasets/structureC2.json') }}", funct
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-        
-        
+
+
   TOTAL_SIZE = flare.size
   l = flare.pred.replace(/of/g,"").split(', ')
   for( var j=0; j < l.length; j++){
@@ -205,8 +199,8 @@ function update(source,n_labels) {
   nodeEnter.append("circle")
       .attr("r", 1e-6)
       .style("fill", function(d) {
-          
-          return d._children ? "lightsteelblue" : "#fff"; 
+
+          return d._children ? "lightsteelblue" : "#fff";
         });
 
 //   nodeEnter.append("text")
@@ -221,8 +215,8 @@ function update(source,n_labels) {
         var b = a.getContext('2d');
         b.font = fontSize + 'px ' + fontFace;
         return b.measureText(text).width;
-    } 
-     
+    }
+
 
 
   var rect = nodeEnter.append("rect")
@@ -245,14 +239,14 @@ function update(source,n_labels) {
          });
 
     nodeEnter.append("text")
-      .attr("x", function(d) { 
+      .attr("x", function(d) {
           ttr = 13
           if(default_colors.length > 5){
               ttr = (40*default_colors.length)/2
           }
           return (d.children || d._children) || version2 ? -75 - ( ( getTextWidth(d.size+" / "+(d.size*100/TOTAL_SIZE).toFixed(0)+"%",10,'Verdana')+5.7 ) - (133+8) ) / 2 : ttr
-       }) 
-      .attr("y",function(d){ 
+       })
+      .attr("y",function(d){
           ttr = dict_leaf_y[label_names.length] - 15
           if(default_colors.length > 5){
               ttr = -20
@@ -275,15 +269,15 @@ function update(source,n_labels) {
 
 
       nodeEnter.append("text")
-      .attr("x", function(d) { 
+      .attr("x", function(d) {
            if(((d.children || d._children) || version2) && d.name.match(/(.*?)(<|>|=|!=|<=|>=|=<|=>)/i)[1].length <= 11){
                return (d.children || d._children) || version2 ? -75 - ( ( getTextWidth(d.name.match(/(.*?)(<|>|=|!=|<=|>=|=<|=>)/i)[1],14,'Verdana')+5.7 ) - (133+8) ) / 2 : 0
            }
            else return (d.children || d._children) || version2 ? -75 - ( ( getTextWidth(d.name.match(/(.*?)(<|>|=|!=|<=|>=|=<|=>)/i)[1].substring(0, 11),14,'Verdana')+5.7 ) - (133+8) ) / 2 : 0
-       }) 
+       })
       .attr("y",function(d){
           if(!d.name.match(/(.*?)(<|>|=|!=|<=|>=|=<|=>)/i)) return -65
-          else return d.name.match(/(.*?)(<|>|=|!=|<=|>=|=<|=>)/i)[1] == 'Root '  ?  -55 : -65 
+          else return d.name.match(/(.*?)(<|>|=|!=|<=|>=|=<|=>)/i)[1] == 'Root '  ?  -55 : -65
         })
       .attr("dy", ".35em")
       .attr("text-anchor", "start" )
@@ -297,7 +291,7 @@ function update(source,n_labels) {
             return  d.name.match(/(.*?)(<|>|=|!=|<=|>=|=<|=>)/i)[1].length <=15 ? d.name.match(/(.*?)(<|>|=|!=|<=|>=|=<|=>)/i)[1] : (d.name.match(/(.*?)(<|>|=|!=|<=|>=|=<|=>)/i)[1]).substring(0, 13)+'..'
 
           }
-          else  return  ""; 
+          else  return  "";
         })
         .append('svg:title')
         .text(function(d){
@@ -308,7 +302,7 @@ function update(source,n_labels) {
 
 
       nodeEnter.append("text")
-      .attr("x", function(d) { return (d.children || d._children) || version2 ? -75 - ( ( getTextWidth(d.name.replace(d.name.match(/(.*?)(<|>|=|!=|<=|>=|=<|=>)/i)[1],'').replace('=',''),14,'Verdana')+5.7 ) - (133+8) ) / 2 :0}) 
+      .attr("x", function(d) { return (d.children || d._children) || version2 ? -75 - ( ( getTextWidth(d.name.replace(d.name.match(/(.*?)(<|>|=|!=|<=|>=|=<|=>)/i)[1],'').replace('=',''),14,'Verdana')+5.7 ) - (133+8) ) / 2 :0})
       .attr("y",-45)
       .attr("dy", ".35em")
       .attr("text-anchor", "start" )
@@ -316,9 +310,9 @@ function update(source,n_labels) {
       .style("font-family","Verdana")
       .style("stroke","black")
       .style("stroke-width","0.04em")
-      .text(function(d) { 
-        
-          var toreturn =  (d.children || d._children) || version2 ? d.name.replace(d.name.match(/(.*?)(<|>|=|!=|<=|>=|=<|=>)/i)[1],'').replace('!=','not').replace(/=|\!=/g,'').replace('<','<=') : ""; 
+      .text(function(d) {
+
+          var toreturn =  (d.children || d._children) || version2 ? d.name.replace(d.name.match(/(.*?)(<|>|=|!=|<=|>=|=<|=>)/i)[1],'').replace('!=','not').replace(/=|\!=/g,'').replace('<','<=') : "";
           if(!d.name.match(/(.*?)(<|>|=|!=|<=|>=|=<|=>)/i)) return toreturn
           return d.name.match(/(.*?)(<|>|=|!=|<=|>=|=<|=>)/i)[1] == 'Root '  ?  '' : toreturn
       })
@@ -339,23 +333,23 @@ function update(source,n_labels) {
             }
             else if(! d.children){
                 v = 40
-            }  
-            
+            }
+
             if(square) return (d.children || d._children) || version2 ?  133/label_names.length -4: 40
-            else return (d.children || d._children) || version2 ?  v : 40 
+            else return (d.children || d._children) || version2 ?  v : 40
         })
         .attr("height", 20)
         .attr('rx',function(d){ return square ? 0 :4})
         .attr('ry',function(d){ return square ? 0 :4})
-        .attr("x",function(d) { 
-            
+        .attr("x",function(d) {
+
            var v;
            var ttl = 0
            if(curr > 0){
-                
+
                 for(var l =0; l<= curr-1;l++){
                     if(d.pred){
-                        v = parseInt(d.pred.split(",")[l].match(/\d+/)[0]);                        
+                        v = parseInt(d.pred.split(",")[l].match(/\d+/)[0]);
                     }
                     else if(! d.children)  v = parseInt(d.name.split(",")[l].match(/\d+/)[0]);
                     ttl = ttl + v*133/d.size
@@ -367,36 +361,36 @@ function update(source,n_labels) {
 
             ttr= 13
             if(default_colors.length > 5){
-                ttr = 10 + j*45 
+                ttr = 10 + j*45
             }
 
 
             if(square) return (d.children || d._children) || version2 ? -76 + j*(133/label_names.length) : ttr
-            else       return (d.children || d._children) || version2 ? -76 + ttl : ttr  
+            else       return (d.children || d._children) || version2 ? -76 + ttl : ttr
          })
         .attr("y",(function(d) {
             console.log(default_colors.length)
             if(default_colors.length > 5){
-                return (d.children || d._children) || version2 ? -34: -10 
-            }else  return (d.children || d._children) || version2 ? -34: dict_leaf_y[label_names.length]-4 + 20*j +j*4; 
+                return (d.children || d._children) || version2 ? -34: -10
+            }else  return (d.children || d._children) || version2 ? -34: dict_leaf_y[label_names.length]-4 + 20*j +j*4;
         }) )
         .style("fill",function(d) {
                 if (default_colors.length == 0){
                     return default_colors[j]
                 }else{
                     return default_colors[j]
-                }                
+                }
 
             }
         )
         .attr('visibility',function(d){
-       
+
             if(d.pred){
                 v = parseInt(d.pred.split(",")[curr].match(/\d+/)[0]);
             }
             else if(! d.children)  v = parseInt(d.name.split(",")[curr].match(/\d+/)[0]);
             v = v*133/d.size
-            return v != 0 || !d.children? "visible": "hidden" 
+            return v != 0 || !d.children? "visible": "hidden"
         })
         .attr('opacity',function(d){
                 var val
@@ -404,9 +398,9 @@ function update(source,n_labels) {
                     // console.log(d.pred.split(",")[curr].match(/\d+/)[0])
                     val = (parseInt(d.pred.split(",")[curr].match(/\d+/)[0])*100/d.size).toFixed(0)
                 }
-                else if(! d.children)   val = (parseInt(d.name.split(",")[curr].match(/\d+/)[0])*100/d.size).toFixed(0) 
+                else if(! d.children)   val = (parseInt(d.name.split(",")[curr].match(/\d+/)[0])*100/d.size).toFixed(0)
                 return (d.children || d._children) || version2 ? 1 : val/100 +0.3
-            
+
         })
         .append("svg:title")
         .text(function(d) {
@@ -429,10 +423,10 @@ function update(source,n_labels) {
             var v;
             var ttl = 0
             if(curr > 0){
-                
+
                 for(var l =0; l<= curr-1;l++){
                     if(d.pred){
-                        v = parseInt(d.pred.split(",")[l].match(/\d+/)[0]);                        
+                        v = parseInt(d.pred.split(",")[l].match(/\d+/)[0]);
                     }
                     else if(! d.children)  v = parseInt(d.name.split(",")[l].match(/\d+/)[0]);
                     ttl = ttl + v*133/d.size
@@ -457,15 +451,15 @@ function update(source,n_labels) {
             else if(! d.children)  return !rect_percent ? d.name.split(",")[curr].match(/\d+/)[0] : (parseInt(d.name.split(",")[curr].match(/\d+/)[0])*100/d.size).toFixed(0)+"%"
 
         })
-        .attr("x",(function(d) { 
+        .attr("x",(function(d) {
 
             var v;
             var ttl = 0
             if(curr > 0){
-                
+
                 for(var l =0; l<= curr-1;l++){
                     if(d.pred){
-                        v = parseInt(d.pred.split(",")[l].match(/\d+/)[0]);                        
+                        v = parseInt(d.pred.split(",")[l].match(/\d+/)[0]);
                     }
                     else if(! d.children)  v = parseInt(d.name.split(",")[l].match(/\d+/)[0]);
                     ttl = ttl + v*133/d.size
@@ -477,19 +471,19 @@ function update(source,n_labels) {
 
             ttr= 18
             if(default_colors.length > 5){
-                ttr = 14 + j*45 
+                ttr = 14 + j*45
             }
 
             if(square) return (d.children || d._children) || version2 ? -71 + j*(133/label_names.length) : ttr
-            else return (d.children || d._children) || version2 ? -71 + ttl : ttr 
+            else return (d.children || d._children) || version2 ? -71 + ttl : ttr
         }) )
-        .attr("y",(function(d) { 
+        .attr("y",(function(d) {
             ttr=   dict_leaf_y[label_names.length]+10  + 20*j +j*4
             if(default_colors.length > 5){
                 ttr = 5
             }
 
-            return (d.children || d._children) || version2 ? -19: ttr; 
+            return (d.children || d._children) || version2 ? -19: ttr;
 
         }) )
         .style("fill","white")
@@ -509,7 +503,7 @@ function update(source,n_labels) {
             else if(! d.children)  return !rect_percent ? d.name.split(",")[curr].match(/\d+/)[0] : (parseInt(d.name.split(",")[curr].match(/\d+/)[0])*100/d.size).toFixed(0)+"%"
 
         })
-        
+
         subg.append('text')
         .text(function(d) {
             if(d.pred){
@@ -522,16 +516,16 @@ function update(source,n_labels) {
         .attr("x",(function(d) {
             ttr= 60
             if(default_colors.length > 5){
-                ttr = 18 + j*45 
+                ttr = 18 + j*45
             }
              return (d.children || d._children) || version2 ? -66 + j*labels_w : ttr
             }) )
-        .attr("y",(function(d) { 
+        .attr("y",(function(d) {
             ttr= dict_leaf_y[label_names.length] + 10+ 20*j +j*4
             if(default_colors.length > 5){
                 ttr = 25
             }
-            return (d.children || d._children) || version2 ? -15: ttr; 
+            return (d.children || d._children) || version2 ? -15: ttr;
         }) )
         .style("font-size","14px")
         .style("fill","rgb(78, 74, 74)")
@@ -583,7 +577,7 @@ function update(source,n_labels) {
   var link = svg.selectAll("path.link")
       .data(links, function(d) { return d.target.id; });
 
-        
+
     if(tree_branch) var link_stoke_scale = d3.scale.linear().domain([0, 100]).range([1.5, default_strokeness]);
     else var link_stoke_scale = d3.scale.linear().domain([0, 100]).range([1.5, 8]);
 
@@ -601,10 +595,10 @@ function update(source,n_labels) {
         return diagonal({source: o, target: o});
       })
       .style("stroke-width", function(d) {
-          
+
           if(!d.target){
               return link_stoke_scale(50)
-          } 
+          }
           else {
               if (tree_branch) {
                 //   console.log(d.target.size,'*100/',TOTAL_SIZE,link_stoke_scale(d.target.size*100/TOTAL_SIZE),tree_branch_parent)
@@ -612,16 +606,16 @@ function update(source,n_labels) {
 
                   return tree_branch_parent ? link_stoke_scale(d.target.size*100/TOTAL_SIZE) : link_stoke_scale(d.target.size*100/d.source.size)
               }else{
-                  
-                  return link_stoke_scale(50) 
-              } 
+
+                  return link_stoke_scale(50)
+              }
           }
       })
     .style("stroke", function(d) {
-        
+
         if(!d.target){
             return "#fff"
-        } 
+        }
         else return tree_branch_color;
     })
     .append("svg:title")
@@ -631,10 +625,10 @@ function update(source,n_labels) {
             }else{
                 var val =  ( (d.target.size/d.source.size) * 100 ).toFixed(2);
             }
-            
+
             return val+"%"
             })
-    
+
   var tlink = svg.selectAll("text.tlink")
       .data(tpaths, function(d) { return d.target.id; });
 
@@ -644,7 +638,7 @@ function update(source,n_labels) {
         .append('textPath')
         .attr("xlink:href", function(d) { return '#'+d.target.id; }) //place the ID of the path here
 	    .style("text-anchor","middle") //place the text halfway on the arc
-        .attr("startOffset", "45%")		
+        .attr("startOffset", "45%")
         .text(function(d) {  return d.target.side == "left" ? "No" : "Yes" ; })
         .attr('visibility', function(d) {  return d.target.depth == 1 && !version2 ? 'visible' : 'hidden'})
 
@@ -662,10 +656,10 @@ function update(source,n_labels) {
       .duration(duration)
       .attr("d", diagonal)
       .style("stroke-width", function(d) {
-          
+
           if(!d.target){
               return link_stoke_scale(50)
-          } 
+          }
           else {
               if (tree_branch) {
                 //   console.log(d.target.size,'*100/',TOTAL_SIZE,link_stoke_scale(d.target.size*100/TOTAL_SIZE),tree_branch_parent)
@@ -673,13 +667,13 @@ function update(source,n_labels) {
 
                   return tree_branch_parent ? link_stoke_scale(d.target.size*100/TOTAL_SIZE) : link_stoke_scale(d.target.size*100/d.source.size)
               }else{
-                  
-                  return link_stoke_scale(50) 
-              } 
+
+                  return link_stoke_scale(50)
+              }
           }
       });
 
-      
+
   // Transition exiting nodes to the parent's new position.
   link.exit().transition()
       .duration(duration)
@@ -715,8 +709,8 @@ function click(d) {
 
 
 function createLabels(labels) {
-    
-    
+
+
     var Size = 400
 
 
@@ -725,7 +719,7 @@ function createLabels(labels) {
                 .attr("width",Size)
                 .attr("height", Size)
                 .attr("class","legends");
-        
+
     console.log(labels.length)
     console.log(default_colors.slice(0,labels.length))
     default_colors = default_colors.slice(0,labels.length)
@@ -734,7 +728,7 @@ function createLabels(labels) {
        var c_l =  default_colors
     }else{
        var c_l =  default_colors
-    }   
+    }
 
     for(i=0; i< c_l.length; i++){
 
@@ -745,7 +739,7 @@ function createLabels(labels) {
         .attr("transform", function(d){
 		    return "translate("+0+"," + ( 30*i + Size/33 + Size/50) + ")"; // place each legend on the right and bump each one down 15 pixels
 	    })
-        .attr("class", "legend");   
+        .attr("class", "legend");
 
         legendG.append("rect") // make a matching color rect
         .attr("width", 15)
@@ -760,33 +754,11 @@ function createLabels(labels) {
         .style("font-size", 30)
         .attr("y", 12)
         .attr("x", 21)
-    
+
     }
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </script>
-
-
 
 {% endblock content %}
