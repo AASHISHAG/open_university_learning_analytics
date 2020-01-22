@@ -29,7 +29,9 @@
                     </ul>
                     <p><br></p>
                     <h1>Attributes of dataset</h1>
+                    <!--
                     <img class="imgr borderedbox inspace-5" src="../static/images/demo/imgr.gif" alt="">
+                    -->
                     <ul>
                         <li><strong>is_banked</strong>: a status flag indicating that the assessment result has been transferred from a previous presentation</li>
                         <li><strong>code_module_x</strong>: code name of the module, which serves as the identifier</li>
@@ -44,46 +46,6 @@
                         <li><strong>code_module_y</strong>: code name of the module, which serves as the identifier</li>
                         <li><strong>code_presentation_y</strong>: code name of the presentation . It consists of the year and “B” for the presentation starting in February and “J” for the presentation starting in October</li>
                     </ul>
-
-                    <h1>Table(s)</h1>
-                    <div class="scrollable">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Header 1</th>
-                          <th>Header 2</th>
-                          <th>Header 3</th>
-                          <th>Header 4</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td><a href="#">Value 1</a></td>
-                          <td>Value 2</td>
-                          <td>Value 3</td>
-                          <td>Value 4</td>
-                        </tr>
-                        <tr>
-                          <td>Value 5</td>
-                          <td>Value 6</td>
-                          <td>Value 7</td>
-                          <td><a href="#">Value 8</a></td>
-                        </tr>
-                        <tr>
-                          <td>Value 9</td>
-                          <td>Value 10</td>
-                          <td>Value 11</td>
-                          <td>Value 12</td>
-                        </tr>
-                        <tr>
-                          <td>Value 13</td>
-                          <td><a href="#">Value 14</a></td>
-                          <td>Value 15</td>
-                          <td>Value 16</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
                 </div>
                 <h1><br></h1>
                 <div class="scrollable">
@@ -91,19 +53,17 @@
                     <table>
                         <tbody>
                             <!-- Row 1 -->
-                            <td>
-                                <!-- Plot 1 -->
+                            <td><!-- Plot 1 -->
                                 <div align="center">
-                                    <h6>Grade distribution regarding age</h6>
+                                    <h6>Passing Percentage based on IMD-Band</h6>
                                 </div>
                                 <div align="center">
                                     <div style="width: 350px; height: 350px">
-                                        <canvas id="ageChart"></canvas>
+                                        <canvas id="imdChart"></canvas>
                                     </div>
                                 </div>
                             </td>
-                            <td>
-                                <!-- Plot 2 -->
+                            <td><!-- Plot 2 -->
                                 <div align="center">
                                     <h6>Grade distribution regarding Gender</h6>
                                 </div>
@@ -116,19 +76,33 @@
                         </tbody>
                         <!-- Row 2 -->
                         <body>
-                            <td>
-                                <!-- Plot 2 -->
+                            <td><!-- Plot 3 -->
                                 <div align="center">
-                                    <h6>test chart</h6>
+                                    <h6>Percentage of Higher Education vs Results</h6>
                                 </div>
                                 <div align="center">
                                     <div style="width: 350px; height: 350px">
-                                        <canvas id="testChart" width="400" height="400"></canvas>
+                                        <canvas id="educationChart" width="350" height="380"></canvas>
                                     </div>
                                 </div>
                             </td>
+                            <td><!-- Plot 4 -->
+                                <div align="center">
+                                    <h6>Percentage of Student's Age vs Results</h6>
+                                </div>
+                                <div align="center">
+                                    <div style="width: 350px; height: 350px">
+                                        <canvas id="ageResultChart" width="350" height="350"></canvas>
+                                    </div>
+                                </div>
+                            </td>
+                        </body>
+                        <body>
                             <td>
-                                <!-- add more charts here -->
+
+                            </td>
+                            <td>
+
                             </td>
                         </body>
                         <!-- For row 3 add body tag and then td tag -->
@@ -141,8 +115,10 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
         <script src="{{ url_for('static', filename='./javascript/viz.js') }}"></script>
         <script>
-            genderPlot({{mean_female_grade|tojson}},{{mean_male_grade|tojson}})
-            agePlot({{mean_twenty_year|tojson}},{{mean_nineteen_year|tojson}},{{mean_eighteen_year|tojson}},{{mean_seventeen_year|tojson}},{{mean_sixteen_year|tojson}},{{mean_fifteen_year|tojson}})
+            genderPlot()
+            imdPlot()
+            educationPlot()
+            ageResultPlot()
             testPlot({{mean_twenty_year|tojson}},{{mean_nineteen_year|tojson}},{{mean_eighteen_year|tojson}},{{mean_seventeen_year|tojson}},{{mean_sixteen_year|tojson}},{{mean_fifteen_year|tojson}})
         </script>
 {% endblock content %}

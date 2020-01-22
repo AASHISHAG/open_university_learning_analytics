@@ -1,4 +1,22 @@
-<!DOCTYPE html>
+{% extends "header.html"%}
+{% block content %}
+<div class="bgded overlay" style="background-image:url({{url_for('static', filename='./images/img3.jpg')}});">
+            <div id="breadcrumb" class="hoc clear">
+                <ul class="slides">
+                    <li>
+                        <article1>
+                            <h1 class='heading1'>Tree </h1>
+                        </article1>
+                    </li>
+                </ul>
+                <ul>
+                  <li><a href="/home">Home</a></li>
+                  <li><a href="/tree">Tree</a></li>
+                </ul>
+            </div>
+        </div>
+
+
 <meta charset="utf-8">
 <style>
 
@@ -168,3 +186,5 @@ function click(d) {
 }
 
 </script>
+
+{% endblock content %}
