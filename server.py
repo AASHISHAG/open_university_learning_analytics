@@ -209,7 +209,6 @@ def prediction():
                            feature_11='Semester (Second Module)', value_11 = student_information[10],
                            student=accuracy, pred_result=pred_result, title='Prediction')
 
-
 # route for aboutus page
 @app.route('/about_us')
 def about_us():
