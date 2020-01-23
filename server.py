@@ -1,6 +1,7 @@
 # imports
 # import plot as plt
 import numpy as np
+from traversejson import rules123
 import json
 from prediction import predict
 from labelEncoder import encode
@@ -29,7 +30,6 @@ student_information = [
     "code_presentation_x",
     "code_module_y",
     "code_presentation_y"]
-
 
 # route for handling the login page logic
 @app.route('/')
@@ -155,17 +155,17 @@ def dataForm():
                 or request.form['code_presentation_y'] == 'Select Semester (Second Module)':
             error = 'Select all fields'
         else:'''
-        student_information[0] = encode(request.form['gender'])
-        student_information[1] = encode(request.form['region'])
-        student_information[2] = encode(request.form['highest_education'])
-        student_information[3] = encode(request.form['imd_band'])
-        student_information[4] = encode(request.form['age_band'])
-        student_information[5] = encode(request.form['num_of_prev_attempts'])
-        student_information[6] = encode(request.form['is_banked'])
-        student_information[7] = encode(request.form['code_module_x'])
-        student_information[8] = encode(request.form['code_presentation_x'])
-        student_information[9] = encode(request.form['code_module_y'])
-        student_information[10] = encode(request.form['code_presentation_y'])
+        Gender = student_information[0] = encode(request.form['gender'])
+        Region = student_information[1] = encode(request.form['region'])
+        HighestEducation = student_information[2] = encode(request.form['highest_education'])
+        IMDBand = student_information[3] = encode(request.form['imd_band'])
+        AgeGroup = student_information[4] = encode(request.form['age_band'])
+        NumberOfPreviousAttempts = student_information[5] = encode(request.form['num_of_prev_attempts'])
+        Semester = student_information[6] = encode(request.form['is_banked'])
+        FirstModule = student_information[7] = encode(request.form['code_module_x'])
+        SemesterFirstModule = student_information[8] = encode(request.form['code_presentation_x'])
+        SecondModule = student_information[9] = encode(request.form['code_module_y'])
+        SemesterSecondModule = student_information[10] = encode(request.form['code_presentation_y'])
         print(student_information)
         return redirect(url_for('prediction'))
     return render_template('question_form.html', error=error, gender=gender, region=region,
@@ -178,6 +178,7 @@ def dataForm():
 # route for prediction page
 @app.route('/prediction')
 def prediction():
+
     print("Student details: {}".format(student_information))
     student = np.array(student_information)
     #pred_result = predict('decision-tree', student_information)
@@ -186,6 +187,9 @@ def prediction():
     accuracy = round(accuracy*100, 2)
     print(accuracy)
 
+    path = rules123(student_information[0], student_information[1], student_information[2], student_information[3],
+                 student_information[4], student_information[5], student_information[6],
+          student_information[7], student_information[8], student_information[9], student_information[10])
     # studentTwoDArray = np.reshape(student, (-1, 16))
     # plot data
     # mean_female_grade = plt.mean_female_grade
@@ -207,7 +211,7 @@ def prediction():
                            feature_9='Semester (First Module)', value_9 = student_information[8],
                            feature_10='Second Module', value_10 = student_information[9],
                            feature_11='Semester (Second Module)', value_11 = student_information[10],
-                           student=accuracy, pred_result=pred_result, title='Prediction')
+                           student=accuracy, pred_result=pred_result, path=path, title='Prediction')
 
 # route for aboutus page
 @app.route('/about_us')

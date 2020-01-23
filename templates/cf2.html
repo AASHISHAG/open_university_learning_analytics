@@ -69,12 +69,13 @@
 	        if (node.children){
 	            for(var i = 0;i<node.children.length;i++){
 	                index = extract_select2_data(node.children[i],leaves,index)[0];
+	                console.log(node.name);
 	            }
 	        }
 	        else {
 	            if(node.name == '0 of f, 23 of i, 0 of n, 8760 of a'){
                     leaves.push({id:++index,text:node.name});
-                    alert(node.name);
+                    //alert(node.name);
 	            }
 	        }
 	        return [index,leaves];
@@ -144,29 +145,22 @@
 		}
 	}
 
-	d3.json("rules.json", function(error,values){
+	d3.json("rules1.json", function(error,values){
+	    alert(values)
 		root = values;
 		select2_data = extract_select2_data(values,[],0)[1];//I know, not the prettiest...
 		root.x0 = height / 2;
 		root.y0 = 0;
 		root.children.forEach(collapse);
-		update(root);
-		//init search box
-		$("#search").select2({
-			data: select2_data,
-			containerCssClass: "search"
-		});
-	});
-	//attach search box listener
-	$("#search").on("select2-selecting", function(e) {
-		var paths = searchTree(root,e.object.text,[]);
+		update(root)
+		var paths = searchTree(root,"0 of f, 23 of i, 0 of n, 8760 of a",[]);
 		if(typeof(paths) !== "undefined"){
 			openPaths(paths);
 		}
 		else{
-			alert(e.object.text+" not found!");
+			alert("0 of f, 23 of i, 0 of n, 8760 of a not found!");
 		}
-	})
+	});
 
 	d3.select(self.frameElement).style("height", "800px");
 
