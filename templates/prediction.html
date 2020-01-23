@@ -1,5 +1,6 @@
 {% extends "header.html"%}
 {% block content %}
+<style>.tab {position:absolute;left:150px; }}</style>
         <div class="bgded overlay" style="background-image:url({{url_for('static', filename='./images/img3.jpg')}});">
             <div id="breadcrumb" class="hoc clear">
                 <ul class="slides">
@@ -22,105 +23,71 @@
                     <li>
                         <article>
                             <h1><br><br></h1>
-                            <h1 class='heading' style="color:#353535">We predict you will <span style="color:blue">{{ pred_result }}</span>.</h1>
+                            <h1 class='heading' style="color:#353535">Our prediction is: <span style="color:blue">{{ pred_result }}</span></h1>
                             <h1 style="color:#353535">Don't be demotivated, you can change the prediction if you start working hard from now! </h1>
                             <h1><br></h1>
-                            <h1 style="color:#353535"><strong>Your input data:</strong> {{ student }}</h1>
-                            <footer><a class="btn" href="/questionForm">Retry</a></footer>
+                            <h1 style="color:#353535">Accuracy of the prediction: <strong>{{ student }}</strong></h1>
+                            <h1><br></h1>
+                            <h1 style="color:#353535">Tip: You can improve prediction accuracy by entering all the fields.</h1>
                         </article>
                     </li>
                 </ul>
             </div>
         </div>
-
-
         <div class="wrapper row3">
-	<main class="hoc container clear">
-		<div class="content">
-			<div class="scrollable">
-				<table>
-					<tbody>
-						<tr>
-						  <td>{{ feature_1 }}</td>
-						  <td>{{ value_1 }}</td>
-						</tr>
-					</tbody>
-                    					<tbody>
-						<tr>
-						  <td>{{ feature_2 }}</td>
-						  <td>{{ value_2 }}</td>
-						</tr>
-					</tbody>
-                    					<tbody>
-						<tr>
-						  <td>{{ feature_3 }}</td>
-						  <td>{{ value_3 }}</td>
-						</tr>
-					</tbody>
-                    					<tbody>
-						<tr>
-						  <td>{{ feature_4 }}</td>
-						  <td>{{ value_4 }}</td>
-						</tr>
-					</tbody>
-                    					<tbody>
-						<tr>
-						  <td>{{ feature_5 }}</td>
-						  <td>{{ value_5 }}</td>
-						</tr>
-					</tbody>
-                    					<tbody>
-						<tr>
-						  <td>{{ feature_6 }}</td>
-						  <td>{{ value_6 }}</td>
-						</tr>
-					</tbody>
-                    					<tbody>
-						<tr>
-						  <td>{{ feature_7 }}</td>
-						  <td>{{ value_7 }}</td>
-						</tr>
-					</tbody>
-                    					<tbody>
-						<tr>
-						  <td>{{ feature_8 }}</td>
-						  <td>{{ value_8 }}</td>
-						</tr>
-					</tbody>
-                    					<tbody>
-						<tr>
-						  <td>{{ feature_9 }}</td>
-						  <td>{{ value_9 }}</td>
-						</tr>
-					</tbody>
-                    					<tbody>
-						<tr>
-						  <td>{{ feature_10 }}</td>
-						  <td>{{ value_10 }}</td>
-						</tr>
-					</tbody>
-                    					<tbody>
-						<tr>
-						  <td>{{ feature_11 }}</td>
-						  <td>{{ value_11 }}</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</main>
-</div>
+            <main class="hoc container clear">
+                <table>
+                    <body>
+                        <tr>
+                            <td>{{ feature_1 }}:</td>
+                            <td>{{ value_1 }}</td>
+                            <td>{{ feature_2 }}:</td>
+                            <td align="center">{{ value_2 }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ feature_3 }}:</td>
+                            <td align="center">{{ value_3 }}</td>
+                            <td>{{ feature_4 }}:</td>
+                            <td align="center">{{ value_4 }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ feature_5 }}:</td>
+                            <td align="center">{{ value_5 }}</td>
+                            <td>{{ feature_6 }}:</td>
+                            <td align="center">{{ value_6 }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ feature_7 }}:</td>
+                            <td align="center">{{ value_7 }}</td>
+                            <td>{{ feature_8 }}:</td>
+                            <td align="center">{{ value_8 }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ feature_9 }}:</td>
+                            <td align="center">{{ value_9 }}</td>
+                            <td>{{ feature_10 }}:</td>
+                            <td align="center">{{ value_10 }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ feature_11 }}:</td>
+                            <td align="center">{{ value_11 }}</td>
+                            <td></td><td></td>
+                        </tr>
+                    </body>
+                </table>
+                <div align="center"><footer><a class="btn" href="/questionForm">Retry</a></footer></div>
+            </main>
+        </div>
+
         <div class="wrapper row3">
             <main class="hoc container clear">
                 <div class="scrollable">
                     <h1 style="color:#353535" align="center">Here is a chart for some better perspective</h1>
                     <table>
                         <tbody>
-
-                            <td>
-                                <!-- Plot 1 -->
+                            <td><!-- Plot 1 -->
                                 <div align="center">
-                                    <h6>Grade distribution regarding Gender</h6>
+                                    <h6>Important Features for results predictions</h6>
                                 </div>
                                 <div align="center">
                                     <div style="width: 650px; height: 650px">
@@ -129,8 +96,6 @@
                                 </div>
                             </td>
                         </tbody>
-                        <!-- Row 2 -->
-
                     </table>
                 </div>
             </main>
