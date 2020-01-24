@@ -188,9 +188,9 @@ def prediction():
     pred_result, accuracy = predict(student_information)
     print(pred_result)
     try:
-        print (db.insertStudent(student_information[0], student_information[1], student_information[2], student_information[3],
+        print (db.insertStudent(pred_result,student_information[0], student_information[1], student_information[2], student_information[3],
                          student_information[4], student_information[5], student_information[6], student_information[7],
-                         student_information[8], student_information[9], student_information[10], pred_result))
+                         student_information[8], student_information[9], student_information[10]))
     except:
         print("fail to save the student data to DB")
 
