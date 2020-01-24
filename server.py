@@ -8,6 +8,9 @@ from labelEncoder import encode
 from werkzeug.utils import redirect
 from flask import Flask, render_template, request, url_for
 
+from database_mongodb import Database
+
+db = Database()
 # from flask import Flask, render_template, flash, request, url_for
 # from Model_classification import predictFunction, validation_data
 
@@ -30,6 +33,7 @@ student_information = [
     "code_presentation_x",
     "code_module_y",
     "code_presentation_y"]
+
 
 # route for handling the login page logic
 @app.route('/')
@@ -178,18 +182,24 @@ def dataForm():
 # route for prediction page
 @app.route('/prediction')
 def prediction():
-
     print("Student details: {}".format(student_information))
     student = np.array(student_information)
-    #pred_result = predict('decision-tree', student_information)
+    # pred_result = predict('decision-tree', student_information)
     pred_result, accuracy = predict(student_information)
     print(pred_result)
-    accuracy = round(accuracy*100, 2)
+    try:
+        print (db.insertStudent(student_information[0], student_information[1], student_information[2], student_information[3],
+                         student_information[4], student_information[5], student_information[6], student_information[7],
+                         student_information[8], student_information[9], student_information[10], pred_result))
+    except:
+        print("fail to save the student data to DB")
+
+    accuracy = round(accuracy * 100, 2)
     print(accuracy)
 
     path = rules123(student_information[0], student_information[1], student_information[2], student_information[3],
-                 student_information[4], student_information[5], student_information[6],
-          student_information[7], student_information[8], student_information[9], student_information[10])
+                    student_information[4], student_information[5], student_information[6],
+                    student_information[7], student_information[8], student_information[9], student_information[10])
     # studentTwoDArray = np.reshape(student, (-1, 16))
     # plot data
     # mean_female_grade = plt.mean_female_grade
@@ -201,17 +211,18 @@ def prediction():
     # mean_nineteen_year = plt.mean_nineteen_year
     # mean_twenty_year = plt.mean_twenty_year
 
-    return render_template('prediction.html', feature_1='Gender', value_1 = student_information[0],
-                           feature_2='Region', value_2 = student_information[1], feature_3='Highest Education'
-                           , value_3 = student_information[2], feature_4='IMD Band', value_4 = student_information[3],
-                           feature_5='Age Group', value_5 = student_information[4],
-                           feature_6='Number Of Previous Attempts', value_6 = student_information[5],
-                           feature_7='Semester', value_7 = student_information[6],
-                           feature_8='First Module', value_8 = student_information[7],
-                           feature_9='Semester (First Module)', value_9 = student_information[8],
-                           feature_10='Second Module', value_10 = student_information[9],
-                           feature_11='Semester (Second Module)', value_11 = student_information[10],
+    return render_template('prediction.html', feature_1='Gender', value_1=student_information[0],
+                           feature_2='Region', value_2=student_information[1], feature_3='Highest Education'
+                           , value_3=student_information[2], feature_4='IMD Band', value_4=student_information[3],
+                           feature_5='Age Group', value_5=student_information[4],
+                           feature_6='Number Of Previous Attempts', value_6=student_information[5],
+                           feature_7='Semester', value_7=student_information[6],
+                           feature_8='First Module', value_8=student_information[7],
+                           feature_9='Semester (First Module)', value_9=student_information[8],
+                           feature_10='Second Module', value_10=student_information[9],
+                           feature_11='Semester (Second Module)', value_11=student_information[10],
                            student=accuracy, pred_result=pred_result, path=path, title='Prediction')
+
 
 # route for aboutus page
 @app.route('/about_us')
@@ -230,6 +241,14 @@ def tree():
 def rules():
     return render_template('rules.json')
 
+
+@app.route('/trends')
+def trends():
+    male, female = db.gender()
+    w_male, w_female, p_male, p_female, f_male, f_female, d_male, d_female = db.prediction()
+    return render_template('trends.html', male=male, female=female, w_male=w_male, w_female=w_female,
+                           p_male=p_male, p_female=p_female, f_male=f_male, f_female=f_female,
+                           d_male=d_male, d_female=d_female, title='Trends')
 
 # main function
 if __name__ == "__main__":

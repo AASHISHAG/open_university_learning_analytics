@@ -92,7 +92,7 @@ function ageResultPlot(data_one,data_two) {
         }
     });
 }
-// dev end
+
 function genderPlot(data_one,data_two) {
     var ctx = document.getElementById('genderChart').getContext('2d');
     var chart = new Chart(ctx, {
@@ -142,7 +142,7 @@ function imdPlot(data_one,data_two, data_three, data_four, data_five){
                                     "#911eb4",
                                     "#f032e6",
                                     "#808060"],
-                borderColor: 'rgb(0, 0, 0)',
+                borderColor: 'rgb(100, 100, 100)',
                 data: ["8.94",
                         "0",
                         "11.16",
@@ -160,7 +160,6 @@ function imdPlot(data_one,data_two, data_three, data_four, data_five){
         options: {}
     });
 }
-
 
 function testPlot(data_one,data_two, data_three, data_four, data_five){
 
@@ -264,4 +263,54 @@ var chart = new Chart(ctx, {
     // Configuration options go here
     options: {}
 });
+}
+
+function gender_database(data_one,data_two) {
+    var ctx = document.getElementById('gender_database').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'doughnut',
+        // The data for our dataset
+        data:
+        {
+            labels: ['Male', 'Female'],
+            datasets: [{
+                    label: ['Male','Female'],
+                    backgroundColor: ["#fe95cd","#3e95cd"],
+                    borderColor: 'rgb(0, 0, 255)',
+                    borderWidth: 1,
+                    data: [data_one, data_two]
+                }]
+        },
+        // Configuration options go here
+        options: {}
+    });
+}
+
+function prediction_database(w_male, w_female, p_male, p_female, f_male, f_female, d_male, d_female) {
+    var ctx = document.getElementById('prediction_database').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'bar',
+        // The data for our dataset
+        data:
+        {
+            labels: ['Distinction', 'Pass', 'Fail', 'Withdrawn'],
+            datasets: [{
+                    label: 'Male',
+                    backgroundColor: ["#3e95cd","#3e95cd","#3e95cd","#3e95cd",],
+                    borderColor: 'rgb(0, 0, 255)',
+                    borderWidth: 1,
+                    data: [ d_male, p_male, f_male, w_male]
+                }, {
+                    label: 'Female',
+                    backgroundColor: ["#ff95cd","#ff95cd","#ff95cd","#ff95cd"],
+                    borderColor: 'rgb(255, 0, 0)',
+                    borderWidth: 1,
+                    data: [ d_female, p_female, f_female, w_female]
+                }]
+        },
+        // Configuration options go here
+        options: {}
+    });
 }
