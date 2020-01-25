@@ -63,17 +63,17 @@ function ageResultPlot(data_one,data_two) {
                     data: [2.38, 2.76, 15.14]
                 }, {
                     label: 'Pass',
-                    backgroundColor: ["#d95f02","#d95f02","#d95f02","#d95f02","#d95f02"],
+                    backgroundColor: ["#ff7f00","#ff7f00","#ff7f00","#ff7f00","#ff7f00"],
                     borderColor: 'rgb(255, 255, 255)',
                     data: [18.6, 18.31, 11.04]
                 }, {
                     label: "Fail",
-                    backgroundColor: ["#7570b3","#7570b3","#7570b3","#7570b3","#7570b3",],
+                    backgroundColor: ["#33a02c","#33a02c","#33a02c","#33a02c","#33a02c",],
                     borderColor: 'rgb(255, 255, 255)',
                     data: [9.33, 9.6, 9.78]
                 }, {
                     label: "Withdrawn",
-                    backgroundColor: ["#1b9e77","#1b9e77","#1b9e77","#1b9e77","#1b9e77"],
+                    backgroundColor: ["#1f78b4","#1f78b4","#1f78b4","#1f78b4","#1f78b4"],
                     borderColor: 'rgb(255, 255, 255)',
                     data: [68.5, 69.32, 64.03]
                 }]
