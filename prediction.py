@@ -60,12 +60,17 @@ def predict(student_information):
 def train_model(student_information):
     df_final = pd.read_csv('final_pre_processed_data_encoded.csv')
     columns = get_columns(student_information)
-    #print(columns)
+    print('printing columns:')
+    print(columns)
     X = df_final[columns]
+    print('printing head:')
+    print(X.head(1))
+    X.to_csv('xx.csv', index=False)
     #X = df_final.loc[:, df_final.columns != 'final_result']
     y = df_final['final_result']
-    xTrain, xTest, yTrain, yTest = train_test_split(X, y, train_size=0.8)
-    dt = tree.DecisionTreeClassifier(criterion='gini')
+    xTrain, xTest, yTrain, yTest = train_test_split(X, y, train_size=0.75)
+    ##dt = tree.DecisionTreeClassifier(criterion='gini')
+    dt = tree.DecisionTreeClassifier()
     dt = dt.fit(xTrain, yTrain)
     test_pred = dt.predict(xTest)
     accuracy = metrics.accuracy_score(yTest, test_pred)

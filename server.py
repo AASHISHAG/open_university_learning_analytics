@@ -197,7 +197,10 @@ def prediction():
     accuracy = round(accuracy * 100, 2)
     print(accuracy)
 
-    path = rules123(student_information[0], student_information[1], student_information[2], student_information[3],
+    if (None in student_information):
+        path = '0 of f, 0 of i, 7 of n, 627 of a'
+    else:
+        path = rules123(student_information[0], student_information[1], student_information[2], student_information[3],
                     student_information[4], student_information[5], student_information[6],
                     student_information[7], student_information[8], student_information[9], student_information[10])
     # studentTwoDArray = np.reshape(student, (-1, 16))
