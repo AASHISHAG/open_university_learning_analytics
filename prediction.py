@@ -1,3 +1,4 @@
+# imports
 import pickle
 import numpy as np
 import pandas as pd
@@ -6,16 +7,7 @@ from sklearn import metrics
 from labelEncoder import encode
 from sklearn.model_selection import train_test_split
 
-
-#X_test = np.array([118,0,18,0,83,5,0,1,12,0,3,0,2,15,0,5,0,202]).reshape(1, -1)
-
-# loading the model from disk
-#get_model()
-#loaded_model = pickle.load(open('random_forest_model.sav', 'rb'))
-#result = loaded_model.predict(X_test)
-#print(result)
-
-
+# sequence of the columns defined on the web interface
 sequence = [
     "gender",
     "region",
@@ -29,7 +21,7 @@ sequence = [
     "code_module_y",
     "code_presentation_y"]
 
-
+# read the pre-trained model
 def getModel(model_name):
     if model_name == 'decision-tree':
         model = 'models/decision_tree_model.sav'
@@ -40,14 +32,16 @@ def getModel(model_name):
 
     return pickle.load(open(model, 'rb'))
 
-'''def predict(model_name, student_information):
+# predict student result by using the pre-trained model trained on all the features
+def predict_model(model_name, student_information):
     model = getModel(model_name)
     student_information = np.array(student_information).reshape(1, -1)
     grade = model.predict(student_information)
     grade = encode(grade[0])
     print("The predicted grade is: {}".format(grade))
-    return grade'''
+    return grade
 
+# predict student result by training on any N features
 def predict(student_information):
     model, accuracy = train_model(student_information)
     cleaned_student_information = [x for x in student_information if str(x) != 'None']
@@ -57,16 +51,11 @@ def predict(student_information):
     print("The predicted grade is: {}".format(grade))
     return grade, accuracy
 
+# train the machine learning model
 def train_model(student_information):
     df_final = pd.read_csv('final_pre_processed_data_encoded.csv')
     columns = get_columns(student_information)
-    print('printing columns:')
-    print(columns)
     X = df_final[columns]
-    print('printing head:')
-    print(X.head(1))
-    X.to_csv('xx.csv', index=False)
-    #X = df_final.loc[:, df_final.columns != 'final_result']
     y = df_final['final_result']
     xTrain, xTest, yTrain, yTest = train_test_split(X, y, train_size=0.75)
     ##dt = tree.DecisionTreeClassifier(criterion='gini')
@@ -74,12 +63,9 @@ def train_model(student_information):
     dt = dt.fit(xTrain, yTrain)
     test_pred = dt.predict(xTest)
     accuracy = metrics.accuracy_score(yTest, test_pred)
-    print(test_pred)
-    print(accuracy)
     return dt, accuracy
 
-#x = [None,None,18,0,83,5,0,1,12,0,3,0,2,15,0,5,0,202]
-
+# get name of the columns selected by the user
 def get_columns(student_information):
     columns = []
     count = 0
@@ -88,5 +74,3 @@ def get_columns(student_information):
             columns.append(sequence[count])
         count +=1
     return columns
-
-
