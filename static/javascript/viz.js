@@ -12,19 +12,19 @@ function educationPlot(data_one,data_two) {
 			labels: ['Post Graduate', 'No Formal quals', 'Lower Than A Level', 'HE Qualification', 'A Level / Equivalent'],
 			datasets: [{
                     label: 'Distinction',
-                    backgroundColor: ["#0000cc","#0000cc","#0000cc","#0000cc","#0000cc"],
+                    backgroundColor: ["#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd"],
                     data: [9.77, 0, 2.11, 3.29, 2.61]
                 }, {
                     label: 'Pass',
-                    backgroundColor: ["#33cc33","#33cc33","#33cc33","#33cc33","#33cc33"],
+                    backgroundColor: ["#ff5544","#ff5544","#ff5544","#ff5544","#ff5544"],
                     data: [11.73, 3.95, 15.47, 21.51, 20.93]
                 }, {
                     label: "Fail",
-                    backgroundColor: ["#ff0000","#ff0000","#ff0000","#ff0000","#ff0000",],
+                    backgroundColor: ["#a000cc","#a000cc","#a000cc","#a000cc","#a000cc",],
                     data: [6.84, 9.38, 10.86, 7.1, 9.19]
                 }, {
                     label: "Withdrawn",
-                    backgroundColor: ["#cc00cc","#cc00cc","#cc00cc","#cc00cc","#cc00cc"],
+                    backgroundColor: ["#fe95cd","#fe95cd","#fe95cd","#fe95cd","#fe95cd"],
                     data: [71.66, 86.67, 71.55, 68.13, 67.27]
                 }]
 		},
@@ -58,7 +58,7 @@ function ageResultPlot(data_one,data_two) {
 			labels: ['0-35', '35-55', '55<='],
 			datasets: [{
                     label: 'Distinction',
-                    backgroundColor: ["#0000cc","#0000cc","#0000cc","#0000cc","#0000cc"],
+                    backgroundColor: ["#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd"],
                     data: [2.38, 2.76, 15.14]
                 }, {
                     label: 'Pass',
@@ -66,11 +66,11 @@ function ageResultPlot(data_one,data_two) {
                     data: [18.6, 18.31, 11.04]
                 }, {
                     label: "Fail",
-                    backgroundColor: ["#ff0000","#ff0000","#ff0000","#ff0000","#ff0000",],
+                    backgroundColor: ["#ff5544","#ff5544","#ff5544","#ff5544","#ff5544",],
                     data: [9.33, 9.6, 9.78]
                 }, {
                     label: "Withdrawn",
-                    backgroundColor: ["#cc00cc","#cc00cc","#cc00cc","#cc00cc","#cc00cc"],
+                    backgroundColor: ["#fe95cd","#fe95cd","#fe95cd","#fe95cd","#fe95cd"],
                     data: [68.5, 69.32, 64.03]
                 }]
 		},
@@ -132,16 +132,16 @@ function imdPlot(data_one,data_two, data_three, data_four, data_five){
             labels: ["0-10%", "10-20%","20-30%","30-40%","40-50%","50-60%","60-70%","70-80%","80-90%","90-100%"],
             datasets: [{
                 label: "Pass based on IMB-Band",
-                backgroundColor: ["#e6194b",
-                                    "#f58231",
-                                    "#ffe110",
-                                    "#bcd60c",
-                                    "#3cb44b",
-                                    "#46f0f0",
-                                    "#4363d8",
-                                    "#911eb4",
-                                    "#f032e6",
-                                    "#808060"],
+                backgroundColor: [  "#ff95ac",
+                                    "#95f0ac",
+                                    "#f151f0",
+                                    "#9cd60c",
+                                    "#bcb44b",
+                                    "#f3cc33",
+                                    "#8363d8",
+                                    "#511e84",
+                                    "#9032e6",
+                                    "#ca8060"],
                 borderColor: 'rgb(100, 100, 100)',
                 data: ["8.94",
                         "0",
