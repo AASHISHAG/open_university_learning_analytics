@@ -17,7 +17,7 @@ Grade prediction system based on trend of the recorded data in database. User se
 
 <a name="headers2"/>
 
-## Requirments and prepration
+## Requirements and preparation
 This project is based on the following technology:
 * Data
   + Pandas
@@ -55,10 +55,10 @@ App (OULA):
       + viz.js // main javascript file for making charts
   + template (folder)
     + index.html
-    + prediction.html // page of showing the prediciton result
+    + prediction.html // page of showing the prediction result
     + question_form.html // the form for getting user input
   + Convertor.py
-  + Model_classification.py // clasifier model
+  + Model_classification.py // classifier model
   + plot.py // preparing data to use for plotting
   + server.py // application server backend part
   
@@ -136,7 +136,7 @@ lr = LogisticRegression()
 report(lr, X_train, y_train, X_test, y_test,"LogisticRegressio")
 
 ```
-and then later we can use predict model to get the prediciton result based on new data. prediction function just change the numerical output to categorical one
+and then later we can use predict model to get the prediction result based on new data. prediction function just change the numerical output to categorical one
 ```ruby
 
 def predictFunction(data_predicit):
@@ -172,11 +172,10 @@ def prediction():
 
 # Step 4
 ### Visualization part- charts and plots(server.py and plot.py and viz.js)
-in visualisation part we just tried to provide two chart to make the data more understandable maybe will help user to get better view from predicted result. we used "chartjs" javascript library inorder to visualize the data.
+in visualisation part we just tried to provide few chart to make the data more understandable maybe will help user to get better view from predicted result. we used "chartjs and D3" javascript libraries to visualize the data.
 
-we defined two function for two chart models then later we plot them just by calling this function:
-1. agePlot: plot grade avrage distribution regarding age
-2. genderPlot: plot grade avrage distribution regarding gender
+we defined few functions for few chart then later we plot them just by calling this function:
+1. ageResultPlot: plot result distribution regarding age
 
 ```ruby
 function agePlot(data_one,data_two, data_three, data_four, data_five){
@@ -215,7 +214,7 @@ after we install below requirements on our system:
   * dnspython
 
   
-you can smply run the server.py file and then server will run on you localhost. then just open Browser and type your local host IP and enjoy the application
+you can simply run the server.py file and then server will run on you localhost. then just open Browser and type your local host IP with the port (localhost:5000) and enjoy the application
 
 # Contributor
 Sameh Frihat
