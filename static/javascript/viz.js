@@ -9,23 +9,23 @@ function educationPlot(data_one,data_two) {
         // The data for our dataset
         data:
         {
-			labels: ['Post Graduate', 'No Formal quals', 'Lower Than A Level', 'HE Qualification', 'A Level / Equivalent'],
+            labels: ['No Formal Qual.', 'Lower Than A Level', 'A Level/Equivalent', 'HE Qualification', 'Post Graduate'],
 			datasets: [{
                     label: 'Distinction',
                     backgroundColor: ["#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd"],
-                    data: [9.77, 0, 2.11, 3.29, 2.61]
+                    data: [0, 2.11, 2.61, 3.29, 9.77]
                 }, {
                     label: 'Pass',
                     backgroundColor: ["#ff5544","#ff5544","#ff5544","#ff5544","#ff5544"],
-                    data: [11.73, 3.95, 15.47, 21.51, 20.93]
+                    data: [3.95, 15.47, 20.93, 21.51, 11.73]
                 }, {
                     label: "Fail",
                     backgroundColor: ["#a000cc","#a000cc","#a000cc","#a000cc","#a000cc",],
-                    data: [6.84, 9.38, 10.86, 7.1, 9.19]
+                    data: [9.38, 10.86, 9.19, 7.1, 6.84]
                 }, {
                     label: "Withdrawn",
                     backgroundColor: ["#fe95cd","#fe95cd","#fe95cd","#fe95cd","#fe95cd"],
-                    data: [71.66, 86.67, 71.55, 68.13, 67.27]
+                    data: [86.67, 71.55, 67.27, 68.13, 71.66]
                 }]
 		},
         // Configuration options go here
@@ -55,22 +55,26 @@ function ageResultPlot(data_one,data_two) {
         // The data for our dataset
         data:
         {
-			labels: ['0-35', '35-55', '55<='],
+			labels: ['0-35', '35-55', '55>='],
 			datasets: [{
                     label: 'Distinction',
-                    backgroundColor: ["#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd"],
+                    backgroundColor: ["#e41a1c","#e41a1c","#e41a1c","#e41a1c","#e41a1c"],
+                    borderColor: 'rgb(255, 255, 255)',
                     data: [2.38, 2.76, 15.14]
                 }, {
                     label: 'Pass',
-                    backgroundColor: ["#33cc33","#33cc33","#33cc33","#33cc33","#33cc33"],
+                    backgroundColor: ["#d95f02","#d95f02","#d95f02","#d95f02","#d95f02"],
+                    borderColor: 'rgb(255, 255, 255)',
                     data: [18.6, 18.31, 11.04]
                 }, {
                     label: "Fail",
-                    backgroundColor: ["#ff5544","#ff5544","#ff5544","#ff5544","#ff5544",],
+                    backgroundColor: ["#7570b3","#7570b3","#7570b3","#7570b3","#7570b3",],
+                    borderColor: 'rgb(255, 255, 255)',
                     data: [9.33, 9.6, 9.78]
                 }, {
                     label: "Withdrawn",
-                    backgroundColor: ["#fe95cd","#fe95cd","#fe95cd","#fe95cd","#fe95cd"],
+                    backgroundColor: ["#1b9e77","#1b9e77","#1b9e77","#1b9e77","#1b9e77"],
+                    borderColor: 'rgb(255, 255, 255)',
                     data: [68.5, 69.32, 64.03]
                 }]
 		},
@@ -132,17 +136,9 @@ function imdPlot(data_one,data_two, data_three, data_four, data_five){
             labels: ["0-10%", "10-20%","20-30%","30-40%","40-50%","50-60%","60-70%","70-80%","80-90%","90-100%"],
             datasets: [{
                 label: "Pass based on IMB-Band",
-                backgroundColor: [  "#ff95ac",
-                                    "#95f0ac",
-                                    "#f151f0",
-                                    "#9cd60c",
-                                    "#bcb44b",
-                                    "#f3cc33",
-                                    "#8363d8",
-                                    "#511e84",
-                                    "#9032e6",
-                                    "#ca8060"],
-                borderColor: 'rgb(100, 100, 100)',
+backgroundColor: [  "#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99",
+					"#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a"],
+                borderColor: 'rgb(255, 255, 255)',
                 data: ["8.94",
                         "0",
                         "11.16",
