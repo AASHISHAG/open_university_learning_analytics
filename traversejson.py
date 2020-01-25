@@ -1,19 +1,5 @@
 import json
 
-'''
-Gender=0
-Region=0
-HighestEducation=0
-IMDBand=0
-AgeGroup=0
-NumberOfPreviousAttempts=0
-Semester=0
-FirstModule=0
-SemesterFirstModule=0
-SecondModule=0
-SemesterSecondModule=0
-'''
-
 def ffff (data, Gender, Region, HighestEducation, IMDBand, AgeGroup, NumberOfPreviousAttempts, Semester,
           FirstModule, SemesterFirstModule, SecondModule, SemesterSecondModule):
     check = 0
@@ -33,7 +19,6 @@ def ffff (data, Gender, Region, HighestEducation, IMDBand, AgeGroup, NumberOfPre
                 check=1
             else:
                 check=0
-
 
 def rules123(Gender=0, Region=0, HighestEducation=0, IMDBand=0, AgeGroup=0, NumberOfPreviousAttempts=0, Semester=0,
           FirstModule=0, SemesterFirstModule=0, SecondModule=0, SemesterSecondModule=0):
