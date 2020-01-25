@@ -1,24 +1,20 @@
 # imports
-# import plot as plt
-import numpy as np
-from traversejson import rules123
 import json
+import numpy as np
 from prediction import predict
 from labelEncoder import encode
+from traversejson import rules123
 from werkzeug.utils import redirect
+from database_mongodb import Database
 from flask import Flask, render_template, request, url_for
 
-from database_mongodb import Database
 
 db = Database()
-# from flask import Flask, render_template, flash, request, url_for
-# from Model_classification import predictFunction, validation_data
 
 # app configuration
 DEBUG = True
 app = Flask(__name__)
 app.config.from_object(__name__)
-# app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
 
 # input fields
 student_information = [
@@ -41,15 +37,9 @@ student_information = [
 def main():
     return render_template('index.html')
 
-
 @app.route('/dataset')
 def dataset():
-    return render_template('dataset.html', mean_twenty_year=10,
-                           mean_nineteen_year=10, mean_eighteen_year=10
-                           , mean_seventeen_year=10, mean_sixteen_year=10,
-                           mean_fifteen_year=10, mean_female_grade=10,
-                           mean_male_grade=10, title='Dataset')
-
+    return render_template('dataset.html', title='Dataset')
 
 @app.route('/machinelearning')
 def machinelearning():
@@ -203,16 +193,6 @@ def prediction():
         path = rules123(student_information[0], student_information[1], student_information[2], student_information[3],
                     student_information[4], student_information[5], student_information[6],
                     student_information[7], student_information[8], student_information[9], student_information[10])
-    # studentTwoDArray = np.reshape(student, (-1, 16))
-    # plot data
-    # mean_female_grade = plt.mean_female_grade
-    # mean_male_grade = plt.mean_male_grade
-    # mean_fifteen_year = plt.mean_fifteen_year
-    # mean_sixteen_year = plt.mean_sixteen_year
-    # mean_seventeen_year = plt.mean_eighteen_year
-    # mean_eighteen_year = plt.mean_eighteen_year
-    # mean_nineteen_year = plt.mean_nineteen_year
-    # mean_twenty_year = plt.mean_twenty_year
 
     return render_template('prediction.html', feature_1='Gender', value_1=student_information[0],
                            feature_2='Region', value_2=student_information[1], feature_3='Highest Education'
@@ -239,17 +219,16 @@ def tree():
         data = json.load(json_file)
     return render_template('tree2.html', data=data, title="Tree")
 
-
 @app.route('/rules')
 def rules():
     return render_template('rules.json')
-
 
 @app.route('/trends')
 def trends():
     male, female = db.gender()
     w_male, w_female, p_male, p_female, f_male, f_female, d_male, d_female = db.prediction()
-    return render_template('trends.html', male=male, female=female, w_male=w_male, w_female=w_female,
+    return render_template('trends.html',
+                           male=male, female=female, w_male=w_male, w_female=w_female,
                            p_male=p_male, p_female=p_female, f_male=f_male, f_female=f_female,
                            d_male=d_male, d_female=d_female, title='Trends')
 
