@@ -7,7 +7,7 @@ from prediction import predict
 from labelEncoder import encode
 from traverseJson import read_json
 from werkzeug.utils import redirect
-from database_mongodb import Database
+from databaseMongodb import Database
 from flask import Flask, render_template, request, url_for
 
 db = Database()
