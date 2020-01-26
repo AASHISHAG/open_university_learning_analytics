@@ -31,6 +31,20 @@ student_information = [
     "code_module_y",
     "code_presentation_y"]
 
+student_information_decoded = [
+    "gender",
+    "region",
+    "highest_education",
+    "imd_band",
+    "age_band",
+    "num_of_prev_attempts",
+    "is_banked",
+    "code_module_x",
+    "code_presentation_x",
+    "code_module_y",
+    "code_presentation_y"]
+
+
 
 # route for handling the home page
 @app.route('/')
@@ -152,16 +166,27 @@ def dataForm():
                 or request.form['code_presentation_y'] == 'Select Semester (Second Module)':
             error = 'Select all fields'
         else:'''
+        student_information_decoded[0] = request.form['gender']
         Gender = student_information[0] = encode(request.form['gender'])
+        student_information_decoded[1] = request.form['region']
         Region = student_information[1] = encode(request.form['region'])
+        student_information_decoded[2] = request.form['highest_education']
         HighestEducation = student_information[2] = encode(request.form['highest_education'])
+        student_information_decoded[3] = request.form['imd_band']
         IMDBand = student_information[3] = encode(request.form['imd_band'])
+        student_information_decoded[4] = request.form['age_band']
         AgeGroup = student_information[4] = encode(request.form['age_band'])
+        student_information_decoded[5] = request.form['num_of_prev_attempts']
         NumberOfPreviousAttempts = student_information[5] = encode(request.form['num_of_prev_attempts'])
+        student_information_decoded[6] = request.form['is_banked']
         Semester = student_information[6] = encode(request.form['is_banked'])
+        student_information_decoded[7] = request.form['code_module_x']
         FirstModule = student_information[7] = encode(request.form['code_module_x'])
+        student_information_decoded[8] = request.form['code_presentation_x']
         SemesterFirstModule = student_information[8] = encode(request.form['code_presentation_x'])
+        student_information_decoded[9] = request.form['code_module_y']
         SecondModule = student_information[9] = encode(request.form['code_module_y'])
+        student_information_decoded[10] = request.form['code_presentation_y']
         SemesterSecondModule = student_information[10] = encode(request.form['code_presentation_y'])
         print(student_information)
         return redirect(url_for('prediction'))
@@ -196,16 +221,19 @@ def prediction():
                     student_information[4], student_information[5], student_information[6],
                     student_information[7], student_information[8], student_information[9], student_information[10])
 
-    return render_template('prediction.html', feature_1='Gender', value_1=student_information[0],
-                           feature_2='Region', value_2=student_information[1], feature_3='Highest Education'
-                           , value_3=student_information[2], feature_4='IMD Band', value_4=student_information[3],
-                           feature_5='Age Group', value_5=student_information[4],
-                           feature_6='Number Of Previous Attempts', value_6=student_information[5],
-                           feature_7='Semester', value_7=student_information[6],
-                           feature_8='First Module', value_8=student_information[7],
-                           feature_9='Semester (First Module)', value_9=student_information[8],
-                           feature_10='Second Module', value_10=student_information[9],
-                           feature_11='Semester (Second Module)', value_11=student_information[10],
+    student_information_decoded_no_select = [x if 'Select' not in x else None for x in student_information_decoded]
+
+    return render_template('prediction.html', feature_1='Gender', value_1=student_information_decoded_no_select[0],
+                           feature_2='Region', value_2=student_information_decoded_no_select[1],
+                           feature_3='Highest Education', value_3=student_information_decoded_no_select[2],
+                           feature_4='IMD Band', value_4=student_information_decoded_no_select[3],
+                           feature_5='Age Group', value_5=student_information_decoded_no_select[4],
+                           feature_6='Number Of Previous Attempts', value_6=student_information_decoded_no_select[5],
+                           feature_7='Semester', value_7=student_information_decoded_no_select[6],
+                           feature_8='First Module', value_8=student_information_decoded_no_select[7],
+                           feature_9='Semester (First Module)', value_9=student_information_decoded_no_select[8],
+                           feature_10='Second Module', value_10=student_information_decoded_no_select[9],
+                           feature_11='Semester (Second Module)', value_11=student_information_decoded_no_select[10],
                            student=accuracy, pred_result=pred_result, path=path, title='Prediction')
 
 # route for aboutus page
