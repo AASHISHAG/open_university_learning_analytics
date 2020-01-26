@@ -1,5 +1,9 @@
+# connect to mongoDB and process the data
+
+# import
 from pymongo import MongoClient
 
+# defining database class
 class Database():
     def __init__(self):
         client = MongoClient("mongodb+srv://database_student:qwert67890@cluster0-y3wgg.mongodb.net/test?retryWrites=true&w=majority")
@@ -54,7 +58,6 @@ class Database():
 
         return w_male,w_female,p_male,p_female,f_male,f_female,d_male,d_female
 
-
     # return the number of document in the DB
     def num_of(self, variable, value):
         return self.coll.find({variable: value}).count()
@@ -63,11 +66,14 @@ class Database():
     def db_size(self):
         return self.coll.find().count()
 
+    # return one document
     def findOne(self, variable, value):
         return self.coll.find_one({variable: value})
 
+    # update one document
     def updateOne(self, variable, value, update):
         self.coll.update_one({variable: value}, {'$set': update})
 
+    # delete one document
     def deleteOne(self, variable, value):
         self.coll.delete_one({variable: value})
