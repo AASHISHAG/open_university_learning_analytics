@@ -1,7 +1,8 @@
-# import libraries
-from database_mongodb import Database
-import pprint
+#testing the connection to MongoDB
 
+# import libraries
+import pprint
+from database_mongodb import Database
 
 db = Database()
 
