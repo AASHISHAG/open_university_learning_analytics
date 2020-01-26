@@ -106,7 +106,7 @@ def dataForm():
     age_band = ['Select Age Group',
                 '0-35',
                 '35-55',
-                '55<=']
+                '55>=']
 
     num_of_prev_attempts = ['Select Number Of Previous Attempts',
                             0,
