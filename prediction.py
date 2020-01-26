@@ -53,7 +53,7 @@ def predict(student_information):
 
 # train the machine learning model
 def train_model(student_information):
-    df_final = pd.read_csv('final_pre_processed_data_encoded.csv')
+    df_final = pd.read_csv('static/datasets/final_pre_processed_data_encoded.csv')
     columns = get_columns(student_information)
     X = df_final[columns]
     y = df_final['final_result']
