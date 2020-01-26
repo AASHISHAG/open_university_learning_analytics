@@ -769,8 +769,12 @@
                     .attr("height", Size)
                     .attr("class","legends");
 
-        console.log(labels.length)
-        console.log(default_colors.slice(0,labels.length))
+
+        labels[0] = "Distinction"
+        labels[1] = "Fail"
+        labels[2] = "Pass"
+        labels[3] = "Withdrawn"
+
         default_colors = default_colors.slice(0,labels.length)
         if(default_colors.length == 2) default_colors.push('')
         if (default_colors.length == 0){
