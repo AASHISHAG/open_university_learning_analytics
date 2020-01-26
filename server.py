@@ -1,3 +1,5 @@
+#main file to run the server and render the html templates
+
 # imports
 import json
 import numpy as np
@@ -7,7 +9,6 @@ from traverseJson import read_json
 from werkzeug.utils import redirect
 from database_mongodb import Database
 from flask import Flask, render_template, request, url_for
-
 
 db = Database()
 
@@ -31,22 +32,24 @@ student_information = [
     "code_presentation_y"]
 
 
-# route for handling the login page logic
+# route for handling the home page
 @app.route('/')
 @app.route('/home')
 def main():
     return render_template('index.html')
 
+# route for handling the dataset page
 @app.route('/dataset')
 def dataset():
     return render_template('dataset.html', title='Dataset')
 
+# route for handling the machine learning page
 @app.route('/machinelearning')
 def machinelearning():
     return render_template('machinelearning.html', title='Machine Learning')
 
 
-# route for handling the prediction page logic
+# route for handling the questionnaire page
 @app.route('/questionForm', methods=['GET', 'POST'])
 def dataForm():
     error = None
@@ -163,29 +166,28 @@ def dataForm():
         print(student_information)
         return redirect(url_for('prediction'))
     return render_template('question_form.html', error=error, gender=gender, region=region,
-                           highest_education=highest_education,
-                           imd_band=imd_band, age_band=age_band, num_of_prev_attempts=num_of_prev_attempts,
-                           is_banked=is_banked, code_module_x=code_module_x, code_presentation_x=code_presentation_x,
-                           code_module_y=code_module_y, code_presentation_y=code_presentation_y, title='Questionaire')
-
+                           highest_education=highest_education, imd_band=imd_band, age_band=age_band,
+                           num_of_prev_attempts=num_of_prev_attempts, is_banked=is_banked, code_module_x=code_module_x,
+                           code_presentation_x=code_presentation_x, code_module_y=code_module_y, code_presentation_y=code_presentation_y,
+                           title='Questionaire')
 
 # route for prediction page
 @app.route('/prediction')
 def prediction():
     print("Student details: {}".format(student_information))
-    student = np.array(student_information)
+    # student = np.array(student_information)
     # pred_result = predict('decision-tree', student_information)
     pred_result, accuracy = predict(student_information)
-    print(pred_result)
+    print("Prediction: {}".format(pred_result))
     try:
-        print (db.insertStudent(pred_result,student_information[0], student_information[1], student_information[2], student_information[3],
+        print(db.insertStudent(pred_result,student_information[0], student_information[1], student_information[2], student_information[3],
                          student_information[4], student_information[5], student_information[6], student_information[7],
                          student_information[8], student_information[9], student_information[10]))
     except:
         print("fail to save the student data to DB")
 
     accuracy = round(accuracy * 100, 2)
-    print(accuracy)
+    print("Accuracy: {}".format(accuracy))
 
     if (None in student_information):
         path = '0 of f, 0 of i, 7 of n, 627 of a'
@@ -206,12 +208,10 @@ def prediction():
                            feature_11='Semester (Second Module)', value_11=student_information[10],
                            student=accuracy, pred_result=pred_result, path=path, title='Prediction')
 
-
 # route for aboutus page
 @app.route('/about_us')
 def about_us():
     return render_template('about_us.html', title='About Us')
-
 
 @app.route('/tree')
 def tree():
