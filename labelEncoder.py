@@ -1,4 +1,5 @@
-# LabelEncoder
+# labelEncoder
+# encode the user selection to feed it into machine learning model
 
 def encode(value):
     return {

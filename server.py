@@ -3,7 +3,7 @@ import json
 import numpy as np
 from prediction import predict
 from labelEncoder import encode
-from traversejson import rules123
+from traverseJson import read_json
 from werkzeug.utils import redirect
 from database_mongodb import Database
 from flask import Flask, render_template, request, url_for
@@ -190,7 +190,7 @@ def prediction():
     if (None in student_information):
         path = '0 of f, 0 of i, 7 of n, 627 of a'
     else:
-        path = rules123(student_information[0], student_information[1], student_information[2], student_information[3],
+        path = read_json(student_information[0], student_information[1], student_information[2], student_information[3],
                     student_information[4], student_information[5], student_information[6],
                     student_information[7], student_information[8], student_information[9], student_information[10])
 
