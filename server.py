@@ -44,8 +44,6 @@ student_information_decoded = [
     "code_module_y",
     "code_presentation_y"]
 
-
-
 # route for handling the home page
 @app.route('/')
 @app.route('/home')
@@ -196,7 +194,7 @@ def dataForm():
                            code_presentation_x=code_presentation_x, code_module_y=code_module_y, code_presentation_y=code_presentation_y,
                            title='Questionaire')
 
-# route for prediction page
+# route for handling prediction page
 @app.route('/prediction')
 def prediction():
     print("Student details: {}".format(student_information))
@@ -209,7 +207,7 @@ def prediction():
                          student_information[4], student_information[5], student_information[6], student_information[7],
                          student_information[8], student_information[9], student_information[10]))
     except:
-        print("fail to save the student data to DB")
+        print("Fail to save the student data to DB.")
 
     accuracy = round(accuracy * 100, 2)
     print("Accuracy: {}".format(accuracy))
@@ -223,34 +221,49 @@ def prediction():
 
     student_information_decoded_no_select = [x if 'Select' not in x else None for x in student_information_decoded]
 
-    return render_template('prediction.html', feature_1='Gender', value_1=student_information_decoded_no_select[0],
-                           feature_2='Region', value_2=student_information_decoded_no_select[1],
-                           feature_3='Highest Education', value_3=student_information_decoded_no_select[2],
-                           feature_4='IMD Band', value_4=student_information_decoded_no_select[3],
-                           feature_5='Age Group', value_5=student_information_decoded_no_select[4],
-                           feature_6='Number Of Previous Attempts', value_6=student_information_decoded_no_select[5],
-                           feature_7='Semester', value_7=student_information_decoded_no_select[6],
-                           feature_8='First Module', value_8=student_information_decoded_no_select[7],
-                           feature_9='Semester (First Module)', value_9=student_information_decoded_no_select[8],
-                           feature_10='Second Module', value_10=student_information_decoded_no_select[9],
-                           feature_11='Semester (Second Module)', value_11=student_information_decoded_no_select[10],
+    value_1 = 'None' if 'None' in str(student_information[0]) else str(student_information_decoded_no_select[0]) +" (" + str(student_information[0]) + ")"
+    value_2 = 'None' if 'None' in str(student_information[1]) else str(student_information_decoded_no_select[1]) + " (" + str(student_information[1]) + ")"
+    value_3 = 'None' if 'None' in str(student_information[2]) else str(student_information_decoded_no_select[2]) + " (" + str(student_information[2]) + ")"
+    value_4 = 'None' if 'None' in str(student_information[3]) else str(student_information_decoded_no_select[3]) + " (" + str(student_information[3]) + ")"
+    value_5 = 'None' if 'None' in str(student_information[4]) else str(student_information_decoded_no_select[4]) + " (" + str(student_information[4]) + ")"
+    value_6 = 'None' if 'None' in str(student_information[5]) else str(student_information_decoded_no_select[5]) + " (" + str(student_information[5]) + ")"
+    value_7 = 'None' if 'None' in str(student_information[6]) else str(student_information_decoded_no_select[6]) + " (" + str(student_information[6]) + ")"
+    value_8 = 'None' if 'None' in str(student_information[7]) else str(student_information_decoded_no_select[7]) + " (" + str(student_information[7]) + ")"
+    value_9 = 'None' if 'None' in str(student_information[8]) else str(student_information_decoded_no_select[8]) + " (" + str(student_information[8]) + ")"
+    value_10 = 'None' if 'None' in str(student_information[9]) else str(student_information_decoded_no_select[9]) + " (" + str(student_information[9]) + ")"
+    value_11 = 'None' if 'None' in str(student_information[10]) else str(student_information_decoded_no_select[10]) + " (" + str(student_information[10]) + ")"
+
+    return render_template('prediction.html', feature_1 = 'Gender', value_1 = value_1,
+                           feature_2='Region', value_2 = value_2,
+                           feature_3='Highest Education', value_3 = value_3,
+                           feature_4='IMD Band', value_4 = value_4,
+                           feature_5='Age Group', value_5 = value_5,
+                           feature_6='Number Of Previous Attempts', value_6 = value_6,
+                           feature_7='Semester', value_7 = value_7,
+                           feature_8='First Module', value_8 = value_8,
+                           feature_9='Semester (First Module)', value_9 = value_9,
+                           feature_10='Second Module', value_10 = value_10,
+                           feature_11='Semester (Second Module)', value_11 = value_11,
                            student=accuracy, pred_result=pred_result, path=path, title='Prediction')
 
-# route for aboutus page
+# route for handling the aboutus page
 @app.route('/about_us')
 def about_us():
     return render_template('about_us.html', title='About Us')
 
+# route for handling the decision tree visualisation page
 @app.route('/tree')
 def tree():
     with open('rules.json') as json_file:
         data = json.load(json_file)
     return render_template('tree2.html', data=data, title="Tree")
 
+# route for handling the rules page (test page for reference)
 @app.route('/rules')
 def rules():
     return render_template('rules.json')
 
+# route for handling the website analytics page
 @app.route('/trends')
 def trends():
     male, female = db.gender()
