@@ -1,6 +1,9 @@
 //https://www.chartjs.org/docs/latest/getting-started/
-// dev start
-// stacked bar chart
+
+// all of this javascript function is based on Chart.js
+
+
+//chart for dataset page
 function educationPlot(data_one,data_two) {
     var ctx = document.getElementById('educationChart').getContext('2d');
     var chart = new Chart(ctx, {
@@ -46,7 +49,7 @@ function educationPlot(data_one,data_two) {
         }
     });
 }
-
+//chart for dataset page
 function ageResultPlot(data_one,data_two) {
     var ctx = document.getElementById('ageResultChart').getContext('2d');
     var chart = new Chart(ctx, {
@@ -96,7 +99,7 @@ function ageResultPlot(data_one,data_two) {
         }
     });
 }
-
+//chart for dataset page
 function genderPlot(data_one,data_two) {
     var ctx = document.getElementById('genderChart').getContext('2d');
     var chart = new Chart(ctx, {
@@ -124,9 +127,8 @@ function genderPlot(data_one,data_two) {
         options: {}
     });
 }
-
+//chart for dataset page
 function imdPlot(data_one,data_two, data_three, data_four, data_five){
-
     var ctx = document.getElementById('imdChart').getContext('2d');
     var chart = new Chart(ctx, {
         // The type of chart we want to create
@@ -156,30 +158,7 @@ backgroundColor: [  "#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99",
         options: {}
     });
 }
-
-function testPlot(data_one,data_two, data_three, data_four, data_five){
-
-var ctx = document.getElementById('testChart').getContext('2d');
-var chart = new Chart(ctx, {
-    // The type of chart we want to create
-    type: 'line',
-
-    // The data for our dataset
-    data: {
-        labels: ["15", "16","17","18","19","20"],
-        datasets: [{
-            label: "Avarage grade based on gender",
-            backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-            borderColor: 'rgb(255, 99, 132)',
-            data: [data_one,data_two, data_three, data_four, data_five,5],
-        }]
-    },
-
-    // Configuration options go here
-    options: {}
-});
-}
-
+//chart for tree in prediction page
 function treePlot(){
 
 var ctx = document.getElementById('featursImportance').getContext('2d');
@@ -260,7 +239,7 @@ var chart = new Chart(ctx, {
     options: {}
 });
 }
-
+//chart for trends page
 function gender_database(data_one,data_two) {
     var ctx = document.getElementById('gender_database').getContext('2d');
     var chart = new Chart(ctx, {
@@ -282,7 +261,7 @@ function gender_database(data_one,data_two) {
         options: {}
     });
 }
-
+//chart for trends page
 function prediction_database(w_male, w_female, p_male, p_female, f_male, f_female, d_male, d_female) {
     var ctx = document.getElementById('prediction_database').getContext('2d');
     var chart = new Chart(ctx, {
