@@ -24,9 +24,9 @@
 /* Header */
 #header{}
 
-#header #logo{margin:30px 0 0 0; }
+#header #logo{margin:32px 0 0 0; }
 #header #logo h1{margin:0; padding:0; font-size:33px; text-transform:uppercase; position: relative; top: -10px;}
-.logo1{ width: 3vw; position: relative; top: 4px;}
+.logo1{ width: 2.5vw; position: relative; top: -2px;}
 
 /* Page Intro
 --------------------------------------------------------------------------------------------------------------- */
