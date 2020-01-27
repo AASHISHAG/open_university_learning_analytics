@@ -1,45 +1,54 @@
-{% extends "header.html"%}
-{% block content %}
-        <div class="bgded overlay" style="background-image:url({{url_for('static', filename='./images/img3.jpg')}});">
-            <div id="breadcrumb" class="hoc clear">
-                <ul class="slides">
-                    <li>
-                        <article1>
-                            <h1 class='heading1'>About Us </h1>
-                        </article1>
-                    </li>
-                </ul>
-                <ul>
-                  <li><a href="/home">Home</a></li>
-                  <li><a href="/about_us">About Us</a></li>
-                </ul>
+{% extends "header.html"%} {% block content %}
+<div class="bgded overlay" style="background-image:url({{url_for('static', filename='./images/img3.jpg')}});">
+    <div id="breadcrumb" class="hoc clear">
+        <ul class="slides">
+            <li>
+                <article1>
+                    <h1 class='heading1'>About Us </h1>
+                </article1>
+            </li>
+        </ul>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/about_us">About Us</a></li>
+        </ul>
+    </div>
+</div>
+<div class="wrapper row3">
+    <main class="hoc container clear">
+        <div class="content">
+            <h3 class="heading" align="center">The Data Titans</h3>
+            <p>We are a team of four master students and this is our student project for the course Learning Analytics from the department of Social Computing at the University of Duisburg-Essen.</p>
+            <p>This course is headed by:</p>
+            <ul>
+                <li>Prof. Dr. Mohamed Amine Chatti</li>
+                <li>Dr. Arham Muslim</li>
+            </ul>
+            <p>
+                <br>Project Members:</p>
+            <ul>
+                <li>Seyedemarzie Mirhashemi</li>
+                <li>Aashish Agarwal</li>
+                <li>Sameh Frihat</li>
+                <li>Shoeb Joarder</li>
+            </ul>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="clear"></div>
+            <div class="content">
+                <img class="imgl borderedbox inspace-5" src="../static/images/soco_logo.png" alt="">
+                <img class="imgr borderedbox inspace-5" src="../static/images/due.png" alt="">
             </div>
         </div>
-        <div class="wrapper row3">
-            <main class="hoc container clear">
-                <div class="content">
-                    <h3 class="heading" align="center">The Data Titans</h3>
-                    <p>We are a team of four master students and this is our student project for the course Learning Analytics from the department of Social Computing at the University of Duisburg-Essen.</p>
-                    <p>This course is headed by:</p>
-                    <ul>
-                        <li>Prof. Dr. Mohamed Amine Chatti</li>
-                        <li>Dr. Arham Muslim</li>
-                    </ul>
-                    <p><br>Project Members:</p>
-                    <ul>
-                        <li>Seyedemarzie Mirhashemi</li>
-                        <li>Aashish Agarwal</li>
-                        <li>Sameh Frihat</li>
-                        <li>Shoeb Joarder</li>
-                    </ul>
-                    <br><br><br><br><br><br><br><br><br><br>
-                    <div class="clear"></div>
-                    <div class="content">
-                        <img class="imgl borderedbox inspace-5" src="../static/images/soco_logo.png" alt="">
-                        <img class="imgr borderedbox inspace-5" src="../static/images/due.png" alt="">
-                    </div>
-                </div>
-            </main>
-        </div>
+    </main>
+</div>
 
 {% endblock content %}

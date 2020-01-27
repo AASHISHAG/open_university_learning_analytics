@@ -1,36 +1,35 @@
-{% extends "header.html"%}
-{% block content %}
-    <div class="bgded overlay" style="background-image:url({{url_for('static', filename='./images/img2.jpg')}});">
-        <div id="pageintro" class="hoc clear">
-            <div class="flexslider basicslider">
-                <ul class="slides">
-                    <li>
-                        <article>
-                            <h1 class='heading'>Welcome to Open University Learning Analytics </h1>
-                            <h1>Predict your results for better decisions</h1>
-                            <footer><a class="btn" href="/questionForm">Start your prediction!</a></footer>
-                        </article>
-                    </li>
-                </ul>
-            </div>
+{% extends "header.html"%} {% block content %}
+<div class="bgded overlay" style="background-image:url({{url_for('static', filename='./images/img2.jpg')}});">
+    <div id="pageintro" class="hoc clear">
+        <div class="flexslider basicslider">
+            <ul class="slides">
+                <li>
+                    <article>
+                        <h1 class='heading'>Welcome to Open University Learning Analytics </h1>
+                        <h1>Predict your results for better decisions</h1>
+                        <footer><a class="btn" href="/questionForm">Start your prediction!</a></footer>
+                    </article>
+                </li>
+            </ul>
         </div>
     </div>
+</div>
 
-    <div class="wrapper row3">
-        <main class="hoc container clear">
+<div class="wrapper row3">
+    <main class="hoc container clear">
+        <div class="content">
+            <h3 class="heading" align="center">Welcome to our student's result prediction page!</h3>
+            <p>Thank you for visiting our student project website. We have developed this project for the course Learning Analytics in University of Duisburg-Essen. We are the team Data Titans and the goals of our project are: </p>
+            <ul>
+                <li>Explore the students performance dataset by perform some initial data visualization.</li>
+                <li>Apply the machine learning algorithms on the dataset to determine most important features and attempt to predict the students performance based on these features.</li>
+            </ul>
+            <div class="clear"></div>
             <div class="content">
-                <h3 class="heading" align="center">Welcome to our student's result prediction page!</h3>
-                <p>Thank you for visiting our student project website. We have developed this project for the course Learning Analytics in University of Duisburg-Essen. We are the team Data Titans and the goals of our project are: </p>
-                <ul>
-                    <li>Explore the students performance dataset by perform some initial data visualization.</li>
-                    <li>Apply the machine learning algorithms on the dataset to determine most important features and attempt to predict the students performance based on these features.</li>
-                    </ul>
-                    <div class="clear"></div>
-                    <div class="content">
-                        <img class="imgl borderedbox inspace-5" src="../static/images/soco_logo.png" alt="">
-                        <img class="imgr borderedbox inspace-5" src="../static/images/due.png" alt="">
-                </div>
+                <img class="imgl borderedbox inspace-5" src="../static/images/soco_logo.png" alt="">
+                <img class="imgr borderedbox inspace-5" src="../static/images/due.png" alt="">
             </div>
-        </main>
-    </div>
+        </div>
+    </main>
+</div>
 {% endblock content %}

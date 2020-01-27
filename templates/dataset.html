@@ -1,120 +1,125 @@
-{% extends "header.html"%}
-{% block content %}
-        <div class="bgded overlay" style="background-image:url({{url_for('static', filename='./images/img3.jpg')}});">
-            <div id="breadcrumb" class="hoc clear">
-                <ul class="slides">
-                    <li>
-                        <article1>
-                            <h1 class='heading1'>Dataset </h1>
-                        </article1>
-                    </li>
-                </ul>
-                <ul>
-                  <li><a href="/dataset">Data</a></li>
-                  <li><a href="/dataset">Dataset</a></li>
-                </ul>
-            </div>
-        </div>
+{% extends "header.html"%} {% block content %}
+<div class="bgded overlay" style="background-image:url({{url_for('static', filename='./images/img3.jpg')}});">
+    <div id="breadcrumb" class="hoc clear">
+        <ul class="slides">
+            <li>
+                <article1>
+                    <h1 class='heading1'>Dataset </h1>
+                </article1>
+            </li>
+        </ul>
+        <ul>
+            <li><a href="/dataset">Data</a></li>
+            <li><a href="/dataset">Dataset</a></li>
+        </ul>
+    </div>
+</div>
 
-        <div class="wrapper row3">
-            <main class="hoc container clear">
-                <div class="content">
-                    <h1>Open University Learning Analytics Dataset Characteristics</h1>
-                    <ul>
-                        <li>Multivariate dataset</li>
-                        <li>There are 46,412 number of records</li>
-                        <li>The dataset consists of data about courses, students and their interactions with Virtual Learning Environment(VLE) for seven selected courses (called modules)</li>
-                        <li>Presentations of the course start in February and October</li>
-                        <li>All tables are stored in the csv format</li>
-                    </ul>
-                    <p  align="justify"><br>
-                    <h1>Attributes of dataset</h1>
-                    <!--
+<div class="wrapper row3">
+    <main class="hoc container clear">
+        <div class="content">
+            <h1>Open University Learning Analytics Dataset Characteristics</h1>
+            <ul>
+                <li>Multivariate dataset</li>
+                <li>There are 46,412 number of records</li>
+                <li>The dataset consists of data about courses, students and their interactions with Virtual Learning Environment(VLE) for seven selected courses (called modules)</li>
+                <li>Presentations of the course start in February and October</li>
+                <li>All tables are stored in the csv format</li>
+            </ul>
+            <p align="justify">
+                <br>
+                <h1>Attributes of dataset</h1>
+                <!--
                     <img class="imgr borderedbox inspace-5" src="../static/images/demo/imgr.gif" alt="">
                     -->
-                    <ul>
-                        <li><strong>Gender</strong>: The student’s gender</li>
-                        <li><strong>Region</strong>: Identifies the geographic region, where the student lived while taking the module-presentation</li>
-                        <li><strong>Highest Education</strong>: Highest student education level on entry to the module presentation</li>
-                        <li><strong>Imd Band</strong>: Specifies the Index of Multiple Depravation band of the place where the student lived during the module-presentation</li>
-                        <li><strong>Age Group</strong>: Band of the student’s age</li>
-                        <li><strong>Number Of Previous Attempts</strong>: The number times the student has attempted this module</li>
-                        <li><strong>Semester</strong>: A status flag indicating that the Semester</li>
-                        <li><strong>First Module</strong>: Code name of the module, which serves as the identifier</li>
-                        <li><strong>Semester (First Module)</strong>: Code name of the presentation. It consists of the year and “B” for the presentation starting in February and “J” for the presentation starting in October</li>
-                        <li><strong>Second Module</strong>: Code name of the module, which serves as the identifier</li>
-                        <li><strong>Semester (Second Module)</strong>: Code name of the presentation. It consists of the year and “B” for the presentation starting in February and “J” for the presentation starting in October</li>
-                        <li><strong>Final Result</strong>: Student’s final result in the module-presentation</li>
-                    </ul>
-                    </p>
-                </div>
-                <h1><br></h1>
-                <div class="scrollable">
-                    <h1 style="color:#353535" align="center">You can find some charts here. Let's have a look for better perspective</h1>
-                    <table>
-                        <tbody>
-                            <tr>
-                            <!-- Row 1 -->
-                            <td><!-- Plot 1 -->
-                                <div align="center">
-                                    <h6>Passing Percentage based on IMD-Band</h6>
-                                </div>
-                                <div align="center">
-                                    <div style="width: 350px; height: 350px">
-                                        <canvas id="imdChart"></canvas>
-                                    </div>
-                                </div>
-                            </td>
-                            <td><!-- Plot 2 -->
-                                <div align="center">
-                                    <h6>Grade distribution regarding Gender</h6>
-                                </div>
-                                <div align="center">
-                                    <div style="width: 350px; height: 350px">
-                                        <canvas id="genderChart" width="400" height="350"></canvas>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                        <!-- Row 2 -->
-                        <body>
-                            <tr>
-                            <td><!-- Plot 3 -->
-                                <div align="center">
-                                    <h6>Percentage of Higher Education vs Results</h6>
-                                </div>
-                                <div align="center">
-                                    <div style="width: 350px; height: 350px">
-                                        <canvas id="educationChart" width="350" height="380"></canvas>
-                                    </div>
-                                </div>
-                            </td>
-                            <td><!-- Plot 4 -->
-                                <div align="center">
-                                    <h6>Percentage of Student's Age vs Results</h6>
-                                </div>
-                                <div align="center">
-                                    <div style="width: 350px; height: 350px">
-                                        <canvas id="ageResultChart" width="350" height="350"></canvas>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        </body>
-                        <!-- For row 3 add body tag and then td tag -->
-                    </table>
-                </div>
-            </main>
+                <ul>
+                    <li><strong>Gender</strong>: The student’s gender</li>
+                    <li><strong>Region</strong>: Identifies the geographic region, where the student lived while taking the module-presentation</li>
+                    <li><strong>Highest Education</strong>: Highest student education level on entry to the module presentation</li>
+                    <li><strong>Imd Band</strong>: Specifies the Index of Multiple Depravation band of the place where the student lived during the module-presentation</li>
+                    <li><strong>Age Group</strong>: Band of the student’s age</li>
+                    <li><strong>Number Of Previous Attempts</strong>: The number times the student has attempted this module</li>
+                    <li><strong>Semester</strong>: A status flag indicating that the Semester</li>
+                    <li><strong>First Module</strong>: Code name of the module, which serves as the identifier</li>
+                    <li><strong>Semester (First Module)</strong>: Code name of the presentation. It consists of the year and “B” for the presentation starting in February and “J” for the presentation starting in October</li>
+                    <li><strong>Second Module</strong>: Code name of the module, which serves as the identifier</li>
+                    <li><strong>Semester (Second Module)</strong>: Code name of the presentation. It consists of the year and “B” for the presentation starting in February and “J” for the presentation starting in October</li>
+                    <li><strong>Final Result</strong>: Student’s final result in the module-presentation</li>
+                </ul>
+            </p>
         </div>
+        <h1><br></h1>
+        <div class="scrollable">
+            <h1 style="color:#353535" align="center">You can find some charts here. Let's have a look for better perspective</h1>
+            <table>
+                <tbody>
+                    <tr>
+                        <!-- Row 1 -->
+                        <td>
+                            <!-- Plot 1 -->
+                            <div align="center">
+                                <h6>Passing Percentage based on IMD-Band</h6>
+                            </div>
+                            <div align="center">
+                                <div style="width: 350px; height: 350px">
+                                    <canvas id="imdChart"></canvas>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <!-- Plot 2 -->
+                            <div align="center">
+                                <h6>Grade distribution regarding Gender</h6>
+                            </div>
+                            <div align="center">
+                                <div style="width: 350px; height: 350px">
+                                    <canvas id="genderChart" width="400" height="350"></canvas>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <!-- Row 2 -->
 
-        <!-- JAVASCRIPTS -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-        <script src="{{ url_for('static', filename='./javascript/viz.js') }}"></script>
-        <script>
-            genderPlot()
-            imdPlot()
-            educationPlot()
-            ageResultPlot()
-        </script>
+                <body>
+                    <tr>
+                        <td>
+                            <!-- Plot 3 -->
+                            <div align="center">
+                                <h6>Percentage of Higher Education vs Results</h6>
+                            </div>
+                            <div align="center">
+                                <div style="width: 350px; height: 350px">
+                                    <canvas id="educationChart" width="350" height="380"></canvas>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <!-- Plot 4 -->
+                            <div align="center">
+                                <h6>Percentage of Student's Age vs Results</h6>
+                            </div>
+                            <div align="center">
+                                <div style="width: 350px; height: 350px">
+                                    <canvas id="ageResultChart" width="350" height="350"></canvas>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </body>
+                <!-- For row 3 add body tag and then td tag -->
+            </table>
+        </div>
+    </main>
+</div>
+
+<!-- JAVASCRIPTS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script src="{{ url_for('static', filename='./javascript/viz.js') }}"></script>
+<script>
+    genderPlot()
+    imdPlot()
+    educationPlot()
+    ageResultPlot()
+</script>
 {% endblock content %}
