@@ -265,13 +265,13 @@ def rules():
 
 # route for handling the website analytics page
 @app.route('/real_time_statistics')
-def Real_time_statistics():
+def real_time_statistics():
     male, female = db.gender()
     w_male, w_female, p_male, p_female, f_male, f_female, d_male, d_female = db.prediction()
     return render_template('real_time_statistics.html',
                            male=male, female=female, w_male=w_male, w_female=w_female,
                            p_male=p_male, p_female=p_female, f_male=f_male, f_female=f_female,
-                           d_male=d_male, d_female=d_female, title='Real Time Statistics')
+                           d_male=d_male, d_female=d_female, title='real Time Statistics')
 
 # main function
 if __name__ == "__main__":
