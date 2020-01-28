@@ -145,7 +145,7 @@
             //************************************* Options******************************************************//
 
             var file_name = "structureC1.json" // generator_1
-            var file_namev2 = "structureC2.json" // generator_2
+            var file_namev2 = "structureC2_tree.json" // generator_2
             var version2 = true // if true json from generator_2 will be used
 
             var tree_branch = false // if the thickness of the branches depend on the value of targt + color * /
@@ -206,7 +206,7 @@
 
             var filetochoose = version2 ? file_namev2 : file_name
 
-            d3.json("{{ url_for('static', filename='./datasets/structureC2.json') }}", function(error, flare) {
+            d3.json("{{ url_for('static', filename='./datasets/structureC2_tree.json') }}", function(error, flare) {
                 if (error) throw error;
 
                 console.log(getDepth(flare))
@@ -255,7 +255,7 @@
             d3.select(self.frameElement).style("height", "480px");
 
             function update(source, n_labels) {
-
+                //alert(n_labels);
                 // Compute the new tree layout.
                 var nodes = tree.nodes(root).reverse(),
                     links = tree.links(nodes);
