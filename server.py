@@ -264,7 +264,7 @@ def rules():
     return render_template('rules.json')
 
 # route for handling the website analytics page
-@app.route('/Real_time_statistics')
+@app.route('/real_time_statistics')
 def Real_time_statistics():
     male, female = db.gender()
     w_male, w_female, p_male, p_female, f_male, f_female, d_male, d_female = db.prediction()
