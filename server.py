@@ -202,6 +202,16 @@ def prediction():
     # pred_result = predict('decision-tree', student_information)
     pred_result, accuracy = predict(student_information)
     print("Prediction: {}".format(pred_result))
+
+    if pred_result == 'Fail' or pred_result == 'Withdrawn':
+        message = 'Don\'t be demotivated. You can change the prediction if you start working hard from now!'
+    elif pred_result == 'Pass':
+        message = 'Great! You can still work hard and get Distinction!'
+    elif pred_result == 'Distinction':
+        message = 'Well Done!'
+
+    print("Message: {}".format(message))
+
     try:
         print(db.insertStudent(pred_result,student_information[0], student_information[1], student_information[2], student_information[3],
                          student_information[4], student_information[5], student_information[6], student_information[7],
@@ -244,7 +254,7 @@ def prediction():
                            feature_9='Semester (First Module)', value_9 = value_9,
                            feature_10='Second Module', value_10 = value_10,
                            feature_11='Semester (Second Module)', value_11 = value_11,
-                           student=accuracy, pred_result=pred_result, path=path, title='Prediction')
+                           student=accuracy, pred_result=pred_result, path=path, message=message, title='Prediction')
 
 # route for handling the aboutus page
 @app.route('/about_us')
