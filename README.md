@@ -1,18 +1,18 @@
 ## Table of content 
-- [OULA (inteligent grade prediction system)](#headers)
-- [baised on Open University dataset](#headers2)
-- [Requirments and prepration](#headers2)
+- [OULA (intelligent grade prediction system)](#headers)
+- [based on Open University dataset](#headers2)
+- [Requirements and preparation](#headers2)
 - [App Structure](#headers3)
 - [code explanation](#headers4)
 
 <a name="headers"/>
 
-youtube videow about project
-https://youtu.be/HueXoAcfAuM
+youtube video about project
+https://www.youtube.com/
 
-![Logo](open_university_learning_analytics/static/images/OU_Logo_Dark_Blue.png)
+![Logo](open_university_learning_analytics\static\images\logo.png)
 
-## OULA (inteligent grade prediction system)
+## OULA (intelligent grade prediction system)
 Grade prediction system based on trend of the recorded data in database. User select its habit then get the grade closest to the final result.
 
 <a name="headers2"/>
@@ -32,6 +32,7 @@ This project is based on the following technology:
 
 * visualisation
   + Chartjs
+  + D3
 
 * Database
   + mongodb
