@@ -11,6 +11,7 @@ youtube video about project
 https://www.youtube.com/
 
 ![Logo](static/images/logo.png)
+<img src="static/images/logo.png" width="100">
 
 ## OULA (intelligent grade prediction system)
 Grade prediction system based on trend of the recorded data in database. User select its habit then get the grade closest to the final result.
