@@ -1,4 +1,4 @@
-# evaluating the machine learning models
+# evaluating the machine learning models (jupyter notebook)
 
 #imports
 
@@ -6,10 +6,11 @@ import json
 import pickle
 import numpy as np
 import pandas as pd
+import scikitplot as skplt
 import matplotlib.pyplot as plt
+from sklearn.model_selection import cross_val_predict
 from sklearn.model_selection import learning_curve
 from sklearn.model_selection import train_test_split
-from sklearn.ensemble import GradientBoostingRegressor
 
 df_final = pd.read_csv('static/datasets/final_pre_processed_data_encoded.csv')
 X = df_final.loc[:, df_final.columns != 'final_result']
@@ -53,25 +54,50 @@ def plot_accuracy(model):
     plt.ylabel("Accuracy %")
 
     plt.fill_between(train_sizes, test_mean - test_std, test_mean + test_std, alpha=0.1)
-
     plt.plot(train_sizes, test_mean, 'bo-', color="r", label="Test Score")
+    return plt
 
 # decision tree
 dt = getModel('decision-tree')
-plot_accuracy(dt)
+plt = plot_accuracy(dt)
+#plt.savefig('static/images/decision_tree_acc.png')
+
+y_pred = cross_val_predict(dt, xTest, yTest)
+skplt.metrics.plot_confusion_matrix(yTest, y_pred, normalize=True)
+#plt.savefig('static/images/decision_tree_cf.png')
 
 # gradient boosting
 gb = getModel('gradient-boosting')
-plot_accuracy(gb)
+plt = plot_accuracy(gb)
+#plt.savefig('static/images/decision_tree_acc.png')
+
+y_pred = cross_val_predict(dt, xTest, yTest)
+skplt.metrics.plot_confusion_matrix(yTest, y_pred, normalize=True)
+#plt.savefig('static/images/gradient_boosting_cf.png')
 
 # random forest
 rf = getModel('random-forest')
-plot_accuracy(rf)
+plt = plot_accuracy(rf)
+#plt.savefig('static/images/decision_tree_acc.png')
+
+y_pred = cross_val_predict(dt, xTest, yTest)
+skplt.metrics.plot_confusion_matrix(yTest, y_pred, normalize=True)
+#plt.savefig('static/images/random_forest_cf.png')
 
 # naive-bayes
 nb = getModel('naive-bayes')
-plot_accuracy(rf)
+plt = plot_accuracy(rf)
+#plt.savefig('static/images/decision_tree_acc.png')
+
+y_pred = cross_val_predict(dt, xTest, yTest)
+skplt.metrics.plot_confusion_matrix(yTest, y_pred, normalize=True)
+#plt.savefig('static/images/naive_bayes_cf.png')
 
 # svm
 svm = getModel('svm')
-plot_accuracy(svm)
+plt = plot_accuracy(svm)
+#plt.savefig('static/images/decision_tree_acc.png')
+
+y_pred = cross_val_predict(dt, xTest, yTest)
+skplt.metrics.plot_confusion_matrix(yTest, y_pred, normalize=True)
+#plt.savefig('static/images/svm_cf.png')
