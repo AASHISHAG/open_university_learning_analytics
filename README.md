@@ -105,18 +105,12 @@ App (OULA):
 * Machine Learning Algorithms - Decision Tree - Random Forest - Naïve Bayes - Gradient Boosting - SVM.
 * Evaluation - Accuracy - Confusion Matrix.
 
-needed libraries:
+Needed libraries:
 
 ```ruby
-import pandas as pd
-import numpy as np
-from sklearn import svm
-from sklearn import tree
-from sklearn import metrics
-from sklearn.naive_bayes import GaussianNB
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import GradientBoostingRegressor
+* Pandas
+* Numpy
+* Sklearn
 ```
 
 
@@ -189,7 +183,7 @@ Then you need to install below requirements on our system:
   * sci-kit learn == 0.22.1
   * Flask == 1.1.1
   * Numpy == 1.17.4
-  * Panda == 0.25.2
+  * Pandas == 0.25.2
   * html5lib == 1.0.1
   * pymongo == 3.8.0
   * dnspython == 1.16.0
