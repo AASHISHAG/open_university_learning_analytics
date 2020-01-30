@@ -5,7 +5,7 @@
 - [App Structure](#headers3)
 - [Code Description](#headers4)
 - [To deploy the project](#headers5)
-- [code explanation](#headers4)
+- [Contributors](#headers5)
 
 <a name="headers"/>
 <img href="https://www.youtube.com/" src="static/images/logo.png" width="100">
@@ -16,7 +16,7 @@
 
 
 ## OULA
-Open University Learning Analytics: is an intelligent grade prediction system based on trained machine learning model in top of recorded data in database. User select its Data then get the grade closest to the final result.
+Open University Learning Analytics its an intelligent grade prediction system, aims to analyse student performance and predict there result [Distinction, Fail, Pass, Withdrawn]. 
 
 
 
@@ -30,6 +30,7 @@ Open University Learning Analytics: is an intelligent grade prediction system ba
   + Student Activities - Score and Semester
   + Module - Code Module and Code Presentation
 * There are 32,593 students in 7 different module 
+* the source of dataset is <a href="https://analyse.kmi.open.ac.uk/open_dataset#description">HERE</a>
 
 
 
@@ -169,7 +170,7 @@ function prediction_database(w_male, w_female, p_male, p_female, f_male, f_femal
 + <a href="https://d3js.org/">D3.js</a>
   We are using D3 library to Visualise the Decision Tree using <a href="https://observablehq.com/@d3/tidy-tree">Tidy Tree</a>, we are Visualising the decision tree to show to student path for the predicted result. 
   
-
+<a name="headers5"/>
 ## To deploy the project
 
 First you need to install below requirements on your Operating System:
@@ -190,7 +191,8 @@ Then you need to install below requirements on our system:
 ### RUN SERVER
 In the end you can simply run the server.py file and then server will run on you localhost. then just open Browser and access http://localhost:5000/ and enjoy the Web Application.
 
-# Contributor
+<a name="headers6"/>
+# Contributors
 <a href="https://www.linkedin.com/in/samehfrihat/">Sameh Frihat</a>
 <br>
 <a href="https://www.linkedin.com/in/aashishag/">Aashish Agarwal</a>
