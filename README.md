@@ -1,8 +1,10 @@
 ## Table of content 
 - [OULA (intelligent grade prediction system)](#headers)
-- [based on Open University dataset](#headers2)
-- [Requirements and preparation](#headers2)
+- [Dataset Description](#headers1)
+- [Implementation Technologies](#headers2)
 - [App Structure](#headers3)
+- [Code Description](#headers4)
+- [To deploy the project](#headers5)
 - [code explanation](#headers4)
 
 <a name="headers"/>
@@ -16,32 +18,47 @@
 ## OULA
 Open University Learning Analytics: is an intelligent grade prediction system based on trained machine learning model in top of recorded data in database. User select its Data then get the grade closest to the final result.
 
+
+
+<a name="headers1"/>
+
+## Dataset Description
+* Multivariate dataset
+* It consists of 7 tables in csv format
+* Categorized based on 3 main types :
+  + Demographic - Gender, Age, Region, IMD-band, Highest Education
+  + Student Activities - Score and Semester
+  + Module - Code Module and Code Presentation
+* There are 32,593 students in 7 different module 
+
+
+
 <a name="headers2"/>
 
-## Requirements and preparation
+## Implementation Technologies
 This project is based on the following technology:
 
-* Data
-  + Pandas
-  + Numpy
-  
-* Model
-  + Sikit-learn
-  
-* Web side
-  + Flask
-
-* visualisation
-  + Chartjs
-  + D3
-
-* Database
-  + mongodb
-
-
+* Front-End
+  + Website
+    + Javascript
+    + CSS
+    + HTML
+  + visualisation
+    + Chartjs
+    + D3
+* Back-End
+  + Web Server
+    + Python
+    + Flask
+  + Machine Learning Pipeline
+    + Scikits Learn
+  + Database
+    + mongoDB
+    
+    
 <a name="headers3"/>
 
-# App Structure
+## App Structure
 we can seprate this project (Flask framework) to several main part with different functionality.
 
 App (OULA):
@@ -55,30 +72,28 @@ App (OULA):
       + styles (css folder)
       + styles (jquery folder)
   + template (folder)
-    + index.html // Home page 
-    + about_us.html // About us page
-    + dataset.html // Dataset description
-    + header.html // Header for all pages
-    + machinelearning.html // Machine Learning description
-    + prediction.html // Page of showing the prediction result with some chart and Visualization
-    + question_form.html // Form for getting user input
+    + index.html            // Home page
+    + about_us.html         // About us page
+    + dataset.html          // Dataset description
+    + header.html           // Header for all pages
+    + machinelearning.html  // Machine Learning description
+    + prediction.html       // Page of showing the prediction result with some chart and Visualization
+    + question_form.html    // Form for getting user input
     + real_time_statistics.html // Page to show some Visualization about the Website users
-    + tree2.html // Tidy tree based on D3.js library
-  + databaseMongodb.py // Database connection
-  + evaluateModels.py // evaluating the machine learning models
-  + labelEncoder.py // encode the user selection to feed it into machine learning model
-  + prediction.py // predict student result by training on any N features
-  + predictiveModels.py // machine learning models
-  + preprocessData.py // pre-process the data
-  + testingMongo.py // testing the connection to MongoDB
-  + traverseJson.py // traverse json file to create the tree-map for visualisation
-  + server.py // main file to run the server and render the html templates
-  
+    + tree2.html            // Tidy tree based on D3.js library
+  + databaseMongodb.py      // Database connection
+  + evaluateModels.py       // evaluating the machine learning models
+  + labelEncoder.py         // encode the user selection to feed it into machine learning model
+  + prediction.py           // predict student result by training on any N features
+  + predictiveModels.py     // machine learning models
+  + preprocessData.py       // pre-process the data
+  + testingMongo.py         // testing the connection to MongoDB
+  + traverseJson.py         // traverse json file to create the tree-map for visualisation
+  + server.py               // main file to run the server and render the html templates
+
 
 <a name="headers4"/>
-
-# Step 1
-### Data prepration
+### <a href="predictiveModels.py"> Machine Learning Pipeline</a>
 
 * Data preprocessing (approx. 12% data reduction) - Merging tables to form a main table - Chi Square test for Feature selection.
 * Machine Learning Algorithms - Decision Tree - Random Forest - Naïve Bayes - Gradient Boosting - SVM.
@@ -98,111 +113,88 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import GradientBoostingRegressor
 ```
 
-# Step 2
-### creating our model (Model_classification.py)
-we are using two clasifier in this project, and then used the most accurate one. we are using sci-kit learn python library.
 
-```ruby
-
-import pandas as pd
-def report(clf, X_train, y_train, X_test, y_test,M_name):
-    print("+++++report of the model+++++")
-    print(M_name)
-    clf.fit(X_train, y_train)
-    y_pred = clf.predict(X_test)
-    print('Precision score: {:3f}'.format(precision_score(y_test, y_pred, average='macro')))
-    print('Prediction Accuracy: {:3f}'.format(accuracy_score(y_test, y_pred)))
-    print('Recall score: {:3f}'.format(recall_score(y_test, y_pred, average='macro')))
-    print('F1 score: {:3f}'.format(f1_score(y_test, y_pred, average='macro')))
-
-
-#models
-lr = LogisticRegression()
-report(lr, X_train, y_train, X_test, y_test,"LogisticRegressio")
-
-```
-and then later we can use predict model to get the prediction result based on new data. prediction function just change the numerical output to categorical one
-```ruby
-
-def predictFunction(data_predicit):
-    result =lr.predict(data_predicit)
-    if result[0] == 0:
-        return 'Average'
-    if result[0] == 1:
-        return 'Bad'
-    if result[0] == 2:
-        return 'Good'
-    if result[0] == 3:
-        return 'Very good'
-    #print("the predicted grade is {}".format(result[0]))
-    #return result[0]
-
-predictFunction(validation_data)
-
-```
-# Step 3
 ### Web structure preparation (server.py)
-so for using our model on our web application we are using "Flask" python framework as our web back-end. so everything is happening in server.py file. getting new data from front-end file and send it to server and then calling prediction function and send it again to front-end to show it up.
+Server.py its the main file for our backend server using "Flask" python framework. the server start by rendering the <a href="templates/index.html"> home page </a> on http://localhost:5000/.
 
 ```ruby
-@app.route('/prediction')
-def prediction():
-    student = np.array(studentInfo)
-    studentTwoDArray = np.reshape(student, (-1, 16))
-    pred_result = predictFunction(studentTwoDArray)
-    
-    return render_template('prediction.html',student=student,pred_result=pred_result)
+@app.route('/')
+@app.route('/home')
+def main():
+    return render_template('index.html')
 
 ```
 
-# Step 4
-### Visualization part- charts and plots(server.py and plot.py and viz.js)
-in visualisation part we just tried to provide few chart to make the data more understandable maybe will help user to get better view from predicted result. we used "chartjs and D3" javascript libraries to visualize the data.
 
-we defined few functions for few chart then later we plot them just by calling this function:
-1. ageResultPlot: plot result distribution regarding age
+### Visualization 
+All Visualisation chart is built using:
+
++ <a href="https://www.chartjs.org/"> Chart.js </a>
+  Using Chart.js are providing few chart for understading the dataset characteristics and to show some trends from Users how using the    website. 
+
+ Example: 
+ prediction_database function: TO plot grade distribution regarding gender.
 
 ```ruby
-function agePlot(data_one,data_two, data_three, data_four, data_five){
-
-var ctx = document.getElementById('ageChart').getContext('2d');
-var chart = new Chart(ctx, {
-    // The type of chart we want to create
-    type: 'doughnut',
-
-    // The data for our dataset
-    data: {
-        labels: ["15", "16","17","18","19","20"],
-        datasets: [{
-            label: "Avarage grade based on gender",
-            backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-            borderColor: 'rgb(255, 99, 132)',
-            data: [data_one,data_two, data_three, data_four, data_five,5],
-        }]
-    },
-
-    // Configuration options go here
-    options: {}
-});
+// chart for trends page
+function prediction_database(w_male, w_female, p_male, p_female, f_male, f_female, d_male, d_female) {
+    var ctx = document.getElementById('prediction_database').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'bar',
+        // The data for our dataset
+        data:
+        {
+            labels: ['Distinction', 'Pass', 'Fail', 'Withdrawn'],
+            datasets: [{
+                    label: 'Male',
+                    backgroundColor: ["#3e95cd","#3e95cd","#3e95cd","#3e95cd",],
+                    borderColor: 'rgb(0, 0, 255)',
+                    borderWidth: 1,
+                    data: [ d_male, p_male, f_male, w_male]
+                }, {
+                    label: 'Female',
+                    backgroundColor: ["#ff95cd","#ff95cd","#ff95cd","#ff95cd"],
+                    borderColor: 'rgb(255, 0, 0)',
+                    borderWidth: 1,
+                    data: [ d_female, p_female, f_female, w_female]
+                }]
+        },
+        // configuration options go here
+        options: {}
+    });
 }
 ```
 
-# Run the code
-after we install below requirements on our system:
-  * sci-kit learn
-  * Flask
-  * Numpy
-  * Panda
-  * html5lib
-  * pyplot
-  * pymongo
-  * dnspython
-
++ <a href="https://d3js.org/">D3.js</a>
+  We are using D3 library to Visualise the Decision Tree using <a href="https://observablehq.com/@d3/tidy-tree">Tidy Tree</a>, we are Visualising the decision tree to show to student path for the predicted result. 
   
-you can simply run the server.py file and then server will run on you localhost. then just open Browser and type your local host IP with the port (localhost:5000) and enjoy the application
+
+## To deploy the project
+
+First you need to install below requirements on your Operating System:
++ <a href="https://www.jetbrains.com/pycharm/">Download PyCharm(Community Edition)</a> or your preferred IDE.
++ <a href="https://www.python.org/downloads/">Download latest version of Python</a>
+
+After configuring the python inside your IDE you need to install this project from this repository. 
+
+Then you need to install below requirements on our system:
+  * sci-kit learn == 0.22.1
+  * Flask == 1.1.1
+  * Numpy == 1.17.4
+  * Panda == 0.25.2
+  * html5lib == 1.0.1
+  * pymongo == 3.8.0
+  * dnspython == 1.16.0
+  
+### RUN SERVER
+In the end you can simply run the server.py file and then server will run on you localhost. then just open Browser and access http://localhost:5000/ and enjoy the Web Application.
 
 # Contributor
-Sameh Frihat
-Aashish Agarwal
-Shoeb Ahmed Joarder
-Seyedemarzie Mirhashemi
+<a href="https://www.linkedin.com/in/samehfrihat/">Sameh Frihat</a>
+<br>
+<a href="https://www.linkedin.com/in/aashishag/">Aashish Agarwal</a>
+<br>
+<a href="https://www.linkedin.com/in/shoeb-joarder/">Shoeb Ahmed Joarder</a>
+<br>
+ <a href="https://www.xing.com/profile/Marzie_Mirhashemi">Seyedemarzie Mirhashemi</a>
