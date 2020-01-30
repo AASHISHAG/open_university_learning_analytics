@@ -136,10 +136,10 @@ def main():
 All Visualisation chart is built using:
 
 + <a href="https://www.chartjs.org/"> Chart.js </a>
-  Using Chart.js are providing few chart for understading the dataset characteristics and to show some trends from Users how using the    website. 
+  is providing charts for understading the dataset characteristics and to show trends for the users using the website. 
 
  Example: 
- prediction_database function: TO plot grade distribution regarding gender.
+ prediction_database function: To plot grade distribution regarding gender.
 
 ```ruby
 // chart for trends page
@@ -173,13 +173,13 @@ function prediction_database(w_male, w_female, p_male, p_female, f_male, f_femal
 ```
 
 + <a href="https://d3js.org/">D3.js</a>
-  We are using D3 library to Visualise the Decision Tree using <a href="https://observablehq.com/@d3/tidy-tree">Tidy Tree</a>, we are Visualising the decision tree to show to student path for the predicted result. 
+  We are using D3 library to Visualise the Decision Tree using <a href="https://observablehq.com/@d3/tidy-tree">Tidy Tree</a>, we are visualising the decision tree to show student path for the predicted result. 
   
 <a name="headers5"/>
 
 # To deploy the project
 
-First you need to install below requirements on your Operating System:
+First you need to install below requirements:
 + <a href="https://www.jetbrains.com/pycharm/">Download PyCharm(Community Edition)</a> or your preferred IDE.
 + <a href="https://www.python.org/downloads/">Download latest version of Python</a>
 
@@ -196,7 +196,7 @@ Then you need to install below requirements on our system:
   
 
 ## RUN SERVER
-In the end you can simply run the server.py file and then server will run on you localhost. then just open Browser and access http://localhost:5000/ and enjoy the Web Application.
+In the end you can simply run the server.py file and then server will run on you localhost. Then just open Browser and access http://localhost:5000/ and enjoy the Web Application.
 
 
 <a name="headers6"/>
@@ -209,4 +209,4 @@ In the end you can simply run the server.py file and then server will run on you
 <br>
 <a href="https://www.linkedin.com/in/shoeb-joarder/">Shoeb Ahmed Joarder</a>
 <br>
- <a href="https://www.xing.com/profile/Marzie_Mirhashemi">Seyedemarzie Mirhashemi</a>
+<a href="https://www.xing.com/profile/Marzie_Mirhashemi">Seyedemarzie Mirhashemi</a>
