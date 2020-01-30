@@ -17,9 +17,9 @@
 
 
 # OULA
-Open University Learning Analytics its an intelligent grade prediction system, aims to analyse student performance and predict there result [Distinction, Fail, Pass, Withdrawn]. 
+Open University Learning Analytics its an intelligent grade prediction system that aims to analyse student performance and predict their results [Distinction, Fail, Pass, Withdrawn]. 
 
-This project submited as a final project for <a href="https://www.uni-due.de/soco/teaching/overview.php">Learning Analitics course</a> under <a href="https://www.uni-due.de/soco/">Social Computing department</a> in <a href="https://www.uni-due.de/en/index.php">Duisburg-Essen University</a>.
+This project submited as a final project for <a href="https://www.uni-due.de/soco/teaching/overview.php">Learning Analitics course</a> under <a href="https://www.uni-due.de/soco/">Social Computing department</a>at<a href="https://www.uni-due.de/en/index.php">Duisburg-Essen University</a>.
 
 
 <a name="headers1"/>
@@ -32,14 +32,14 @@ This project submited as a final project for <a href="https://www.uni-due.de/soc
   + Student Activities - Score and Semester
   + Module - Code Module and Code Presentation
 * There are 32,593 students in 7 different module 
-* the source of dataset is <a href="https://analyse.kmi.open.ac.uk/open_dataset#description">HERE</a>
+* The source of dataset is <a href="https://analyse.kmi.open.ac.uk/open_dataset#description">HERE</a>
 
 
 
 <a name="headers2"/>
 
 # Implementation Technologies
-This project is based on the following technology:
+This project is based on the following technologies:
 
 * Front-End
   + Website
@@ -69,14 +69,13 @@ App (OULA):
   + static (folder)
     + datasets (folder)
     + images (folder)
-      + Logo.png 
     + javascript (folder)
-      + viz.js // main javascript file  for chartjs charts functions
+      + viz.js (main javascript file  for chartjs charts functions)
     + layout (folder) 
       + styles (css folder)
       + styles (jquery folder)
   + template (folder)
-    + index.html            // Home page
+    + index.html            (Home page)
     + about_us.html         // About us page
     + dataset.html          // Dataset description
     + header.html           // Header for all pages
