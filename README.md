@@ -46,7 +46,7 @@ This project is based on the following technologies:
     + Javascript
     + CSS
     + HTML
-  + visualisation
+  + Visualisation
     + Chartjs
     + D3
 * Back-End
@@ -63,7 +63,7 @@ This project is based on the following technologies:
 
 
 # App Structure
-we can seprate this project (Flask framework) to several main part with different functionality.
+The project has the following structure:
 
 App (OULA):
   + static (folder)
@@ -75,15 +75,16 @@ App (OULA):
       + styles (css folder)
       + styles (jquery folder)
   + template (folder)
-    + index.html            (Home page)
-    + about_us.html         // About us page
-    + dataset.html          // Dataset description
-    + header.html           // Header for all pages
-    + machinelearning.html  // Machine Learning description
-    + prediction.html       // Page of showing the prediction result with some chart and Visualization
-    + question_form.html    // Form for getting user input
-    + real_time_statistics.html // Page to show some Visualization about the Website users
-    + tree2.html            // Tidy tree based on D3.js library
+    + about_us.html         (About-Us page)
+	+ dataset.html          (Dataset description)
+	+ header.html           (Header for all pages)
+	+ index.html            (Home-Page)
+    + machinelearning.html  (Machine Learning description)
+    + prediction.html       (Page for showing the prediction result with some charts and Visualization)
+    + question_form.html    (Form for getting user input)
+    + real_time_statistics.html (Page to show some visualization about the website users)
+	+ tree2.html 			(Tidy tree based on D3.js library)
+    + tree2.html            (Tidy tree based on D3.js library)
   + databaseMongodb.py      // Database connection
   + evaluateModels.py       // evaluating the machine learning models
   + labelEncoder.py         // encode the user selection to feed it into machine learning model
