@@ -19,6 +19,7 @@
 # OULA
 Open University Learning Analytics its an intelligent grade prediction system, aims to analyse student performance and predict there result [Distinction, Fail, Pass, Withdrawn]. 
 
+This project submited as a final project for <a href="https://www.uni-due.de/soco/teaching/overview.php">Learning Analitics course</a> under <a href="https://www.uni-due.de/soco/">Social Computing department</a> in <a href="https://www.uni-due.de/en/index.php">Duisburg-Essen University</a>.
 
 
 <a name="headers1"/>
