@@ -75,26 +75,26 @@ App (OULA):
       + styles (css folder)
       + styles (jquery folder)
   + template (folder)
-    + about_us.html         (About-Us page)
-	+ dataset.html          (Dataset description)
-	+ header.html           (Header for all pages)
-	+ index.html            (Home-Page)
-    + machinelearning.html  (Machine Learning description)
-    + prediction.html       (Page for showing the prediction result with some charts and Visualization)
-    + question_form.html    (Form for getting user input)
-    + real_time_statistics.html (Page to show some visualization about the website users)
-	+ tree2.html 			(Tidy tree based on D3.js library)
-    + tree2.html            (Tidy tree based on D3.js library)
-  + databaseMongodb.py      // Database connection
-  + evaluateModels.py       // evaluating the machine learning models
-  + labelEncoder.py         // encode the user selection to feed it into machine learning model
-  + prediction.py           // predict student result by training on any N features
-  + predictiveModels.py     // machine learning models
-  + preprocessData.py       // pre-process the data
-  + testingMongo.py         // testing the connection to MongoDB
-  + traverseJson.py         // traverse json file to create the tree-map for visualisation
-  + server.py               // main file to run the server and render the html templates
-
+    + about_us.html         (about us page)
+	+ dataset.html          (dataset description)
+	+ header.html           (header for all pages)
+	+ index.html            (home page)
+    + machinelearning.html  (machine Learning description)
+    + prediction.html       (page for showing the prediction result with some charts and Visualization)
+    + question_form.html    (form for getting user input)
+    + real_time_statistics.html (page to show some visualizations about the website users)
+	+ tree2.html 			(tidy tree based on D3.js library)
+    + tree2.html            (tidy tree based on D3.js library)
+  + databaseMongodb.py      (database connection)
+  + evaluateModels.py       (evaluating the machine learning models)
+  + labelEncoder.py         (encode the user selection to feed it into machine learning model)
+  + prediction.py           (predict student result by training on any N features)
+  + predictiveModels.py     (machine learning models)
+  + preprocessData.py       (pre-process the data)
+  + server.py               (main file to run the server and render the html templates)
+  + testingMongo.py         (testing the connection to MongoDB)
+  + traverseJson.py         (traverse json file to create the tree-map for visualisation)
+  
 
 <a name="headers4"/>
 
