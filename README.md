@@ -6,20 +6,21 @@
 - [code explanation](#headers4)
 
 <a name="headers"/>
+<img href="https://www.youtube.com/" src="static/images/logo.png" width="100">
+<br>
+<br>
+<a href="https://www.youtube.com/">A Youtube video shows a demo</a>
 
-youtube video about project
-https://www.youtube.com/
 
-![Logo](static/images/logo.png)
-<img src="static/images/logo.png" width="100">
 
-## OULA (intelligent grade prediction system)
-Grade prediction system based on trend of the recorded data in database. User select its habit then get the grade closest to the final result.
+## OULA
+Open University Learning Analytics: is an intelligent grade prediction system based on trained machine learning model in top of recorded data in database. User select its Data then get the grade closest to the final result.
 
 <a name="headers2"/>
 
 ## Requirements and preparation
 This project is based on the following technology:
+
 * Data
   + Pandas
   + Numpy
@@ -29,7 +30,6 @@ This project is based on the following technology:
   
 * Web side
   + Flask
-  + Bootstrap
 
 * visualisation
   + Chartjs
@@ -46,75 +46,58 @@ we can seprate this project (Flask framework) to several main part with differen
 
 App (OULA):
   + static (folder)
-    + css (folder)
-      + bootstrap
     + datasets (folder)
-      + dataset_main.csv // main dataset for making model
     + images (folder)
       + Logo.png 
-      + ki.jpg
     + javascript (folder)
-      + viz.js // main javascript file for making charts
+      + viz.js // main javascript file  for chartjs charts functions
+    + layout (folder) 
+      + styles (css folder)
+      + styles (jquery folder)
   + template (folder)
-    + index.html
-    + prediction.html // page of showing the prediction result
-    + question_form.html // the form for getting user input
-  + Convertor.py
-  + Model_classification.py // classifier model
-  + plot.py // preparing data to use for plotting
-  + server.py // application server backend part
+    + index.html // Home page 
+    + about_us.html // About us page
+    + dataset.html // Dataset description
+    + header.html // Header for all pages
+    + machinelearning.html // Machine Learning description
+    + prediction.html // Page of showing the prediction result with some chart and Visualization
+    + question_form.html // Form for getting user input
+    + real_time_statistics.html // Page to show some Visualization about the Website users
+    + tree2.html // Tidy tree based on D3.js library
+  + databaseMongodb.py // Database connection
+  + evaluateModels.py // evaluating the machine learning models
+  + labelEncoder.py // encode the user selection to feed it into machine learning model
+  + prediction.py // predict student result by training on any N features
+  + predictiveModels.py // machine learning models
+  + preprocessData.py // pre-process the data
+  + testingMongo.py // testing the connection to MongoDB
+  + traverseJson.py // traverse json file to create the tree-map for visualisation
+  + server.py // main file to run the server and render the html templates
   
 
 <a name="headers4"/>
 
 # Step 1
-### Data prepration (Model_classification.py)
-for making our model and use it for the prediction we need to first prepare the data for process. we are dealing with data using "pandas", "numpy" , "sklearn"
-so we need to import this library:
+### Data prepration
+
+* Data preprocessing (approx. 12% data reduction) - Merging tables to form a main table - Chi Square test for Feature selection.
+* Machine Learning Algorithms - Decision Tree - Random Forest - Naïve Bayes - Gradient Boosting - SVM.
+* Evaluation - Accuracy - Confusion Matrix.
+
+needed libraries:
 
 ```ruby
 import pandas as pd
 import numpy as np
-from sklearn.preprocessing import LabelEncoder
-
+from sklearn import svm
+from sklearn import tree
+from sklearn import metrics
+from sklearn.naive_bayes import GaussianNB
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import GradientBoostingRegressor
 ```
-and then we are reading the data and encoding the categorical data in order to give them to model in training process:
 
-```ruby
-#read data
-df = pd.read_csv("./static/datasets/dataset_main.csv", engine='python',sep=',')
-
-
-
-# add new feature to use it for classification
-grades = df['G3'].values
-labels = []
-
-for grade in grades:
-    if grade >=17:
-        labels.append('very good')
-    elif grade < 17 and grade >= 15:
-        labels.append('good')
-    elif grade < 15 and grade >= 10:
-        labels.append('average')
-    elif grade < 10:
-        labels.append('bad')
-
-#encoding the data
-enc = LabelEncoder()
-for item in df:
-    data_raw = df[item].values
-    df[item] = enc.fit_transform(data_raw)
-
-enc_labels = enc.fit_transform(labels)
-
-print(df.head(4))
-df = df.values
-#print(df['item'].head())
-#preparing test data
-X_train, X_test, y_train, y_test = train_test_split(df[:,:16],enc_labels, stratify=enc_labels,random_state=0,test_size=0.20)
-
-```
 # Step 2
 ### creating our model (Model_classification.py)
 we are using two clasifier in this project, and then used the most accurate one. we are using sci-kit learn python library.
