@@ -8,6 +8,7 @@
 - [Contributors](#headers5)
 
 <a name="headers"/>
+
 <img href="https://www.youtube.com/" src="static/images/logo.png" width="100">
 <br>
 <br>
@@ -59,6 +60,7 @@ This project is based on the following technology:
     
 <a name="headers3"/>
 
+
 # App Structure
 we can seprate this project (Flask framework) to several main part with different functionality.
 
@@ -94,8 +96,9 @@ App (OULA):
 
 
 <a name="headers4"/>
-## <a href="predictiveModels.py"> Machine Learning Pipeline</a>
 
+
+## <a href="predictiveModels.py"> Machine Learning Pipeline</a>
 * Data preprocessing (approx. 12% data reduction) - Merging tables to form a main table - Chi Square test for Feature selection.
 * Machine Learning Algorithms - Decision Tree - Random Forest - Naïve Bayes - Gradient Boosting - SVM.
 * Evaluation - Accuracy - Confusion Matrix.
@@ -171,6 +174,7 @@ function prediction_database(w_male, w_female, p_male, p_female, f_male, f_femal
   We are using D3 library to Visualise the Decision Tree using <a href="https://observablehq.com/@d3/tidy-tree">Tidy Tree</a>, we are Visualising the decision tree to show to student path for the predicted result. 
   
 <a name="headers5"/>
+
 # To deploy the project
 
 First you need to install below requirements on your Operating System:
@@ -188,10 +192,14 @@ Then you need to install below requirements on our system:
   * pymongo == 3.8.0
   * dnspython == 1.16.0
   
+
 ## RUN SERVER
 In the end you can simply run the server.py file and then server will run on you localhost. then just open Browser and access http://localhost:5000/ and enjoy the Web Application.
 
+
 <a name="headers6"/>
+
+
 # Contributors
 <a href="https://www.linkedin.com/in/samehfrihat/">Sameh Frihat</a>
 <br>
