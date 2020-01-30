@@ -121,7 +121,7 @@ from sklearn.ensemble import GradientBoostingRegressor
 
 
 ## Web structure preparation (server.py)
-Server.py its the main file for our backend server using "Flask" python framework. the server start by rendering the <a href="templates/index.html"> home page </a> on http://localhost:5000/.
+Server.py is the main file for our backend server using "Flask" python framework. The server starts by rendering the <a href="templates/index.html"> Home Page </a> on http://localhost:5000/.
 
 ```ruby
 @app.route('/')
