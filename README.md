@@ -9,7 +9,7 @@
 
 <a name="headers"/>
 
-<img href="https://www.youtube.com/" src="static/images/logo.png" width="100">
+<img src="static/images/logo.png" width="100">
 <br>
 <br>
 <a href="https://www.youtube.com/">A Youtube video shows a demo</a>
@@ -58,6 +58,7 @@ This project is based on the following technologies:
   + Database
     + mongoDB
     
+<img src="static/images/tech.PNG">
     
 <a name="headers3"/>
 
@@ -95,6 +96,10 @@ App (OULA):
   + testingMongo.py         (testing the connection to MongoDB)
   + traverseJson.py         (traverse json file to create the tree-map for visualisation)
   + createJsonInteractiveVisualisation.py         (extracting json from decision tree)
+  
+  
+  
+<img src="static/images/arch.png">
   
 
 <a name="headers4"/>
@@ -165,9 +170,13 @@ function prediction_database(w_male, w_female, p_male, p_female, f_male, f_femal
     });
 }
 ```
+<img src="static/images/dataset.PNG">
+
 
 + <a href="https://d3js.org/">D3.js</a>
   We are using D3 library to Visualise the Decision Tree using <a href="https://observablehq.com/@d3/tidy-tree">Tidy Tree</a>, we are visualising the decision tree to show student path for the predicted result. 
+  
+<img src="static/images/Tree.PNG">
   
 <a name="headers5"/>
 
