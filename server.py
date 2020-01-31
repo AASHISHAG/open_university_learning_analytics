@@ -256,7 +256,7 @@ def prediction():
                            feature_11='Semester (Second Module)', value_11 = value_11,
                            student=accuracy, pred_result=pred_result, path=path, message=message, title='Prediction')
 
-# route for handling the aboutus page
+# route for handling the about us page
 @app.route('/about_us')
 def about_us():
     return render_template('about_us.html', title='About Us')
@@ -264,14 +264,7 @@ def about_us():
 # route for handling the decision tree visualisation page
 @app.route('/tree')
 def tree():
-    with open('rules.json') as json_file:
-        data = json.load(json_file)
-    return render_template('tree2.html', data=data, title="Tree")
-
-# route for handling the rules page (test page for reference)
-@app.route('/rules')
-def rules():
-    return render_template('rules.json')
+    return render_template('tree2.html', title="Tree")
 
 # route for handling the website analytics page
 @app.route('/real_time_statistics')
